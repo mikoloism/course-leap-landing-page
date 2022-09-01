@@ -1,0 +1,19 @@
+@mixin grid($cols: null, $rows: null, $gap: null) {
+  display: grid;
+
+  @if $cols not null {
+    grid-template-columns: $cols;
+  } @else {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @if $rows not null {
+    grid-template-rows: $rows;
+  } @else {
+    grid-template-rows: repeat(12, 1fr);
+  }
+
+  @if $gap not null {
+    gap: $gap;
+  }
+}

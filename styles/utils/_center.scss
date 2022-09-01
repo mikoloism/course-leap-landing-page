@@ -1,0 +1,13 @@
+@mixin center($type: grid) {
+  @if $type ==grid {
+    display: grid;
+  } @else if $type ==inline-grid {
+    display: inline-grid;
+  } @else if $type ==inline-flex {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  @include place;
+}
