@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::after,
+*::before {
+  @apply box-border;
+}
+
+html,
+body,
+#root,
+#__next {
+  @apply container;
+  @apply w-screen;
+  @apply max-h-screen;
+  @apply space-x-0;
+  @apply space-y-0;
+}
