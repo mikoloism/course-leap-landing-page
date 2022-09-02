@@ -12,9 +12,17 @@ html,
 body,
 #root,
 #__next {
-  @apply container;
+  @apply relative;
   @apply w-screen;
-  @apply max-h-screen;
+  @apply min-h-screen;
+  @apply p-0;
   @apply space-x-0;
   @apply space-y-0;
+  @apply overflow-auto;
+  @apply overflow-x-hidden;
+  @apply flex-auto;
+  @apply place-items-center;
+  @apply place-content-center;
+  @apply bg-white;
+  @apply text-black;
 }
