@@ -20,8 +20,6 @@
         "README.md": true,
         "jest.config.js": true,
         "next.config.js": true,
-        "postcss.config.js": true,
-        "tailwind.config.js": true,
         ".vscode": true,
         "public": true,
         ".next": true,
