@@ -33,7 +33,119 @@ module.exports = {
                 'square-2': '#B6D7FF',
             },
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                montserrat: ['Montserrat', 'sans'],
+                h1        : [
+                    '58px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '80px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                h2: [
+                    '40px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '50px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                h3: [
+                    '24px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '32px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                h4: [
+                    '20px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '30px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                h5: [
+                    '16px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '24px',
+                        letterSpacing: '0.1px',
+                    },
+                ],
+                h6: [
+                    '14px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '24px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                link: [
+                    '14px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '24px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                btn: [
+                    '14px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'bold',
+                        lineHeight   : '22px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                input: [
+                    '14px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'regular',
+                        lineHeight   : '28px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                subtitle: [
+                    '20px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'regular',
+                        lineHeight   : '22px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                paragraph: [
+                    '14px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'regular',
+                        lineHeight   : '20px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+                small: [
+                    '12px',
+                    {
+                        fontFamily   : 'Montserrat',
+                        fontWeight   : 'regular',
+                        lineHeight   : '16px',
+                        letterSpacing: '0.2px',
+                    },
+                ],
+            },
+        },
     },
     plugins: [],
 };
