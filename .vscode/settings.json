@@ -23,7 +23,7 @@
         ".vscode": true,
         "public": true,
         ".next": true,
-        ".storybook": true,
+        ".ladle": true,
         "docs": true
     },
     "explorerExclude.backup": {},
