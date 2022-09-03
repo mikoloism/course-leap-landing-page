@@ -20,6 +20,7 @@
         "README.md": true,
         "jest.config.js": true,
         "next.config.js": true,
+        "vite.config.ts": true,
         ".vscode": true,
         "public": true,
         ".next": true,
