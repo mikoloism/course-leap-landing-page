@@ -7,9 +7,12 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test": "jest"
+        "test": "jest",
+        "ladle:serve": "ladle serve",
+        "ladle:build": "ladle build"
     },
     "dependencies": {
+        "@ladle/react": "^2.4.2",
         "next": "12.2.5",
         "normalize.css": "^8.0.1",
         "react": "18.2.0",

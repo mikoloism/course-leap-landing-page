@@ -36,10 +36,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 montserrat: ['Montserrat', 'sans'],
-                h1        : [
+            },
+            fontSize: {
+                h1: [
                     '58px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '80px',
                         letterSpacing: '0.2px',
@@ -48,7 +49,6 @@ module.exports = {
                 h2: [
                     '40px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '50px',
                         letterSpacing: '0.2px',
@@ -57,7 +57,6 @@ module.exports = {
                 h3: [
                     '24px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '32px',
                         letterSpacing: '0.2px',
@@ -66,7 +65,6 @@ module.exports = {
                 h4: [
                     '20px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '30px',
                         letterSpacing: '0.2px',
@@ -75,7 +73,6 @@ module.exports = {
                 h5: [
                     '16px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '24px',
                         letterSpacing: '0.1px',
@@ -84,7 +81,6 @@ module.exports = {
                 h6: [
                     '14px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '24px',
                         letterSpacing: '0.2px',
@@ -93,7 +89,6 @@ module.exports = {
                 link: [
                     '14px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '24px',
                         letterSpacing: '0.2px',
@@ -102,7 +97,6 @@ module.exports = {
                 btn: [
                     '14px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'bold',
                         lineHeight   : '22px',
                         letterSpacing: '0.2px',
@@ -111,7 +105,6 @@ module.exports = {
                 input: [
                     '14px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'regular',
                         lineHeight   : '28px',
                         letterSpacing: '0.2px',
@@ -120,7 +113,6 @@ module.exports = {
                 subtitle: [
                     '20px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'regular',
                         lineHeight   : '22px',
                         letterSpacing: '0.2px',
@@ -129,7 +121,6 @@ module.exports = {
                 paragraph: [
                     '14px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'regular',
                         lineHeight   : '20px',
                         letterSpacing: '0.2px',
@@ -138,7 +129,6 @@ module.exports = {
                 small: [
                     '12px',
                     {
-                        fontFamily   : 'Montserrat',
                         fontWeight   : 'regular',
                         lineHeight   : '16px',
                         letterSpacing: '0.2px',
