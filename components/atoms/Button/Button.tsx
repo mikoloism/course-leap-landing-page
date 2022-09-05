@@ -1,5 +1,5 @@
 import Icon from '@/atoms/Icon';
-import { Component, memo } from '@/libs/common';
+import { Component, memo, $ } from '@/libs/common';
 import { ButtonProps } from './index';
 
 const tailwind = {
@@ -71,15 +71,47 @@ class ButtonComponent extends Component<ButtonProps> {
         const $color = this.props?.color ?? 'primary';
         const $variant = this.props?.variant ?? 'fill';
         const $baseClass =
-            'py-4 px-8 space-x-0 space-y-0 outline-0 stroke-0 shadow-none bg-primary rounded-lg';
-        const $className = withColor(
-            $color,
+            'py-4 px-8 space-x-0 space-y-0 outline-0 stroke-0 shadow-none rounded-md transition text-btn font-montserrat';
+        const $onActive = 'active:transform active:scale-95';
+        const $onHoverIcon = 'hover:gap-8';
+        const $onHover = 'hover:transform hover:scale-105';
+
+        const $className = $(
             $baseClass,
+            $onActive,
+            $onHover,
+            !!this.props?.icon && $onHoverIcon,
+
+            /* fill */
             {
-                fill: withFill,
-                outline: withOutline,
-                text: withText,
-            }[$variant]
+                ['border-0 border-none']: $variant === 'fill',
+                [`bg-${$color}`]: $variant === 'fill' && !!$color,
+                [`text-white`]: [
+                    'black',
+                    'primary',
+                    'gray',
+                    'secondary',
+                    'accent',
+                ].includes($color),
+                [`text-black`]: ['white'].includes($color) || !$color,
+            },
+
+            /* outline */
+            {
+                ['border-2 border-solid']: $variant === 'outline',
+                [`border-${$color}`]: $color && $variant === 'outline',
+                [`text-${$color}`]: $color && $variant === 'outline',
+                [`bg-transparent`]: $color && $variant === 'outline',
+                [`hover:bg-${$color}`]: $color && $variant === 'outline',
+            },
+
+            /* text */
+            {
+                ['border-0 border-none']: $variant === 'text',
+                [`bg-transparent`]: $variant === 'text',
+                [`text-${$color}`]: $color && $variant === 'text',
+            },
+            this.props.className
         );
 
         return (
