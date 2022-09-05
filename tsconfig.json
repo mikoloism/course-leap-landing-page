@@ -13,8 +13,22 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
-        "incremental": true
+        "incremental": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/components/*": ["components/*"],
+            "@/atoms/*": ["components/atoms/*"],
+            "@/molecules/*": ["components/molecules/*"],
+            "@/organisms/*": ["components/organisms/*"],
+            "@/templates/*": ["components/templates/*"],
+            "@/pages/*": ["pages/*"],
+            "@/libs/normalize.css": [
+                "node_modules/normalize.css/normalize.css"
+            ],
+            "@/libs/*": ["libs/*"],
+            "@/styles/*": ["styles/*"]
+        }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "./**/*.ts", "./**/*.tsx"],
     "exclude": ["node_modules"]
 }
