@@ -10,8 +10,8 @@ const tailwind = {
     },
     fill: {
         primary: 'bg-primary text-white',
-        secondary: 'bg-primary text-white',
-        accent: 'bg-primary text-white',
+        secondary: 'bg-secondary text-white',
+        accent: 'bg-accent text-white',
         gray: 'bg-gray text-black',
         black: 'bg-black text-white',
         white: 'bg-white text-primary',
@@ -68,7 +68,7 @@ class ButtonComponent extends Component<ButtonProps> {
     }
 
     public render() {
-        const $color = this.props?.variant ?? 'primary';
+        const $color = this.props?.color ?? 'primary';
         const $variant = this.props?.variant ?? 'fill';
         const $baseClass =
             'py-4 px-8 space-x-0 space-y-0 outline-0 stroke-0 shadow-none bg-primary rounded-lg';
