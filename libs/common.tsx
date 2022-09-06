@@ -7,6 +7,9 @@ export { default as $ } from 'classnames';
 export { Component, memo } from 'react';
 export type { FC, ReactNode } from 'react';
 
+// next
+export { default as Image } from 'next/image';
+
 // base-props
 export interface BaseProps {
     className?: string;
