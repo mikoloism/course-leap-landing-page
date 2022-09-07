@@ -1,11 +1,24 @@
 import { BaseProps } from '@/libs/common';
 
 export enum IconName {
-    ArrowRight = 'arrow-right',
+    Alarm          = 'alarm',
+    ArrowRight     = 'arrow-right',
+    Bookmark       = 'bookmark',
+    BookOpen       = 'book-open',
     CheckUnderline = 'check-underline',
-    ChevronRight = 'chevron-right',
-    CreditCard = 'credit-card',
-    Tag = 'tag',
+    ChevronRight   = 'chevron-right',
+    CreditCard     = 'credit-card',
+    DownloadBox    = 'download-box',
+    Eye            = 'eye',
+    Heart          = 'heart',
+    Instagram      = 'instagram',
+    LinearChart    = 'linear-chart',
+    Linkedin       = 'linkedin',
+    ShoppingCart   = 'shopping-cart',
+    StarFill       = 'star-fill',
+    Star           = 'star',
+    Tag            = 'tag',
+    Twitter        = 'twitter',
 }
 
 // NOTE : to use in another components as `icon` props type
