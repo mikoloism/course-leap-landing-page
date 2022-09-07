@@ -11,7 +11,7 @@ export default class Icon extends Component<IconProps, any, any> {
         const IconComponent = getIconComponent($name);
         return (
             <figure {...$props}>
-                <IconComponent />;
+                <IconComponent />
             </figure>
         );
     }
