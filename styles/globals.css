@@ -20,7 +20,9 @@ body,
   @apply space-y-0;
   @apply overflow-auto;
   @apply overflow-x-hidden;
-  @apply flex-auto;
+  @apply flex;
+  @apply flex-wrap;
+  @apply flex-col;
   @apply place-items-center;
   @apply place-content-center;
   @apply bg-white;
