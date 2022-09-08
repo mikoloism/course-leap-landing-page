@@ -1,8 +1,6 @@
 import type { SvgProps } from './index';
 
-export const InstagramIcon = (
-    { width, height }: SvgProps = { width: '48', height: '48' }
-) => (
+export const InstagramIcon = ({ size }: SvgProps = { size: '1' }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
