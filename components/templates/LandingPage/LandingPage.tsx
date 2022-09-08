@@ -36,10 +36,7 @@ const $content = {
 
     features: {
         title: 'Watch our Courses',
-        description: `
-        Problems trying to resolve the conflict between
-        the two major realms of Classical physics:
-        Newtonian mechanics`,
+        description: `Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics`,
         cta: `Learn More`,
         items: [
             {
@@ -280,7 +277,89 @@ const Layout = {
     },
 
     Features() {
-        return <></>;
+        return (
+            <section
+                id="features"
+                className="w-screen h-screen bg-white flex flex-wrap flex-row place-content-center place-items-center text-justify">
+                <section className="w-1/2 h-full flex flex-wrap flex-col place-content-center place-items-start">
+                    <header className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12">
+                        <span
+                            id="block"
+                            className="w-3/12 h-[6px] bg-accent rounded-full"></span>
+                        <h2 className="font-montserrat text-h2">
+                            {$content.features.title}
+                        </h2>
+                        <p className="text-paragraph text-gray font-montserrat w-11/12">
+                            {$content.features.description}
+                        </p>
+                        <a className="rounded-full h-20 w-56 bg-transparent text-link inline-flex flex-wrap flex-row place-items-center place-content-center justify-start fill-primary text-primary">
+                            <span className="w-fit h-full inline-flex flex-wrap flex-column place-items-center place-content-center">
+                                {$content.features.cta}
+                            </span>
+                            <Icon
+                                name="chevron-right"
+                                className="p-0 space-x-0 space-y-0 w-[20%] h-full inline-flex flex-wrap flex-column place-content-center place-items-center overflow-hidden"
+                                size="0.8"
+                            />
+                        </a>
+                    </header>
+                </section>
+                <section
+                    className="w-1/2 h-full grid grid-cols-12 place-items-center justify-around"
+                    style={{ gridTemplateRows: 'repeat(12,1fr)' }}>
+                    {$content.features.items.map((item) => {
+                        return (
+                            <section
+                                key={item.id}
+                                className={`${
+                                    {
+                                        0: 'col-start-2 col-end-6  row-start-3 row-end-7',
+                                        1: 'col-start-7 col-end-11 row-start-5 row-end-[10]',
+                                        2: 'col-start-2 col-end-6  row-start-[8] row-end-[12]',
+                                    }[item.id]
+                                }
+                        flex flex-wrap flex-col
+                        gap-y-4
+                        py-5 px-8
+                        shadow-accented
+                        text-left
+                        w-full h-full
+                        rounded-xl
+                        `.replace(/\s+/g, ' ')}>
+                                <h5 className="order-2 font-montserrat text-h5">
+                                    {item.title}
+                                </h5>
+                                <span
+                                    id="block"
+                                    className="order-3 w-3/12 h-1 bg-accent rounded-full"></span>
+                                <p className="order-4 text-paragraph text-gray">
+                                    {item.description}
+                                </p>
+                                <Icon
+                                    size="0.8"
+                                    className={`
+                            ${
+                                {
+                                    'check-underline':
+                                        'bg-box-bg-blue fill-primary',
+                                    'credit-card': 'bg-box-bg-red fill-accent',
+                                    tag: 'bg-box-bg-green fill-accent-green',
+                                }[item.icon]
+                            }
+                            order-1
+                            w-24 h-24
+                            flex
+                            flex-wrap place-content-center place-items-center
+                            rounded-2xl
+                            `.replace(/[\s]{1,}/gi, ' ')}
+                                    name={item.icon as any}
+                                />
+                            </section>
+                        );
+                    })}
+                </section>
+            </section>
+        );
     },
 };
 
@@ -294,6 +373,7 @@ export default class LandingPageTemplate extends Component<LandingPageProps> {
             <>
                 <Layout.Header />
                 <Layout.Hero />
+                <Layout.Features />
 
             </>
         );
