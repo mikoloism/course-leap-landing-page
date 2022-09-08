@@ -7,11 +7,23 @@ export default class Icon extends Component<IconProps, any, any> {
     }
 
     public render() {
-        const { name: $name, ...$props } = this.props;
+        const {
+            name: $name,
+            height,
+            width,
+            nowrap = false,
+            ...$props
+        } = this.props;
+        const $width = width ? width.toString() : 'inherit';
+        const $height = height ? height.toString() : 'inherit';
         const IconComponent = getIconComponent($name);
+
         return (
             <figure {...$props}>
-                <IconComponent />
+                <IconComponent
+                    width={$width}
+                    height={$height}
+                />
             </figure>
         );
     }
