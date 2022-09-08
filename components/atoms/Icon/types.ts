@@ -26,4 +26,14 @@ export type IconType = IconName | `${IconName}`;
 
 export interface IconProps extends BaseProps {
     name: IconType;
+    nowrap?: boolean;
+    width?: string | number;
+    height?: string | number;
+}
+
+
+export interface SvgProps {
+    width?: string;
+    height?: string;
+    [key: string]: any;
 }
