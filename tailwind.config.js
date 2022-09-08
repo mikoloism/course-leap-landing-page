@@ -41,99 +41,99 @@ module.exports = {
             },
             fontSize: {
                 h1: [
-                    '58px',
+                    '72px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '80px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '110px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 h2: [
-                    '40px',
+                    '42px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '50px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '72px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 h3: [
-                    '24px',
+                    '34px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '32px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '72px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 h4: [
-                    '20px',
+                    '30px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '30px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '68px',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 h5: [
-                    '16px',
+                    '26px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '24px',
-                        letterSpacing: '0.1px',
+                        lineHeight   : '56px',
+                        letterSpacing: '0.3px',
                     },
                 ],
                 h6: [
-                    '14px',
+                    '24px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '24px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '56px',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 link: [
-                    '14px',
+                    '20px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '24px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '45px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 btn: [
-                    '14px',
+                    '20px',
                     {
                         fontWeight   : 'bold',
-                        lineHeight   : '22px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '45px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 input: [
-                    '14px',
+                    '16px',
                     {
                         fontWeight   : 'regular',
-                        lineHeight   : '28px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '45px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 subtitle: [
-                    '20px',
+                    '30px',
                     {
                         fontWeight   : 'regular',
-                        lineHeight   : '22px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '70px',
+                        letterSpacing: '0.5',
                     },
                 ],
                 paragraph: [
-                    '14px',
+                    '18px',
                     {
                         fontWeight   : 'regular',
-                        lineHeight   : '20px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '45px',
+                        letterSpacing: '0.5',
                     },
                 ],
-                small: [
-                    '12px',
+                standard: [
+                    '16px',
                     {
                         fontWeight   : 'regular',
-                        lineHeight   : '16px',
-                        letterSpacing: '0.2px',
+                        lineHeight   : '45px',
+                        letterSpacing: '0.5',
                     },
                 ],
             },
