@@ -45,15 +45,15 @@ module.exports = {
                     {
                         fontWeight   : 'bold',
                         lineHeight   : '110px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 h2: [
-                    '42px',
+                    '52px',
                     {
                         fontWeight   : 'bold',
                         lineHeight   : '72px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 h3: [
@@ -61,7 +61,7 @@ module.exports = {
                     {
                         fontWeight   : 'bold',
                         lineHeight   : '72px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 h4: [
@@ -93,7 +93,7 @@ module.exports = {
                     {
                         fontWeight   : 'bold',
                         lineHeight   : '45px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 btn: [
@@ -101,7 +101,7 @@ module.exports = {
                     {
                         fontWeight   : 'bold',
                         lineHeight   : '45px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 input: [
@@ -109,7 +109,7 @@ module.exports = {
                     {
                         fontWeight   : 'regular',
                         lineHeight   : '45px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 subtitle: [
@@ -117,15 +117,15 @@ module.exports = {
                     {
                         fontWeight   : 'regular',
                         lineHeight   : '70px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 paragraph: [
-                    '18px',
+                    '19px',
                     {
                         fontWeight   : 'regular',
                         lineHeight   : '45px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
                 standard: [
@@ -133,7 +133,7 @@ module.exports = {
                     {
                         fontWeight   : 'regular',
                         lineHeight   : '45px',
-                        letterSpacing: '0.5',
+                        letterSpacing: '0.5px',
                     },
                 ],
             },
