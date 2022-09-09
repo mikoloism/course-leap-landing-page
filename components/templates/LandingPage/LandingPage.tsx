@@ -361,6 +361,59 @@ const Layout = {
             </section>
         );
     },
+
+    Summary() {
+        return (
+            <section
+                id="summary"
+                className="w-screen h-[135vh] py-48 bg-white flex flex-wrap flex-row place-content-center place-items-center text-justify">
+                <section className="w-1/2 h-full flex flex-wrap flex-col place-content-center place-items-start order-1">
+                    <header className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12">
+                        <span
+                            id="block"
+                            className="w-3/12 h-[6px] bg-accent rounded-full"></span>
+                        <h2 className="font-montserrat text-h2">
+                            {$content.summary.title}
+                        </h2>
+                        <p className="text-paragraph text-gray font-montserrat w-11/12">
+                            {$content.summary.description}
+                        </p>
+                        <a className="rounded-full h-20 w-56 bg-transparent text-link inline-flex flex-wrap flex-row place-items-center place-content-center justify-start fill-primary text-primary">
+                            <span className="w-fit h-full inline-flex flex-wrap flex-column place-items-center place-content-center">
+                                {$content.summary.cta}
+                            </span>
+                            <Icon
+                                name="chevron-right"
+                                className="p-0 space-x-0 space-y-0 w-[20%] h-full inline-flex flex-wrap flex-column place-content-center place-items-center overflow-hidden"
+                                size="0.8"
+                            />
+                        </a>
+                    </header>
+                </section>
+                <figure
+                    className="next-image cover cover--2 relative inline-grid col-start-7 col-end-13 row-start-1 row-end-7 w-1/2 h-full space-x-0 space-y-0 p-0 place-content-center place-items-center"
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(12, 1fr)',
+                        gridTemplateRows: 'repeat(12, 1fr)',
+                    }}>
+                    <Image
+                        src={$content.summary.cover}
+                        alt="image-cover-1"
+                        width="100%"
+                        height="100%"
+                        layout="responsive"
+                        objectFit="cover"
+                        style={{
+                            gridColumn: '4 / 11',
+                            gridRow: '2 / 11',
+                            borderRadius: '5rem',
+                        }}
+                    />
+                </figure>
+            </section>
+        );
+    },
 };
 
 export default class LandingPageTemplate extends Component<LandingPageProps> {
@@ -374,6 +427,7 @@ export default class LandingPageTemplate extends Component<LandingPageProps> {
                 <Layout.Header />
                 <Layout.Hero />
                 <Layout.Features />
+                <Layout.Summary />
 
             </>
         );
