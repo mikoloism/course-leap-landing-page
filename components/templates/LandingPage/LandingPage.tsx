@@ -252,7 +252,7 @@ const Layout = {
                     </a>
                 </section>
                 <figure
-                    className="next-image cover relative col-start-7 col-end-13 row-start-1 row-end-7 w-full h-full space-x-0 space-y-0 p-0 place-content-center place-items-center"
+                    className="next-image cover cover--1 relative col-start-7 col-end-13 row-start-1 row-end-7 w-full h-full space-x-0 space-y-0 p-0 place-content-center place-items-center"
                     style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(12, 1fr)',
@@ -280,7 +280,7 @@ const Layout = {
         return (
             <section
                 id="features"
-                className="w-screen h-screen bg-white flex flex-wrap flex-row place-content-center place-items-center text-justify">
+                className="w-screen h-[135vh] py-48 bg-white flex flex-wrap flex-row place-content-center place-items-center text-justify">
                 <section className="w-1/2 h-full flex flex-wrap flex-col place-content-center place-items-start">
                     <header className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12">
                         <span
