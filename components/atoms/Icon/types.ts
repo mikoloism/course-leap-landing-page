@@ -25,12 +25,7 @@ export enum IconName {
 export type IconType = IconName | `${IconName}`;
 
 export interface IconProps extends BaseProps {
-    name: IconType;
+    name   : IconType;
     nowrap?: boolean;
-    size?: string | number;
-}
-
-
-export interface SvgProps {
-    size: string | number;
+    scale? : string | number;
 }
