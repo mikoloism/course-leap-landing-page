@@ -1,5 +1,6 @@
-import { IconProps, IconComponents } from './index';
+import { IconType } from './types';
+import { IconComponents } from './icons/icon-repository';
 
-export function getIconComponent(name: IconProps['name']) {
+export function getIconComponent(name: IconType) {
     return IconComponents[name];
 }
