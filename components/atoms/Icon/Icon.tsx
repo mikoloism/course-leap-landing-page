@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { IconProps, getIconComponent } from './index';
+import { getIconComponent } from './hooks';
+import type { IconProps } from './types';
 
 export default class Icon extends Component<IconProps, any, any> {
     constructor(props: IconProps) {
@@ -7,12 +8,12 @@ export default class Icon extends Component<IconProps, any, any> {
     }
 
     public render() {
-        const { name: $name, size, ...$props } = this.props;
+        const { name: $name, scale, ...$props } = this.props;
         const IconComponent = getIconComponent($name);
 
         return (
             <figure {...$props}>
-                <IconComponent size={size ?? '1'} />
+                <IconComponent scale={scale} />
             </figure>
         );
     }
