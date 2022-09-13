@@ -171,7 +171,33 @@ const $content = {
                 reach your financial
                 goal for the month
                 and year.`,
-                avatar: '/assets/images/image-3.jpg', /// 'https://api.lorem.space/image/face?w=150&h=150',
+                avatar: '/assets/images/image-1.png', /// 'https://api.lorem.space/image/face?w=150&h=150',
+            },
+            {
+                user: 'Regina Miles',
+                link: '@username_in_twitter_or_github',
+                role: 'Designer',
+                paragraph: `
+                Slate helps you see
+                how many more days
+                you need to work to
+                reach your financial
+                goal for the month
+                and year.`,
+                avatar: '/assets/images/image-1.png', /// 'https://api.lorem.space/image/face?w=150&h=150',
+            },
+            {
+                user: 'Regina Miles',
+                link: '@username_in_twitter_or_github',
+                role: 'Designer',
+                paragraph: `
+                Slate helps you see
+                how many more days
+                you need to work to
+                reach your financial
+                goal for the month
+                and year.`,
+                avatar: '/assets/images/image-1.png', /// 'https://api.lorem.space/image/face?w=150&h=150',
             },
         ],
     },
@@ -394,6 +420,97 @@ const Products = {
         );
     },
 };
+
+const FeedbackItem = ({ item }: { item: any }) => (
+    <section
+        className="bg-white w-[30%] h-full flex flex-col flex-wrap place-content-center place-items-center gap-y-8 py-6 rounded-md"
+        id="feedbacks-item">
+        <section
+            className="relative flex flex-row flex-wrap place-content-center place-items-center order-3 gap-x-2 w-8/12 h-20 text-left"
+            data-order="2">
+            <a
+                className="absolute opacity-0"
+                data-overly-link></a>
+
+            <figure
+                className="next-image relative w-20 h-20 space-x-0 space-y-0 p-0 place-content-center place-items-center"
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(12, 1fr)',
+                    gridTemplateRows: 'repeat(12, 1fr)',
+                }}>
+                <Image
+                    src={item.avatar}
+                    alt="avatar-1"
+                    width="100%"
+                    height="100%"
+                    layout="responsive"
+                    objectFit="cover"
+                    style={{
+                        gridColumn: '1/13',
+                        gridRow: '1/13',
+                        borderRadius: '9999rem',
+                    }}
+                />
+            </figure>
+
+            <section
+                className="flex flex-wrap flex-col place-content-start place-items-center h-full"
+                style={{
+                    width: 'calc(100% - 5.5rem)',
+                }}>
+                <strong className="flex flex-wrap flex-row place-content-start place-items-center w-full h-1/2 text-primary text-link">
+                    {item.user}
+                </strong>
+                <span className="flex flex-wrap flex-row place-content-start place-items-center w-full h-1/2 text-gray text-standard">
+                    {item.role}
+                </span>
+            </section>
+        </section>
+
+        <ul
+            className="flex flex-row flex-wrap w-full h-16 place-content-center place-items-center gap-x-6 fill-accent-gold list-none order-1"
+            id="rates"
+            data-order="0">
+            <li id="star[fill]">
+                <Icon
+                    name="star-fill"
+                    scale="1"
+                />
+            </li>
+            <li id="star[fill]">
+                <Icon
+                    name="star-fill"
+                    scale="1"
+                />
+            </li>
+            <li id="star[fill]">
+                <Icon
+                    name="star-fill"
+                    scale="1"
+                />
+            </li>
+            <li id="star[fill]">
+                <Icon
+                    name="star-fill"
+                    scale="1"
+                />
+            </li>
+            <li id="star[outline]">
+                <Icon
+                    name="star"
+                    scale="1"
+                />
+            </li>
+        </ul>
+
+        <p
+            className="order-2 text-paragraph px-24 text-gray"
+            data-order="1">
+            {item.paragraph}
+        </p>
+    </section>
+);
 
 const Layout = {
     Header() {
@@ -663,6 +780,33 @@ const Layout = {
             </section>
         );
     },
+
+    Feedbacks() {
+        return (
+            <section
+                className="flex flex-wrap flex-col place-content-center place-items-center bg-secondary h-[115vh] w-full gap-y-32 font-montserrat"
+                id="feedbacks">
+                <header className="text-white place-self-start px-20">
+                    <h2 className="text-h2">{$content.feedbacks.title}</h2>
+                    <p className="text-paragraph w-8/12">
+                        {$content.feedbacks.description}
+                    </p>
+                </header>
+                <section
+                    className="w-10/12 flex flex-col flex-wrap place-content-center place-items-center gap-x-4"
+                    style={{ height: 'calc(100% - 45rem)' }}>
+                    {$content.feedbacks.items.map((item, index) => {
+                        return (
+                            <FeedbackItem
+                                item={item}
+                                key={`${item.user}${index}`}
+                            />
+                        );
+                    })}
+                </section>
+            </section>
+        );
+    },
 };
 
 export default class LandingPageTemplate extends Component<LandingPageProps> {
@@ -678,6 +822,7 @@ export default class LandingPageTemplate extends Component<LandingPageProps> {
                 <Layout.Features />
                 <Layout.Summary />
                 <Layout.Packages />
+                <Layout.Feedbacks />
 
             </>
         );
