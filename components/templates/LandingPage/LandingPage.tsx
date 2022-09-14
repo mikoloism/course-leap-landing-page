@@ -512,6 +512,171 @@ const FeedbackItem = ({ item }: { item: any }) => (
     </section>
 );
 
+const NavItem = ({
+    children,
+    h,
+    w,
+    place,
+}: {
+    place?: any;
+    children: any;
+    h?: any;
+    w?: any;
+}) => {
+    return (
+        <li
+            className={`flex flex-wrap flex-col place-content-center place-items-center ${
+                w ?? 'w-full'
+            } ${h ?? 'h-1/4'}`}>
+            <a
+                className={`w-full h-full inline-flex flex-wrap flex-col ${
+                    place ?? 'place-content-start place-items-center'
+                }`}>
+                {children}
+            </a>
+        </li>
+    );
+};
+
+const NavList = ({ children }: { children: any }) => {
+    return (
+        <nav
+            className="flex flex-wrap flex-col place-content-center place-items-center w-full"
+            style={{ height: 'calc(100% - 32rem)' }}>
+            <ul className="flex flex-wrap flex-col place-content-center place-items-center w-full h-full gap-y-6">
+                {children}
+            </ul>
+        </nav>
+    );
+};
+
+const FooterItem = ({ children }: { children: any }) => {
+    return (
+        <section
+            className="w-[20%] h-full gap-y-2 flex flex-wrap flex-col place-content-center place-items-center"
+            id="resources">
+            {children}
+        </section>
+    );
+};
+
+const Footer = {
+    Resources() {
+        return (
+            <FooterItem>
+                <header className="flex flex-wrap flex-col place-content-start place-items-start w-full">
+                    <h3 className="text-h3">
+                        {$content.footer.resources.title}
+                    </h3>
+                </header>
+                <NavList>
+                    <NavItem>
+                        {$content.footer.resources.nav.iosAndAndroid}
+                    </NavItem>
+                    <NavItem>
+                        {$content.footer.resources.nav.watchADemo}
+                    </NavItem>
+                    <NavItem>{$content.footer.resources.nav.customers}</NavItem>
+                    <NavItem>{$content.footer.resources.nav.api}</NavItem>
+                </NavList>
+            </FooterItem>
+        );
+    },
+
+    Features() {
+        return (
+            <FooterItem>
+                <header className="flex flex-wrap flex-col place-content-start place-items-start w-full">
+                    <h3 className="text-h3">
+                        {$content.footer.features.title}
+                    </h3>
+                </header>
+                <NavList>
+                    <NavItem>
+                        {$content.footer.features.nav.businessMarketing}
+                    </NavItem>
+                    <NavItem>
+                        {$content.footer.features.nav.userAnalytic}
+                    </NavItem>
+                    <NavItem>
+                        {$content.footer.features.nav.liveChat /**/}
+                    </NavItem>
+                    <NavItem>
+                        {$content.footer.features.nav.unlimitedSupport}
+                    </NavItem>
+                </NavList>
+            </FooterItem>
+        );
+    },
+
+    Information() {
+        return (
+            <FooterItem>
+                <header className="flex flex-wrap flex-col place-content-start place-items-start w-full">
+                    <h3 className="text-h3">
+                        {$content.footer.information.title}
+                    </h3>
+                </header>
+                <NavList>
+                    <NavItem>{$content.footer.information.nav.aboutUs}</NavItem>
+                    <NavItem>{$content.footer.information.nav.carrier}</NavItem>
+                    <NavItem>
+                        {$content.footer.information.nav.weAreHiring}
+                    </NavItem>
+                    <NavItem>
+                        {$content.footer.information.nav.blog /**/}
+                    </NavItem>
+                </NavList>
+            </FooterItem>
+        );
+    },
+
+    Socials() {
+        return (
+            <FooterItem>
+                <header className="flex flex-wrap flex-col place-content-start place-items-start w-full">
+                    <h3 className="text-h3">{$content.footer.social.title}</h3>
+                    <p className="text-paragraph w-8/12">
+                        {$content.footer.social.paragraph}
+                    </p>
+                </header>
+                <ul className="flex flex-wrap flex-row place-content-center place-items-center fill-primary w-full h-16">
+                    <NavItem
+                        h="h-full"
+                        w="w-1/3"
+                        place="place-content-center place-items-center">
+                        <Icon
+                            className="inline-flex flex-wrap flex-col place-content-center place-items-center"
+                            name="linkedin"
+                            scale="1.3"
+                        />
+                    </NavItem>
+                    <NavItem
+                        h="h-full"
+                        w="w-1/3"
+                        place="place-content-center place-items-center">
+                        <Icon
+                            className="inline-flex flex-wrap flex-col place-content-center place-items-center"
+                            name="instagram"
+                            scale="1.3"
+                        />
+                    </NavItem>
+                    <NavItem
+                        h="h-full"
+                        w="w-1/3"
+                        place="place-content-center place-items-center">
+                        <Icon
+                            className="inline-flex flex-wrap flex-col place-content-center place-items-center"
+                            name="twitter"
+                            scale="1.3"
+                        />
+                    </NavItem>
+                </ul>
+            </FooterItem>
+        );
+    },
+};
+
 const Layout = {
     Header() {
         return (
@@ -811,7 +976,7 @@ const Layout = {
     Subscribe() {
         return (
             <section
-                className="h-screen w-screen flex flex-wrap flex-col place-content-center place-items-center font-montserrat"
+                className="h-[75vh] w-screen flex flex-wrap flex-col place-content-center place-items-center font-montserrat"
                 id="subscribe">
                 <header className="w-4/12 h-64 flex flex-wrap flex-col place-content-center place-items-start gap-y-2 text-left">
                     <h2 className="text-h2">{$content.subscribe.title}</h2>
@@ -819,9 +984,9 @@ const Layout = {
                         {$content.subscribe.description}
                     </p>
                 </header>
-                <form className="flex flex-wrap w-4/12 h-20 flex-row place-content-center place-items-center border-gray-400 border-solid border-4 rounded-lg p-0">
+                <form className="flex flex-wrap w-4/12 h-20 flex-row place-content-center place-items-center border-gray-300 border-solid border-4 rounded-lg p-0">
                     <input
-                        className="inline-flex flex-wrap flex-col place-content-center place-items-center h-full w-9/12 bg-gray-300 text-black font-semibold placeholder:text-gray placeholder:font-montserrat placeholder:text-input text-2xl focus:border-none focus:outline-0 focus:stroke-0 group-focus:bg-primary font-montserrat rounded-l-md px-8 py-4 space-x-0 space-y-0"
+                        className="inline-flex flex-wrap flex-col place-content-center place-items-center h-full w-9/12 bg-gray-200 text-black font-semibold placeholder:text-gray placeholder:font-montserrat placeholder:text-input text-2xl focus:border-none focus:outline-0 focus:stroke-0 group-focus:bg-primary font-montserrat rounded-l-md px-8 py-4 space-x-0 space-y-0"
                         type="mail"
                         placeholder={$content.subscribe.mailbox}
                     />
@@ -831,6 +996,32 @@ const Layout = {
                         {$content.subscribe.submit}
                     </button>
                 </form>
+            </section>
+        );
+    },
+
+    Footer() {
+        return (
+            <footer
+                className="flex flex-wrap flex-col place-content-center place-items-center w-screen"
+                id="footer">
+                <section className="flex flex-wrap flex-row-reverse place-content-center place-items-center w-8/12 gap-x-6">
+                    <Footer.Resources />
+                    <Footer.Features />
+                    <Footer.Information />
+                    <Footer.Socials />
+                </section>
+            </footer>
+        );
+    },
+
+    Copyright() {
+        return (
+            <section
+                className="h-16 w-screen bg-gray-200 text-center place-content-center place-items-center flex flex-wrap flex-col"
+                style={{ marginTop: '4rem' }}
+                id="copyright">
+                <p className="text-standard">{$content.footer.copyright}</p>
             </section>
         );
     },
@@ -851,7 +1042,8 @@ export default class LandingPageTemplate extends Component<LandingPageProps> {
                 <Layout.Packages />
                 <Layout.Feedbacks />
                 <Layout.Subscribe />
-
+                <Layout.Footer />
+                <Layout.Copyright />
             </>
         );
     }
