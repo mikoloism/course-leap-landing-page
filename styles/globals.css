@@ -29,7 +29,6 @@ body,
   @apply text-black;
 }
 
-
 /* fix the `next/image` component styling */
 .next-image > span {
   position: initial !important;
