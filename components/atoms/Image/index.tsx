@@ -1,2 +1,1 @@
-export { default } from './Image';
-export * from './types';
+export * from './Image';
