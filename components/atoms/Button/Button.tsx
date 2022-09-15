@@ -2,67 +2,90 @@ import Icon from '@/atoms/Icon';
 import { Component, memo, $ } from '@/libs/common';
 import { ButtonProps } from './index';
 
-const tailwind = {
-    variant: {
-        fill: 'border-0 border-none',
-        outline: 'border-2 border-solid',
-        text: 'border-0 border-none',
-    },
+const hover = {
     fill: {
-        primary: 'bg-primary text-white',
-        secondary: 'bg-secondary text-white',
-        accent: 'bg-accent text-white',
-        gray: 'bg-gray text-black',
-        black: 'bg-black text-white',
-        white: 'bg-white text-primary',
+        primary: 'active:bg-primary/75',
+        secondary: 'active:bg-secondary/75',
+        accent: 'active:bg-accent/75',
+        gray: 'active:bg-gray/75',
+        black: 'active:bg-black/75',
+        white: 'active:bg-white/75',
     },
 
     outline: {
-        primary: 'bg-transparent text-primary border-primary',
-        secondary: 'bg-transparent text-secondary border-secondary',
-        accent: 'bg-transparent text-accent border-accent',
-        gray: 'bg-transparent text-gray border-gray',
-        black: 'bg-transparent text-black border-black',
-        white: 'bg-transparent text-white border-white',
+        primary: `hover:bg-primary hover:text-white`,
+        secondary: `hover:bg-secondary hover:text-white`,
+        accent: `hover:bg-accent hover:text-white`,
+        gray: `hover:bg-gray hover:text-white`,
+        black: `hover:bg-black hover:text-white`,
+        white: `hover:bg-white hover:text-black`,
     },
 
     text: {
-        primary: 'bg-transparent text-primary',
-        secondary: 'bg-transparent text-secondary',
-        accent: 'bg-transparent text-accent',
-        gray: 'bg-transparent text-gray',
-        black: 'bg-transparent text-black',
-        white: 'bg-transparent text-white',
+        primary: 'hover:border-2 hover:border-solid hover:border-currentColor',
+        secondary:
+            'hover:border-2 hover:border-solid hover:border-currentColor',
+        accent: 'hover:border-2 hover:border-solid hover:border-currentColor',
+        gray: 'hover:border-2 hover:border-solid hover:border-currentColor',
+        black: 'hover:border-2 hover:border-solid hover:border-currentColor',
+        white: 'hover:border-2 hover:border-solid hover:border-currentColor',
     },
 };
 
-function withOutline(color: string, classNames: string): string {
-    return `${classNames} ${tailwind.variant.outline} ${
-        (tailwind.outline as any)[color]
-    }`;
+interface IDecorator {
+    [key: string]: boolean | undefined;
 }
 
-function withFill(color: string, classNames: string): string {
-    return `${classNames} ${tailwind.variant.fill} ${
-        (tailwind.fill as any)[color]
-    }`;
+function withWhiteText(color: string): IDecorator {
+    return {
+        [`text-white`]: [
+            'black',
+            'primary',
+            'gray',
+            'secondary',
+            'accent',
+        ].includes(color),
+        [`text-black`]: ['white'].includes(color) || !color,
+    };
 }
 
-function withText(color: string, classNames: string): string {
-    return `${classNames} ${tailwind.variant.text} ${
-        (tailwind.text as any)[color]
-    }`;
+function withFill(color: string): IDecorator {
+    return {
+        ['border-0 border-none']: true,
+        [`bg-${color}`]: !!color,
+        [(hover.fill as any)[color]]: true /* hover */,
+        ...withWhiteText(color),
+    };
+}
+
+function withOutline(color: string): IDecorator {
+    return {
+        ['border-2 border-solid']: true,
+        [`border-currentColor`]: true,
+        [`text-${color}`]: true,
+        [`bg-transparent`]: true,
+        [(hover.outline as any)[color]]: true /* hover */,
+    };
+}
+
+function withText(color: string): IDecorator {
+    return {
+        ['border-0 border-none']: true,
+        [`bg-transparent`]: true,
+        [`text-${color}`]: true,
+        [(hover.text as any)[color]]: true /* hover */,
+    };
 }
 
 function withColor(
     color: string,
-    classNames: string,
-    decorator: (color: string, classNames: string) => string
-): string {
-    return decorator.call({}, color, classNames);
+    className: string[],
+    decorator: (color: string) => IDecorator
+) {
+    return $(decorator.call({}, color), className);
 }
 
-class ButtonComponent extends Component<ButtonProps> {
+export class Button extends Component<ButtonProps> {
     constructor(props: ButtonProps) {
         super(props);
     }
@@ -76,42 +99,14 @@ class ButtonComponent extends Component<ButtonProps> {
         const $onHoverIcon = 'hover:gap-8';
         const $onHover = 'hover:transform hover:scale-105';
 
-        const $className = $(
-            $baseClass,
-            $onActive,
-            $onHover,
-            !!this.props?.icon && $onHoverIcon,
-
-            /* fill */
+        const $className = withColor(
+            $color,
+            [$baseClass, $onActive],
             {
-                ['border-0 border-none']: $variant === 'fill',
-                [`bg-${$color}`]: $variant === 'fill' && !!$color,
-                [`text-white`]: [
-                    'black',
-                    'primary',
-                    'gray',
-                    'secondary',
-                    'accent',
-                ].includes($color),
-                [`text-black`]: ['white'].includes($color) || !$color,
-            },
-
-            /* outline */
-            {
-                ['border-2 border-solid']: $variant === 'outline',
-                [`border-${$color}`]: $color && $variant === 'outline',
-                [`text-${$color}`]: $color && $variant === 'outline',
-                [`bg-transparent`]: $color && $variant === 'outline',
-                [`hover:bg-${$color}`]: $color && $variant === 'outline',
-            },
-
-            /* text */
-            {
-                ['border-0 border-none']: $variant === 'text',
-                [`bg-transparent`]: $variant === 'text',
-                [`text-${$color}`]: $color && $variant === 'text',
-            },
-            this.props.className
+                fill: withFill,
+                outline: withOutline,
+                text: withText,
+            }[$variant]
         );
 
         return (
@@ -124,5 +119,3 @@ class ButtonComponent extends Component<ButtonProps> {
         );
     }
 }
-
-export const Button = memo(ButtonComponent);
