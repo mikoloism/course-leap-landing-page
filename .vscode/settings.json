@@ -53,5 +53,6 @@
         "pull-request",
         "issues",
         "tags"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
