@@ -1,9 +1,8 @@
-import { $ } from '@/libs/common';
-import { Component } from 'react';
+import { $, Component } from '@/libs/common';
 import { getIconComponent } from './hooks';
 import type { IconProps } from './types';
 
-export default class Icon extends Component<IconProps, any, any> {
+export class Icon extends Component<IconProps, any, any> {
     constructor(props: IconProps) {
         super(props);
     }

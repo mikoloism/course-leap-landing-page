@@ -26,6 +26,5 @@ export type IconType = IconName | `${IconName}`;
 
 export interface IconProps extends BaseProps {
     name   : IconType;
-    nowrap?: boolean;
     scale? : string | number;
 }
