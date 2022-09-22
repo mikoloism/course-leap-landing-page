@@ -20,9 +20,10 @@ export function List({ items, asKey, ...props }: ListProps) {
                 let $key = getAsKey(asKey, index, item);
 
                 return (
-                    <li key={$key}>
-                        <ChildrenComponent {...item} />
-                    </li>
+                    <ChildrenComponent
+                        key={$key}
+                        {...item}
+                    />
                 );
             })}
         </ul>

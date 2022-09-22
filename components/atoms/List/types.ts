@@ -29,7 +29,7 @@ export interface StyleProps {
     placeItems?: FlexAlign;
     placeContent?: FlexAlign;
 
-    // gap-[x|y] is tailwindcss (gap-x-* | gap-y-*)
+    // gap[x|y] is tailwindcss (gap-[x|y]-*)
     gapx?: string | number;
     gapy?: string | number;
 }
