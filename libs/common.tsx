@@ -9,6 +9,7 @@ export type { FC, ReactNode } from 'react';
 
 // next
 export { default as Image } from 'next/image';
+export { default as Link } from 'next/link';
 
 // base-props
 export interface BaseProps {
