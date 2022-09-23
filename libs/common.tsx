@@ -1,20 +1,17 @@
-import type { ReactNode } from 'react';
-
 // classnames
 export { default as $ } from 'classnames';
 
 // react-types
 export { Component, memo } from 'react';
-export type { FC, ReactNode } from 'react';
+export type { FC } from 'react';
 
 // next
 export { default as Image } from 'next/image';
 export { default as Link } from 'next/link';
 
 // base-props
-export interface BaseProps {
+export interface BaseProps extends React.PropsWithChildren<{}> {
     className?: string;
-    children?: ReactNode | JSX.Element;
 }
 
 // base-variant
