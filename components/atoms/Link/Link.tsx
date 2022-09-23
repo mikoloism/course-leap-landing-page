@@ -1,9 +1,8 @@
-import { $, ReactNode } from '@/libs/common';
+import { $ } from '@/libs/common';
 import { Component, Link as NextLink } from '@/libs/common';
 
-interface LinkProps {
+interface LinkProps extends React.PropsWithChildren<{}> {
     className?: string;
-    children: ReactNode | JSX.Element;
     href: string;
     overlay?: boolean;
 }
