@@ -69,6 +69,7 @@ const Navigation = ({ items }: { items: any }) => {
             style={{ height: 'calc(100% - 32rem)' }}>
             <List
                 gapy="6"
+                className="w-full h-full"
                 placeContent="start"
                 data={items}
                 Component={Item(
