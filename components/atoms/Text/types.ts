@@ -13,16 +13,16 @@ export interface AsProps {
     as?: AsPropsType;
 }
 
-export type SizePropsType =
+export type TextSizeType =
     | HeadingElementSize
     | TextElementSize
     | 'link'
     | 'btn';
-export interface SizeProps {
-    size?: SizePropsType;
+export interface TextSizeProps {
+    size?: TextSizeType;
 }
 
-export type ColorPropsType =
+export type ColorType =
     | 'primary'
     | 'secondary'
     | 'accent'
@@ -30,7 +30,7 @@ export type ColorPropsType =
     | 'white'
     | 'black';
 export interface ColorProps {
-    color?: ColorPropsType;
+    color?: ColorType;
 }
 
 export type FontWeightType =
@@ -48,7 +48,7 @@ export interface FontProps {
     weight?: FontWeightType;
 }
 
-export type AlignPropsType = 'center' | 'left' | 'right' | 'justify';
-export interface AlignProps {
-    align?: AlignPropsType;
+export type TextAlignType = 'center' | 'left' | 'right' | 'justify';
+export interface TextAlignProps {
+    align?: TextAlignType;
 }

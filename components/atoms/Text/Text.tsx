@@ -10,20 +10,20 @@ import {
 import { createElement } from '@/libs/hooks/createElement';
 import { PlaceProps } from '@/libs/types';
 import {
-    AlignProps,
     AsProps,
     AsPropsType,
     ColorProps,
     FontProps,
-    SizeProps,
+    TextAlignProps,
+    TextSizeProps,
 } from './types';
 
 interface Props
     extends AsProps,
-        SizeProps,
+        TextSizeProps,
         ColorProps,
         FontProps,
-        AlignProps,
+        TextAlignProps,
         PlaceProps,
         Partial<React.PropsWithChildren<{ className?: string }>> {}
 
