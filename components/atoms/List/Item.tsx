@@ -1,4 +1,6 @@
-// @as HOC
+/** ``` tsx
+ * Item(MyComponent, className)
+ * ``` */
 export function Item<Props = any>(
     ItemComponent: any,
     className?: string | undefined
@@ -12,8 +14,10 @@ export function Item<Props = any>(
     };
 }
 
-// @as Component
-export function ListItem<Props = any>(props: Props & { children: any }) {
+/** ``` tsx
+ * <ListItem props><MyComponent /></ListItem>
+ * ``` */
+export function ListItem<Props = any>(props: React.PropsWithChildren<Props>) {
     const { children, ...$props } = props;
 
     return <li {...$props}>{children}</li>;
