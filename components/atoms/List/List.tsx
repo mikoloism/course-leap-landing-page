@@ -1,28 +1,40 @@
-import { $, Component } from '@/libs/common';
-import { getAsKey, getStyle } from './hooks';
-import type { AsKey, ItemType, StyleProps } from './types';
+import { $ } from '@/libs/common';
+import {
+    getFlexDirection,
+    getGapSize,
+    getPlaceContent,
+    getPlaceItems,
+} from '@/libs/constants';
+import type { FlexProps } from '@/libs/types';
+import { getKeyProperty } from './hooks';
+import type { DataProps, DataType, KeyProps } from './types';
 
-interface ListProps extends StyleProps {
-    items: Array<ItemType>;
-    asKey?: AsKey;
+interface Props<T> extends FlexProps, DataProps<T>, KeyProps<T> {
+    Component?: any;
     className?: string;
-    children?: any | any[];
-    Component?: any | any[];
 }
 
-export function List({ items, asKey, ...props }: ListProps) {
-    const $className = $(getStyle(props as StyleProps), props.className);
-    const ChildrenComponent = props.children ?? props.Component;
+export function List<T>({ data, $key, Component, ...props }: Props<T>) {
+    const $className = $(
+        'flex list-none',
+        // TODO : use `@/atoms/Group/` hooks to style or create common hooks
+        getFlexDirection(props.dir),
+        getPlaceItems(props.placeItems, 'center'),
+        getPlaceContent(props.placeContent, 'center'),
+        getGapSize({ gapx: props.gapx, gapy: props.gapy }),
+        { 'flex-wrap': !props.nowrap },
+        props.className
+    );
 
     return (
         <ul className={$className}>
-            {items.map((item: ItemType, index: number) => {
-                let $key = getAsKey(asKey, index, item);
+            {data.map((value: DataType<T>, index: number) => {
+                let validKey = getKeyProperty<T>({ key: $key, value, index });
 
                 return (
-                    <ChildrenComponent
-                        key={$key}
-                        {...item}
+                    <Component
+                        key={validKey}
+                        {...value}
                     />
                 );
             })}
