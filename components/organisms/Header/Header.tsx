@@ -35,7 +35,7 @@ export default function Header(props?: any) {
                 id="navigation"
                 className="flex-wrap flex-row inline-flex place-content-center place-items-center w-full h-full col-start-4 col-end-8 row-start-1 row-end-7">
                 <List
-                    items={$content.navigation}
+                    data={$content.navigation}
                     dir="row"
                     className="w-full h-full space-x-0 space-y-0 p-0"
                     Component={Item<NavigationItemProps>(
