@@ -36,9 +36,3 @@ export enum Color {
     Black = 'black',
     White = 'white',
 }
-
-export type ColorType = Color | `${Color}`;
-
-export interface BaseColorProps {
-    color?: ColorType;
-}

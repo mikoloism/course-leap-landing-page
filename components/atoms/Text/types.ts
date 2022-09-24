@@ -22,17 +22,6 @@ export interface TextSizeProps {
     size?: TextSizeType;
 }
 
-export type ColorType =
-    | 'primary'
-    | 'secondary'
-    | 'accent'
-    | 'gray'
-    | 'white'
-    | 'black';
-export interface ColorProps {
-    color?: ColorType;
-}
-
 export type FontWeightType =
     | 'thin'
     | 'light'

@@ -74,3 +74,14 @@ export type GridProps = OnlyGridProps & CommonProps;
 export type PropsType =
     | Exact<{ type?: FlexType } & FlexProps>
     | Exact<{ type?: GridType } & GridProps>;
+
+export type ColorType =
+    | 'primary'
+    | 'secondary'
+    | 'accent'
+    | 'gray'
+    | 'white'
+    | 'black';
+export interface ColorProps {
+    color?: ColorType;
+}
