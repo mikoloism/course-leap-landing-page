@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-    ColorPropsType,
-    HeadingElementType,
-} from '@/components/atoms/Text/types';
+import { ColorType, HeadingElementType } from '@/atoms/Text/types';
 import { Text } from '@/components/atoms';
 
 type HeaderColorType =
-    | ColorPropsType
-    | { title?: ColorPropsType; description?: ColorPropsType };
+    | ColorType
+    | { title?: ColorType; description?: ColorType };
 
 interface Props
     extends React.PropsWithChildren<{
@@ -24,7 +21,7 @@ interface Props
 function getColor(
     color: HeaderColorType | undefined,
     property: 'title' | 'description'
-): ColorPropsType {
+): ColorType {
     // no color props passed
     if (!color) {
         return property === 'title'
