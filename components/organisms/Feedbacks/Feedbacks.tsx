@@ -98,7 +98,8 @@ const FeedbackItem = ({ item }: { item: any }) => (
             className="w-full h-16 fill-accent-gold order-1"
             dir="horizontal"
             gapx="6"
-            items={stars}
+            data={stars}
+            $key={({ name }, id) => `${name}-${id}`}
             Component={Item(Icon)}
         />
 
