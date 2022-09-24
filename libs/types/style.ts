@@ -45,9 +45,27 @@ export interface PlaceProps {
     placeContent?: PlaceContent | PlaceCommon;
 }
 
+export type GapNumericType =
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 12
+    | 14
+    | 16
+    | 20
+    | 32;
+export type GapStringType = `${GapNumericType}`;
+export type GapType = GapNumericType | GapStringType;
 export interface GapProps {
-    gapx?: number | string;
-    gapy?: number | string;
+    gapx?: GapType;
+    gapy?: GapType;
 }
 
 export interface CommonProps
