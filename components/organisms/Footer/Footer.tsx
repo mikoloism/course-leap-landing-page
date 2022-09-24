@@ -68,7 +68,7 @@ const Navigation = ({ items }: { items: any }) => {
             className="flex flex-wrap flex-col place-content-center place-items-center w-full"
             style={{ height: 'calc(100% - 32rem)' }}>
             <List
-                className="w-full h-full gap-y-6"
+                gapy="6"
                 placeContent="start"
                 data={items}
                 Component={Item(
@@ -196,12 +196,15 @@ export default function Footer() {
             <footer
                 className="flex flex-wrap flex-col place-content-center place-items-center w-screen"
                 id="footer">
-                <section className="flex flex-wrap flex-row-reverse place-content-center place-items-center w-8/12 gap-x-6">
+                <Group
+                    gapx="6"
+                    dir="reverse-row"
+                    className="w-8/12">
                     <Resources />
                     <Features />
                     <Information />
                     <Socials />
-                </section>
+                </Group>
             </footer>
             <Copyright />
         </>
