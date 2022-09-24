@@ -1,5 +1,7 @@
-import { TextProps, TextComponents } from './index';
+import { AsPropsType } from './types';
 
-export function getTextComponent(type: TextProps['type']) {
-    return TextComponents[type];
+const TextComponents: Record<AsPropsType, React.ReactNode> | null = null;
+
+export function getTextComponent(type: AsPropsType) {
+    return TextComponents?.[type];
 }
