@@ -1,4 +1,5 @@
 import { Group, Icon, Image, Link, Text } from '@/components/atoms';
+import { Header } from '@/molecules/Header';
 
 const $content = {
     title: 'Featured Products',
@@ -16,21 +17,18 @@ export default function Summary() {
             <Group
                 placeItems="start"
                 className="w-1/2 h-full order-1">
-                <header className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12">
-                    <span
-                        id="block"
-                        className="w-3/12 h-[6px] bg-accent rounded-full"></span>
-                    <Text
-                        as="h2"
-                        color="secondary">
-                        {$content.title}
-                    </Text>
-                    <Text
-                        as="p"
-                        className="w-11/12">
-                        {$content.description}
-                    </Text>
-                </header>
+                <Header
+                    level="h2"
+                    title={$content.title}
+                    description={$content.description}
+                    className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12"
+                    Before={() => (
+                        <span
+                            id="block"
+                            className="w-3/12 h-[6px] bg-accent rounded-full"></span>
+                    )}
+                />
+
                 <Link
                     href="/#"
                     className="rounded-full h-20 w-56 bg-transparent inline-flex flex-wrap flex-row place-items-center place-content-center justify-start fill-primary">

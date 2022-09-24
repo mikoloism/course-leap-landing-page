@@ -1,4 +1,5 @@
 import { Group, Icon, Image, Item, Link, List, Text } from '@/components/atoms';
+import { Header } from '@/molecules/Header';
 
 const $content = {
     title: 'Each and every client is important.',
@@ -116,10 +117,14 @@ export default function Feedbacks() {
         <Group
             gapy="16"
             className="bg-secondary h-[115vh] w-full font-montserrat">
-            <header className="text-white place-self-start px-20">
-                <h2 className="text-h2">{$content.title}</h2>
-                <p className="text-paragraph w-8/12">{$content.description}</p>
-            </header>
+            <Header
+                level="h2"
+                title={$content.title}
+                description={$content.description}
+                color="white"
+                width="8"
+                className="place-self-start px-20"
+            />
 
             <Group
                 gapx="6"

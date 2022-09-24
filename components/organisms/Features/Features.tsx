@@ -1,4 +1,5 @@
 import { Group, Icon, Link, Text } from '@/components/atoms';
+import { Header } from '@/components/molecules/Header';
 
 const style = (classNames: string) => {
     return classNames.replace(/[\s]{1,}/gi, ' ');
@@ -80,21 +81,17 @@ export default function Features() {
             <Group
                 placeItems="start"
                 className="w-1/2 h-full">
-                <header className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12">
-                    <span
-                        id="block"
-                        className="w-3/12 h-[6px] bg-accent rounded-full"></span>
-                    <Text
-                        as="h2"
-                        color="secondary">
-                        {$content.title}
-                    </Text>
-                    <Text
-                        as="p"
-                        className="w-11/12">
-                        {$content.description}
-                    </Text>
-                </header>
+                <Header
+                    level="h2"
+                    title={$content.title}
+                    description={$content.description}
+                    Before={() => (
+                        <span
+                            id="block"
+                            className="w-3/12 h-[6px] bg-accent rounded-full"></span>
+                    )}
+                    className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12"
+                />
                 <Link
                     href="#"
                     className="rounded-full h-20 w-56 bg-transparent text-link inline-flex flex-wrap flex-row place-items-center place-content-center justify-start fill-primary text-primary">
