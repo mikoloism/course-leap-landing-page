@@ -43,7 +43,7 @@ export default function Hero() {
             <Group
                 type="inline-flex"
                 dir="row"
-                gapx="8"
+                gapx="10"
                 placeItems="start"
                 placeContent="start"
                 className="col-start-2 col-end-5 row-start-5 row-end-7 h-full w-full pt-16">
