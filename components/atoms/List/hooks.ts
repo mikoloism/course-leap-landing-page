@@ -1,4 +1,4 @@
-import type { KeyType, DataType } from './types';
+import type { DataType, KeyType } from './types';
 
 interface GetKeyProperty<T> {
     key: KeyType<T> | undefined;

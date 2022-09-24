@@ -8,11 +8,10 @@ import {
     getTextSize,
 } from '@/libs/constants';
 import { createElement } from '@/libs/hooks/createElement';
-import { PlaceProps } from '@/libs/types';
-import {
+import type { ColorProps, PlaceProps } from '@/libs/types';
+import type {
     AsProps,
     AsPropsType,
-    ColorProps,
     FontProps,
     TextAlignProps,
     TextSizeProps,

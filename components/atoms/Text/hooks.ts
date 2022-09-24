@@ -1,4 +1,4 @@
-import { AsPropsType } from './types';
+import type { AsPropsType } from './types';
 
 const TextComponents: Record<AsPropsType, React.ReactNode> | null = null;
 

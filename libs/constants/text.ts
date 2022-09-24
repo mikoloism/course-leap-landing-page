@@ -1,11 +1,11 @@
-import {
-    TextAlignType,
-    ColorType,
+import type {
     FontWeightType,
     HeadingElementSize,
+    TextAlignType,
     TextElementSize,
     TextElementType,
 } from '@/atoms/Text/types';
+import type { ColorType } from '../types';
 
 type TailwindSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 type TextSizeKey =

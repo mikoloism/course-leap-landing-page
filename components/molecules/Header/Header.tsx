@@ -1,6 +1,7 @@
-import React from 'react';
-import { ColorType, HeadingElementType } from '@/atoms/Text/types';
+import type { HeadingElementType } from '@/atoms/Text/types';
 import { Text } from '@/components/atoms';
+import type { ColorType } from '@/libs/types';
+import React from 'react';
 
 type HeaderColorType =
     | ColorType
