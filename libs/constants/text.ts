@@ -1,6 +1,6 @@
 import {
-    AlignPropsType,
-    ColorPropsType,
+    TextAlignType,
+    ColorType,
     FontWeightType,
     HeadingElementSize,
     TextElementSize,
@@ -42,8 +42,8 @@ export function getTextSize(size: TextSizeKey | undefined): ValidTextSize {
     return TEXT_SIZE[size ?? 'standard'];
 }
 
-type ValidColorType = `text-${ColorPropsType}`;
-export const TEXT_COLOR: Record<ColorPropsType, ValidColorType> = {
+type ValidColorType = `text-${ColorType}`;
+export const TEXT_COLOR: Record<ColorType, ValidColorType> = {
     primary: 'text-primary',
     secondary: 'text-secondary',
     accent: 'text-accent',
@@ -51,22 +51,18 @@ export const TEXT_COLOR: Record<ColorPropsType, ValidColorType> = {
     white: 'text-white',
     black: 'text-black',
 } as const;
-export function getTextColor(
-    color: ColorPropsType | undefined
-): ValidColorType {
+export function getTextColor(color: ColorType | undefined): ValidColorType {
     return TEXT_COLOR[color ?? 'gray'];
 }
 
-type ValidAlignType = `text-${AlignPropsType}`;
-export const TEXT_ALIGN: Record<AlignPropsType, ValidAlignType> = {
+type ValidAlignType = `text-${TextAlignType}`;
+export const TEXT_ALIGN: Record<TextAlignType, ValidAlignType> = {
     center: 'text-center',
     left: 'text-left',
     right: 'text-right',
     justify: 'text-justify',
 } as const;
-export function getTextAlign(
-    align: AlignPropsType | undefined
-): ValidAlignType {
+export function getTextAlign(align: TextAlignType | undefined): ValidAlignType {
     return TEXT_ALIGN[align ?? 'justify'];
 }
 
