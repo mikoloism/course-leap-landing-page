@@ -18,8 +18,11 @@
         "paths": {
             "@/components/*": ["components/*"],
             "@/atoms/*": ["components/atoms/*"],
+            "@/atoms": ["components/atoms"],
             "@/molecules/*": ["components/molecules/*"],
             "@/organisms/*": ["components/organisms/*"],
+            "@/layouts/*": ["components/layouts/*"],
+            "@/layouts": ["components/layouts"],
             "@/templates/*": ["components/templates/*"],
             "@/pages/*": ["pages/*"],
             "@/libs/normalize.css": [
