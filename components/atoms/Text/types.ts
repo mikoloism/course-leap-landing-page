@@ -1,12 +1,15 @@
-export type HeadingElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type TwTextSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 export type HeadingElementSize = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export type TextElementType = 'span' | 'strong' | 'em' | 'p';
 export type TextElementSize =
     | 'standard'
     | 'subtitle'
     | 'paragraph'
     | 'link'
     | 'btn';
+export type TextSize = HeadingElementSize | TextElementSize | TwTextSize;
+
+export type HeadingElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type TextElementType = 'span' | 'strong' | 'em' | 'p';
 
 export type AsPropsType = HeadingElementType | TextElementType;
 export interface AsProps {
