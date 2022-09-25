@@ -4,9 +4,9 @@ export type FlexType = 'flex' | 'in-flex' | 'inline-flex';
 export type GridType = 'grid' | 'in-grid' | 'inline-grid';
 export type GroupType = FlexType | GridType;
 
-export type GroupPosition = 'relative' | 'absolute' | 'fixed' | 'sticky';
+export type PositionType = 'relative' | 'absolute' | 'fixed' | 'sticky';
 export interface PositionProps {
-    pos?: GroupPosition;
+    pos?: PositionType;
 }
 
 export type RowDirection =
@@ -37,7 +37,7 @@ export interface DirectionProps {
     dir?: DirectionType;
 }
 
-export type PlaceCommon = 'center' | 'start' | 'end' | 'unset';
+export type PlaceCommon = 'center' | 'start' | 'end';
 export type PlaceContent = 'between' | 'around' | 'evenly';
 export type PlaceItems = 'baseline';
 export interface PlaceProps {
