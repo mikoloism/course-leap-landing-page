@@ -10,9 +10,9 @@ export { default as Image } from 'next/image';
 export { default as Link } from 'next/link';
 
 // base-props
-export interface BaseProps extends React.PropsWithChildren<{}> {
-    className?: string;
-}
+export type PropsWithChildren<T = {}> = React.PropsWithChildren<T>;
+export type PropsWithClassName<T = {}> = { className?: string } & T;
+export type PropsWithCommon<T> = PropsWithClassName & PropsWithChildren & T;
 
 // base-variant
 export enum Variant {
