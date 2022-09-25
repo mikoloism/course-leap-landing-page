@@ -1,28 +1,43 @@
-const common = ['center', 'start', 'end'];
-const content = ['between', 'around', 'evenly'].concat(common);
-const items = ['baseline'].concat(common);
+import type { PlaceCommon, PlaceContent, PlaceItems } from '../types';
 
-function createPlace(prefix: string, values: string[]) {
-    return values.reduce(function (prev, curr) {
-        return Object.assign(prev, { [curr]: `place-${prefix}-${curr}` });
-    }, {});
-}
+type PlaceClassName<
+    T extends 'items' | 'content',
+    C extends PlaceItemsType | PlaceContentType
+> = `place-${T}-${C}`;
 
-export const PLACE_CONTENT: Record<string, string> = createPlace(
-    'content',
-    content
-);
-export function getPlaceContent(
-    content?: string,
-    defaultContent: string = 'start'
-): string {
-    return PLACE_CONTENT[content || defaultContent];
-}
+type PlaceItemsType = PlaceItems | PlaceCommon;
+type PlaceContentType = PlaceContent | PlaceCommon;
+type PlaceItemsClassName = PlaceClassName<'items', PlaceItemsType>;
+type PlaceContentClassName = PlaceClassName<'content', PlaceContentType>;
+type PlaceItemsRecord = Record<PlaceItemsType, PlaceItemsClassName>;
+type PlaceContentRecord = Record<PlaceContentType, PlaceContentClassName>;
 
-export const PLACE_ITEMS: Record<string, string> = createPlace('items', items);
+export const PLACE_ITEMS: PlaceItemsRecord = {
+    center: 'place-items-center',
+    start: 'place-items-start',
+    end: 'place-items-end',
+    baseline: 'place-items-baseline',
+};
+
+export const PLACE_CONTENT: PlaceContentRecord = {
+    center: 'place-content-center',
+    start: 'place-content-start',
+    end: 'place-content-end',
+    between: 'place-content-between',
+    around: 'place-content-around',
+    evenly: 'place-content-evenly',
+};
+
 export function getPlaceItems(
-    items?: string,
-    defaultContent: string = 'start'
-): string {
+    items?: PlaceItemsType,
+    defaultContent: PlaceItemsType = 'start'
+): PlaceItemsClassName {
     return PLACE_ITEMS[items || defaultContent];
+}
+
+export function getPlaceContent(
+    content?: PlaceContentType,
+    defaultContent: PlaceContentType = 'start'
+): PlaceContentClassName {
+    return PLACE_CONTENT[content || defaultContent];
 }
