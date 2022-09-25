@@ -1,4 +1,4 @@
-import { BaseProps } from '@/libs/common';
+import type { PropsWithClassName } from '@/libs/common';
 
 export enum IconName {
     Alarm          = 'alarm',
@@ -24,7 +24,7 @@ export enum IconName {
 // NOTE : to use in another components as `icon` props type
 export type IconType = IconName | `${IconName}`;
 
-export interface IconProps extends BaseProps {
+export interface IconProps extends PropsWithClassName {
     name   : IconType;
     scale? : string | number;
 }
