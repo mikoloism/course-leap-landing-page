@@ -10,6 +10,7 @@ export enum IconName {
     CreditCard     = 'credit-card',
     DownloadBox    = 'download-box',
     Eye            = 'eye',
+    HeartFill      = 'heart-fill',
     Heart          = 'heart',
     Instagram      = 'instagram',
     LinearChart    = 'linear-chart',

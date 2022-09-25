@@ -7,7 +7,7 @@ import { ChevronRightIcon } from './ChevronRight';
 import { CreditCardIcon } from './CreditCard';
 import { DownloadBoxIcon } from './DownloadBox';
 import { EyeIcon } from './Eye';
-import { HeartIcon } from './Heart';
+import { HeartFillIcon, HeartIcon } from './Heart';
 import { InstagramIcon } from './Instagram';
 import { LinearChartIcon } from './LinearChart';
 import { LinkedInIcon } from './Linkedin';
@@ -26,6 +26,7 @@ export const IconComponents = {
     'credit-card'    : CreditCardIcon,
     'download-box'   : DownloadBoxIcon,
     eye              : EyeIcon,
+    'heart-fill'     : HeartFillIcon,
     heart            : HeartIcon,
     instagram        : InstagramIcon,
     'linear-chart'   : LinearChartIcon,
