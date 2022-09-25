@@ -22,6 +22,7 @@ export const GAP_X: GapRecord<x> = {
     20: 'gap-x-20',
     32: 'gap-x-32',
 } as const;
+
 export const GAP_Y: GapRecord<y> = {
     1: 'gap-y-1',
     2: 'gap-y-2',
