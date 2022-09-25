@@ -1,10 +1,12 @@
 // NOTE : this file used in as `tailwindcss` pre-built classNames
 
-import { FlexType } from '../types/style';
+import type { FlexType } from '../types/style';
 
+export type ExactFlexDisplay = 'flex' | 'inline-flex';
 const prefix = ['rev-', 'reverse-'];
 const row = ['row', 'hor', 'horizontal'];
 const column = ['col', 'vert', 'vertical', 'column'];
+const flexType = ['flex', 'inline-flex', 'in-flex'];
 
 export function merge(prefix: string[], value: string[]): string[] {
     return prefix.reduce(function (PrevPrefix: any[], currentPrefix: string) {
@@ -25,6 +27,12 @@ export function createFlex(keys: string[], value: string) {
     );
 }
 
+export const FLEX_DISPLAY: Record<FlexType, ExactFlexDisplay> = {
+    flex: 'flex',
+    'in-flex': 'inline-flex',
+    'inline-flex': 'inline-flex',
+};
+
 export const FLEX_ROW = {
     ...createFlex(row, 'flex-row'),
     ...createFlex(merge(prefix, row), 'flex-row-reverse'),
@@ -40,26 +48,17 @@ export const FLEX_DIRECTION = {
     ...FLEX_COLUMN,
 };
 
+export function isFlex(type: string): type is FlexType {
+    return flexType.includes(type);
+}
+
+export function getFlexDisplay(type: FlexType): ExactFlexDisplay {
+    return FLEX_DISPLAY[type];
+}
+
 export function getFlexDirection(
     dir?: string,
     defaultDir: string = 'col'
 ): string {
     return (FLEX_DIRECTION as Record<string, string>)[dir || defaultDir];
-}
-
-export type ExactFlexDisplay = 'flex' | 'inline-flex';
-const flexType = ['flex', 'inline-flex', 'in-flex'];
-
-export function isFlex(type: string): type is FlexType {
-    return flexType.includes(type);
-}
-
-export const FLEX_DISPLAY: Record<FlexType, ExactFlexDisplay> = {
-    flex: 'flex',
-    'in-flex': 'inline-flex',
-    'inline-flex': 'inline-flex',
-};
-
-export function getFlexDisplay(type: FlexType): ExactFlexDisplay {
-    return FLEX_DISPLAY[type];
 }
