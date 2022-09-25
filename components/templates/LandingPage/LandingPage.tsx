@@ -1,12 +1,12 @@
 import { Component } from '@/libs/common';
-import Features from '@/organisms/Features';
-import Feedbacks from '@/organisms/Feedbacks';
-import Footer from '@/organisms/Footer';
-import Header from '@/organisms/Header';
-import Hero from '@/organisms/Hero';
-import Packages from '@/organisms/Packages';
-import Subscribe from '@/organisms/Subscribe';
-import Summary from '@/organisms/Summary';
+import Achievements from '@/layouts/Achievements';
+import Feedbacks from '@/layouts/Feedbacks';
+import Footer from '@/layouts/Footer';
+import Header from '@/layouts/Header';
+import Hero from '@/layouts/Hero';
+import Packages from '@/layouts/Packages';
+import Subscribe from '@/layouts/Subscribe';
+import Summary from '@/layouts/Summary';
 import type { LandingPageProps } from './types';
 
 export default class LandingPageTemplate extends Component<LandingPageProps> {
@@ -19,7 +19,7 @@ export default class LandingPageTemplate extends Component<LandingPageProps> {
             <>
                 <Header />
                 <Hero />
-                <Features />
+                <Achievements />
                 <Summary />
                 <Packages />
                 <Feedbacks />
