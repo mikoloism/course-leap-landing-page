@@ -1,4 +1,8 @@
-export const POSITION: Record<string, string> = {
+import type { PositionType } from '../types';
+
+type PositionKeys = PositionType | 'abs' | 'fix' | 'rel';
+
+export const POSITION: Record<PositionKeys, PositionType> = {
     absolute: 'absolute',
     fixed: 'fixed',
     relative: 'relative',
@@ -7,6 +11,9 @@ export const POSITION: Record<string, string> = {
     fix: 'fixed',
     rel: 'relative',
 };
-export function getPosition(pos: string): string {
-    return POSITION[pos];
+
+export function getPosition(
+    pos: PositionKeys | undefined
+): PositionType | undefined {
+    return pos && POSITION[pos];
 }
