@@ -1,5 +1,24 @@
 // NOTE : this file used in as `tailwindcss` pre-built classNames
 
+/** v.2
+ * TODO : refactor
+ * ```ts
+ * export function getDirection(direction: FlexDirection | undefined): string {
+ *  const rows = ['row', 'horizontal'];
+ *  const colsReverse = ['col-reverse', 'column-reverse', 'vertical-reverse'];
+ *  const rowsReverse = ['row-reverse', 'horizontal-reverse'];
+ *
+ *  if (!direction) return 'flex-col';
+ *
+ *  if (rows.includes(direction as string)) return 'flex-row';
+ *  if (rowsReverse.includes(direction as string)) return 'flex-row-reverse';
+ *  if (colsReverse.includes(direction as string)) return 'flex-col-reverse';
+ *
+ *  return 'flex-col';
+ * }
+ * ```
+ */
+
 import type { FlexType } from '../types/style';
 
 export type ExactFlexDisplay = 'flex' | 'inline-flex';
