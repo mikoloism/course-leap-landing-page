@@ -25,5 +25,12 @@
     "footer_information_hiring": "We are hiring",
     "footer_information_blog": "Blog",
     "footer_socials_title": "Get In Touch",
-    "footer_socials_description": "the quick fox jumps over the lazy dog"
+    "footer_socials_description": "the quick fox jumps over the lazy dog",
+    "header_navigation_home": "Home",
+    "header_navigation_product": "Product",
+    "header_navigation_pricing": "Pricing",
+    "header_navigation_contact": "Contact",
+    "header_actions_login": "Login",
+    "header_actions_join_us": "JOIN US",
+    "header_brand": "BrandName"
 }
