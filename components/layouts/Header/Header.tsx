@@ -6,7 +6,7 @@ import {
 } from '@/organisms/Header';
 
 export default function Header() {
-    const $rowClassName = $('row-start-1', 'row-end-7');
+    const $rowClassName = $('row-start-3', 'row-end-7');
 
     return (
         <header
