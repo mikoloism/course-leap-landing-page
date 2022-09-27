@@ -1,16 +1,8 @@
-import type { ReactNode } from '@/libs/common';
-import { Component } from '@/libs/common';
+import type { PropsWithChildren } from '@/libs/common';
+import type { ComponentPropsWithoutRef } from 'react';
 
-interface ButtonProps {
-    children: ReactNode | JSX.Element;
-}
+type ButtonProps = PropsWithChildren<ComponentPropsWithoutRef<'button'>>;
 
-export class Button extends Component<ButtonProps> {
-    constructor(props: ButtonProps) {
-        super(props);
-    }
-
-    render() {
-        return <></>;
-    }
+export function Button({ children, ...props }: ButtonProps) {
+    return <button {...props}>{children}</button>;
 }
