@@ -12,6 +12,7 @@ export { default as Link } from 'next/link';
 // base-props
 export type PropsWithChildren<T = {}> = React.PropsWithChildren<T>;
 export type PropsWithClassName<T = {}> = { className?: string } & T;
+export type PropsWithStyle<T = {}> = { style?: Record<any, any> } & T;
 export type PropsWithCommon<T> = PropsWithClassName & PropsWithChildren & T;
 
 // base-variant
