@@ -1,4 +1,4 @@
-import { $ } from '@/libs/common';
+import { $, PropsWithChildren, PropsWithClassName } from '@/libs/common';
 import {
     getFontWeight,
     getPlaceContent,
@@ -24,7 +24,8 @@ interface Props
         FontProps,
         TextAlignProps,
         PlaceProps,
-        Partial<React.PropsWithChildren<{ className?: string }>> {}
+        PropsWithChildren<{}>,
+        PropsWithClassName<{}> {}
 
 export function Text(props: Props) {
     const $className = $(

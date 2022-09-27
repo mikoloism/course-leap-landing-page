@@ -1,4 +1,4 @@
-import { $, Component } from '@/libs/common';
+import { $, Component, PropsWithCommon, PropsWithStyle } from '@/libs/common';
 import {
     ExactFlexDisplay,
     ExactGridDisplay,
@@ -19,13 +19,7 @@ import type {
     PropsType,
 } from '@/libs/types';
 
-type Props = React.PropsWithChildren<
-    Partial<{
-        className: string;
-        style: Record<any, any>;
-    }> &
-        PropsType
->;
+type Props = PropsWithCommon<PropsWithStyle<PropsType>>;
 
 interface DisplayFlex {
     dir?: DirectionType;
