@@ -1,20 +1,20 @@
-import { Item, List } from '@/atoms';
-import { PropsWithChildren, PropsWithClassName } from '@/libs/common';
+import { Item, Link, List } from '@/atoms';
+import { PropsWithClassName } from '@/libs/common';
 import { useContent } from '@/libs/hooks';
 
-type NavigationItemProps = Required<PropsWithChildren<{}>>;
+type NavigationItemProps = { text: string };
 
-function NavigationItem({ children }: NavigationItemProps) {
-    return <a className="w-full">{children}</a>;
+function NavigationItem({ text }: NavigationItemProps) {
+    return <Link href={`#${text ?? ''}`}>{text}</Link>;
 }
 
 export function HeaderNavigation({ className }: PropsWithClassName<{}>) {
     const { content } = useContent('landing-page', 'header_navigation');
     const navigation = [
-        { children: content('home') },
-        { children: content('product') },
-        { children: content('pricing') },
-        { children: content('contact') },
+        { text: content('home') },
+        { text: content('product') },
+        { text: content('pricing') },
+        { text: content('contact') },
     ];
 
     return (
