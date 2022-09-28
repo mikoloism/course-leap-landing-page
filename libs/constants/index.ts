@@ -4,3 +4,4 @@ export * from './gap';
 export * from './grid';
 export * from './position';
 export * from './text';
+export * from './color';
