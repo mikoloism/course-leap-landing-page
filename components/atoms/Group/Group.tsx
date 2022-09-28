@@ -2,6 +2,7 @@ import { $, Component, PropsWithCommon, PropsWithStyle } from '@/libs/common';
 import {
     ExactFlexDisplay,
     ExactGridDisplay,
+    getBackgroundColor,
     getFlexDirection,
     getFlexDisplay,
     getGapSize,
@@ -13,29 +14,12 @@ import {
     isGrid,
 } from '@/libs/constants';
 import type {
+    ColorType,
     DirectionType,
     FlexType,
     GridType,
     PropsType,
 } from '@/libs/types';
-
-type Props = PropsWithCommon<PropsWithStyle<PropsType>>;
-
-interface DisplayFlex {
-    dir?: DirectionType;
-    nowrap?: boolean;
-}
-function withDisplayFlex({ dir, nowrap }: DisplayFlex): string {
-    return $(getFlexDirection(dir), { 'flex-wrap': !nowrap });
-}
-
-interface DisplayGrid {
-    columns?: number | string;
-    rows?: number | string;
-}
-function withDisplayGrid({ columns, rows }: DisplayGrid): string {
-    return $('grid-cols-' + columns, 'grid-rows-' + rows);
-}
 
 function getDisplayType(
     type: GridType | FlexType
@@ -46,6 +30,31 @@ function getDisplayType(
         ? getGridDisplay(type)
         : 'flex';
 }
+
+function withDisplayFlex({
+    dir,
+    nowrap,
+}: {
+    dir?: DirectionType;
+    nowrap?: boolean;
+}): string {
+    return $(getFlexDirection(dir), { 'flex-wrap': !nowrap });
+}
+
+function withDisplayGrid({
+    columns,
+    rows,
+}: {
+    columns?: number | string;
+    rows?: number | string;
+}): string {
+    return $('grid-cols-' + columns, 'grid-rows-' + rows);
+}
+
+type Props = PropsWithCommon<PropsWithStyle<PropsType>> & {
+    layout?: boolean;
+    color?: ColorType;
+};
 
 export class Group extends Component<Props> {
     constructor(props: Props) {
@@ -68,6 +77,8 @@ export class Group extends Component<Props> {
             getGapSize({ gapx: this.props.gapx, gapy: this.props.gapy }),
             getPlaceContent(this.props.placeContent, 'center'),
             getPlaceItems(this.props.placeItems, 'center'),
+            this.props.color && getBackgroundColor(this.props.color),
+            this.props.layout && 'w-screen h-screen p-0',
             this.props.pos && getPosition(this.props.pos),
             this.props.className
         );
