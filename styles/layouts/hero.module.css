@@ -20,7 +20,7 @@
 }
 
 .heroCoverWrapper::before {
-  background-color: theme(colors.img.square-1);
+  background-color: theme('colors.img.square-1');
 }
 
 .heroCoverImage {
