@@ -1,0 +1,21 @@
+.achievement_floats {
+  display: grid;
+  grid-template-columns: 100px 1fr 50px 1fr 100px;
+  grid-template-rows: 100px repeat(6, 1fr) 100px;
+  row-gap: 2rem;
+}
+
+.achievement_item_top {
+  grid-column: 2 / 3;
+  grid-row: 2 / 5;
+}
+
+.achievement_item_middle {
+  grid-column: 4 / 5;
+  grid-row: 4 / 7;
+}
+
+.achievement_item_bottom {
+  grid-column: 2 / 3;
+  grid-row: 5 / 8;
+}
