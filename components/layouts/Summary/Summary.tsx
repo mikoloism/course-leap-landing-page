@@ -1,5 +1,6 @@
 import { Group, Icon, Image, Link, Separator, Text } from '@/components/atoms';
 import { Header } from '@/molecules/Header';
+import style from '@/styles/layouts/summary.module.css';
 
 const $content = {
     title: 'Featured Products',
@@ -43,14 +44,10 @@ export default function Summary() {
                 </Link>
             </Group>
             <Image
-                className="next-image cover cover--2 col-start-7 col-end-13 row-start-1 row-end-7 w-1/2 h-full"
+                className={`next-image cover cover--2 col-start-7 col-end-13 row-start-1 row-end-7 w-1/2 h-full ${style.summaryCoverWrapper}`}
                 src={$content.cover}
                 alt="image-cover-1"
-                style={{
-                    gridColumn: '4 / 11',
-                    gridRow: '2 / 11',
-                    borderRadius: '5rem',
-                }}
+                imageClassName={style.summaryCoverImage}
             />
         </Group>
     );

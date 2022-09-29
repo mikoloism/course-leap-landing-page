@@ -1,6 +1,7 @@
 import { Group, Icon, Image, Link, Text } from '@/atoms';
 import { useContent } from '@/libs/hooks/useContent';
 import { ActionBar } from '../ActionBar';
+import style from '@/styles/products.module.css';
 
 export function ProductBadge({ children }: React.PropsWithChildren<{}>) {
     return (
@@ -211,11 +212,7 @@ export function ProductCover({ cover }: any) {
                 className="next-image w-full h-full group-hover:blur-sm"
                 alt="image-cover-1"
                 src={cover}
-                style={{
-                    gridColumn: '1/13',
-                    gridRow: '1/13',
-                    borderRadius: '0.4rem',
-                }}
+                imageClassName={style.productCoverImage}
             />
             <ActionBar productId={cover} />
         </Group>

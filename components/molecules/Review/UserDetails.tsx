@@ -1,4 +1,5 @@
 import { Group, Image, Link, Text } from '@/atoms';
+import style from '@/styles/review.module.css';
 
 export function UserAvatar({ avatar }: any) {
     return (
@@ -6,11 +7,7 @@ export function UserAvatar({ avatar }: any) {
             className="next-image w-20 h-20"
             src={avatar}
             alt="avatar-1"
-            style={{
-                gridColumn: '1/13',
-                gridRow: '1/13',
-                borderRadius: '9999rem',
-            }}
+            imageClassName={style.reviewUserAvatarImage}
         />
     );
 }
