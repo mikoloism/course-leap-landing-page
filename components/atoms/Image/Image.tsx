@@ -1,9 +1,10 @@
-import type { PropsWithClassName, PropsWithStyle } from '@/libs/common';
+import type { PropsWithClassName } from '@/libs/common';
 import { $, Component, Image as NextImage } from '@/libs/common';
 
-interface ImageProps extends PropsWithClassName<PropsWithStyle> {
+interface ImageProps extends PropsWithClassName {
     src: string;
     alt: string;
+    imageClassName?: string;
 }
 
 export class Image extends Component<ImageProps> {
@@ -34,7 +35,7 @@ export class Image extends Component<ImageProps> {
                     height="100%"
                     layout="responsive"
                     objectFit="cover"
-                    style={this.props.style ?? {}}
+                    className={this.props.imageClassName ?? ''}
                     priority
                 />
             </figure>
