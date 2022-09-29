@@ -1,5 +1,5 @@
 import { AchieveFloat } from '@/molecules/AchieveFloat';
-import style from '@/styles/layouts/achievements.module.css';
+import style from '@/styles/achievements.module.css';
 
 function useFakeFetch() {
     const SINGLE_FEATURES_ITEM = {
@@ -21,27 +21,27 @@ export function AchievementFloats() {
 
     return (
         <section
-            className={`w-1/2 h-full place-items-center justify-around ${style.achievement_floats}`}>
+            className={`w-1/2 h-full place-items-center justify-around ${style.achievementFloats}`}>
             <AchieveFloat
                 title={teachers.title}
                 description={teachers.description}
                 icon="check-underline"
                 color="bg-box-bg-blue fill-primary"
-                grid={style.achievement_item_top}
+                grid={style.achievementItemTop}
             />
             <AchieveFloat
                 title={analytic.title}
                 description={analytic.description}
                 icon="credit-card"
                 color="bg-box-bg-red fill-accent"
-                grid={style.achievement_item_middle}
+                grid={style.achievementItemMiddle}
             />
             <AchieveFloat
                 title={planning.title}
                 description={planning.description}
                 icon="tag"
                 color="bg-box-bg-green fill-accent-green"
-                grid={style.achievement_item_bottom}
+                grid={style.achievementItemBottom}
             />
         </section>
     );
