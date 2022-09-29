@@ -44,16 +44,8 @@ body,
   width: 160px;
   height: 190px;
   top: 40px;
-  right: 135px;
+  right: 150px;
   z-index: 2;
-}
-
-.next-image.cover--1::before {
-  background-color: theme(colors.img.square-1);
-}
-
-.next-image.cover--2::before {
-  background-color: theme(colors.img.square-2);
 }
 
 .next-image.cover::after {
@@ -62,8 +54,8 @@ body,
   position: absolute;
   width: 90px;
   height: 90px;
-  bottom: 130px;
-  left: 220px;
+  bottom: 50px;
+  left: 250px;
   z-index: 3;
   border-radius: 90rem;
   background-color: theme(colors.img.circle);

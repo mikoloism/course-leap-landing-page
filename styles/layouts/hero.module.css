@@ -16,5 +16,7 @@
 
 .heroCover {
   grid-column: 4 / 5;
-  grid-row: 1 / 13;
+.heroCoverWrapper::before {
+  background-color: theme(colors.img.square-1);
+}
 }

@@ -1,0 +1,3 @@
+.summaryCoverWrapper::before {
+  background-color: theme(colors.img.square-2);
+}
