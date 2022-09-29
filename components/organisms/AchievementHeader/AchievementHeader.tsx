@@ -1,4 +1,4 @@
-import { Group, Icon, Link, Text } from '@/atoms';
+import { Group, Icon, Link, Separator, Text } from '@/atoms';
 import { useContent } from '@/libs/hooks';
 import { Header } from '@/molecules/Header';
 
@@ -16,11 +16,7 @@ export function AchievementHeader() {
                 level="h2"
                 title={content('title')}
                 description={content('description')}
-                Before={() => (
-                    <span
-                        id="block"
-                        className="w-3/12 h-[6px] bg-accent rounded-full"></span>
-                )}
+                Before={() => <Separator heavy />}
                 className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12"
             />
             <Link

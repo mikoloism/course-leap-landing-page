@@ -1,4 +1,4 @@
-import { Group, Icon, Image, Link, Text } from '@/components/atoms';
+import { Group, Icon, Image, Link, Separator, Text } from '@/components/atoms';
 import { Header } from '@/molecules/Header';
 
 const $content = {
@@ -22,11 +22,7 @@ export default function Summary() {
                     title={$content.title}
                     description={$content.description}
                     className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12"
-                    Before={() => (
-                        <span
-                            id="block"
-                            className="w-3/12 h-[6px] bg-accent rounded-full"></span>
-                    )}
+                    Before={() => <Separator heavy />}
                 />
 
                 <Link
