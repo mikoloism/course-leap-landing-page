@@ -42,9 +42,8 @@ export function ProductPrice({ price, old }: { price: any; old?: any }) {
             )}
             <Text
                 as="strong"
-                size="paragraph"
-                className="text-accent-green">
-                {price}
+                size="paragraph">
+                <span className="text-accent-green">{price}</span>
             </Text>
         </Group>
     );
