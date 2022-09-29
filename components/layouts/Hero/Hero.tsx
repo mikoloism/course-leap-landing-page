@@ -1,7 +1,7 @@
 import { Group, Image, Link, Text } from '@/atoms';
 import type { PropsWithChildren, PropsWithClassName } from '@/libs/common';
 import { useContent } from '@/libs/hooks';
-import style from '@/styles/layouts/hero.module.css';
+import style from '@/styles/hero.module.css';
 
 function HeroHeader({ className }: PropsWithClassName<{}>) {
     const { content } = useContent('landing-page', 'hero_header');
@@ -36,14 +36,10 @@ function HeroHeader({ className }: PropsWithClassName<{}>) {
 function HeroCover({ className }: PropsWithClassName<{}>) {
     return (
         <Image
-            className={`next-image cover cover--1 w-full h-full sm:grid hidden ${className}`}
+            className={`next-image cover w-full h-full ${style.heroCoverWrapper} ${className}`}
             src="/assets/images/image-1.png"
             alt="landing-page-cover"
-            style={{
-                gridColumn: '4 / 11',
-                gridRow: '2 / 11',
-                borderRadius: '0.8rem',
-            }}
+            imageClassName={style.heroCoverImage}
         />
     );
 }
@@ -56,9 +52,9 @@ function HeroAction({ className }: PropsWithClassName<{}>) {
             type="inline-flex"
             dir="row"
             gapx="10"
-            placeItems="start"
-            placeContent="start"
-            className={`h-full w-full pt-16 ${className}`}>
+            placeItems="center"
+            placeContent="center"
+            className={`h-full w-full ${className}`}>
             <Link
                 href="#/cta/primary"
                 className="text-btn rounded-lg py-4 px-8 h-20 border-2 border-solid border-primary bg-primary text-white text-center w-[45%]">
