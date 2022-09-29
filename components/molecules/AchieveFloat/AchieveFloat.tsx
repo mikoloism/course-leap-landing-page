@@ -1,4 +1,4 @@
-import { Group, Icon, Text } from '@/atoms';
+import { Group, Icon, Separator, Text } from '@/atoms';
 
 export function AchieveFloat({ icon, title, description, grid, color }: any) {
     return (
@@ -12,9 +12,7 @@ export function AchieveFloat({ icon, title, description, grid, color }: any) {
                 className="order-2">
                 {title}
             </Text>
-            <span
-                id="block"
-                className="order-3 w-3/12 h-1 bg-accent rounded-full"></span>
+            <Separator className="order-3" />
             <Text
                 as="p"
                 className="order-4">
