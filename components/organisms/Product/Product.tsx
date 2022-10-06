@@ -196,7 +196,7 @@ export function ProductItem({ item }: { item: any }) {
     return (
         <Group
             pos="relative"
-            className="w-[30%] group">
+            className="w-[30%] group overflow-hidden">
             <Link
                 overlay
                 href="#product-1"

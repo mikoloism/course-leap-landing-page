@@ -1,15 +1,15 @@
 import { Group } from '@/atoms';
-import { PackagesHeader, PackagesWrapper } from '@/organisms/Packages';
+import { PackagesHeader, PackagesContainer } from '@/organisms/Packages';
 
 export default function Packages() {
     return (
         <Group
-            dir="row"
             layout
+            dir="row"
             gapy="16"
             className="h-[125vh]">
             <PackagesHeader />
-            <PackagesWrapper />
+            <PackagesContainer />
         </Group>
     );
 }

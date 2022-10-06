@@ -58,7 +58,7 @@ function ProductsContainer({ children }: PropsWithChildren) {
     );
 }
 
-export function PackagesWrapper() {
+export function PackagesContainer() {
     const { data } = useFakeFetch();
 
     return (
