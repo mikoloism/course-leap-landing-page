@@ -14,6 +14,7 @@ export type PropsWithChildren<T = {}> = React.PropsWithChildren<T>;
 export type PropsWithClassName<T = {}> = { className?: string } & T;
 export type PropsWithStyle<T = {}> = { style?: Record<any, any> } & T;
 export type PropsWithCommon<T> = PropsWithClassName & PropsWithChildren & T;
+export type PropsWithAll<T> = PropsWithCommon<T> & PropsWithStyle;
 
 // base-variant
 export enum Variant {
