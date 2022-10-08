@@ -89,6 +89,8 @@ export type FlexProps = OnlyFlexProps & CommonProps;
 // grid|inline-grid
 export type GridProps = OnlyGridProps & CommonProps;
 
+export type DisplayType = FlexType | GridType;
+
 export type PropsType =
     | Exact<{ type?: FlexType } & FlexProps>
     | Exact<{ type?: GridType } & GridProps>;
