@@ -1,16 +1,15 @@
-import type { PlaceCommon, PlaceContent, PlaceItems } from '../types';
+import type { PlaceContentType, PlaceItemsType } from '../types';
 
 type PlaceClassName<
     T extends 'items' | 'content',
     C extends PlaceItemsType | PlaceContentType
 > = `place-${T}-${C}`;
 
-type PlaceItemsType = PlaceItems | PlaceCommon;
-type PlaceContentType = PlaceContent | PlaceCommon;
 type PlaceItemsClassName = PlaceClassName<'items', PlaceItemsType>;
 type PlaceContentClassName = PlaceClassName<'content', PlaceContentType>;
 type PlaceItemsRecord = Record<PlaceItemsType, PlaceItemsClassName>;
 type PlaceContentRecord = Record<PlaceContentType, PlaceContentClassName>;
+type PlaceAlignType = { content?: PlaceContentType; items?: PlaceItemsType };
 
 export const PLACE_ITEMS: PlaceItemsRecord = {
     center: 'place-items-center',
@@ -40,4 +39,8 @@ export function getPlaceContent(
     defaultContent: PlaceContentType = 'start'
 ): PlaceContentClassName {
     return PLACE_CONTENT[content || defaultContent];
+}
+
+export function getPlaceAlign({ content, items }: PlaceAlignType): string {
+    return `${getPlaceContent(content)} ${getPlaceItems(items)}`;
 }

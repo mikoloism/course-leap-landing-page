@@ -40,9 +40,11 @@ export interface DirectionProps {
 export type PlaceCommon = 'center' | 'start' | 'end';
 export type PlaceContent = 'between' | 'around' | 'evenly';
 export type PlaceItems = 'baseline';
+export type PlaceContentType = PlaceContent | PlaceCommon;
+export type PlaceItemsType = PlaceItems | PlaceCommon;
 export interface PlaceProps {
-    placeItems?: PlaceItems | PlaceCommon;
-    placeContent?: PlaceContent | PlaceCommon;
+    placeItems?: PlaceItemsType;
+    placeContent?: PlaceContentType;
 }
 
 export type GapNumericType =
