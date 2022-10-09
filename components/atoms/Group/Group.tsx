@@ -11,8 +11,7 @@ import {
     getFlexDisplay,
     getGapSize,
     getGridDisplay,
-    getPlaceContent,
-    getPlaceItems,
+    getPlaceAlign,
     getPosition,
     isFlex,
     isGrid,
@@ -69,12 +68,12 @@ export class Group extends Component<Props> {
     private static DEFAULT_DISPLAY_TYPE: DisplayType = 'flex';
     private static DEFAULT_PLACE_ITEMS: PlaceCommon | PlaceItems = 'center';
     private static DEFAULT_PLACE_CONTENT: PlaceCommon | PlaceContent = 'center';
-    private $className: string | undefined;
     private $displayType: DisplayType = Group.DEFAULT_DISPLAY_TYPE;
 
     constructor(props: Props) {
         super(props);
-        this.getStyleFromClassName();
+
+        if (props.type) this.$displayType = props.type;
     }
 
     private getDisplayTypeClassName(): string {
@@ -109,17 +108,14 @@ export class Group extends Component<Props> {
     }
 
     private getPlaceAlignClassName(): string {
-        return $(
-            getPlaceContent(
-                this.props.placeContent,
-                Group.DEFAULT_PLACE_CONTENT
-            ),
-            getPlaceItems(this.props.placeItems, Group.DEFAULT_PLACE_ITEMS)
-        );
+        return getPlaceAlign({
+            content: this.props.placeContent ?? Group.DEFAULT_PLACE_CONTENT,
+            items: this.props.placeItems ?? Group.DEFAULT_PLACE_ITEMS,
+        });
     }
 
-    private getStyleFromClassName(): void {
-        this.$className = $(
+    private getStyleFromClassName(): string {
+        return $(
             this.getClassNameByDisplay(),
             this.getDisplayTypeClassName(),
             this.getGapSizeClassName(),
@@ -134,7 +130,7 @@ export class Group extends Component<Props> {
     public render() {
         return (
             <GroupComponent
-                className={this.$className}
+                className={this.getStyleFromClassName()}
                 style={this.props.style ?? {}}>
                 {this.props.children}
             </GroupComponent>
