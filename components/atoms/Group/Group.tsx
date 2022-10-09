@@ -11,7 +11,6 @@ import {
     getFlexDisplay,
     getGapSize,
     getGridDisplay,
-    getPlaceAlign,
     getPlaceContent,
     getPlaceItems,
     getPosition,
@@ -86,23 +85,10 @@ export class Group extends Component<Props> {
             : Group.DEFAULT_DISPLAY_TYPE;
     }
 
-    private getFlexDirectionClassName(): string {
-        return getFlexDirection(this.props.dir);
-    }
-
-    private isFlexNoWrap(): boolean {
-        return (this.props as any).nowrap;
-    }
-
-    private getFlexWrapClassName(): string {
-        return this.isFlexNoWrap() ? '' : 'flex-wrap';
-    }
-
     private getDisplayFlexClassName(): string {
-        return [
-            this.getFlexDirectionClassName(),
-            this.getFlexWrapClassName(),
-        ].join(' ');
+        return $(getFlexDirection(this.props.dir), {
+            'flex-wrap': !(this.props as any).nowrap,
+        });
     }
 
     private getDisplayGridClassName(): string {
@@ -123,10 +109,13 @@ export class Group extends Component<Props> {
     }
 
     private getPlaceAlignClassName(): string {
-        return getPlaceAlign({
-            content: this.props?.placeContent ?? Group.DEFAULT_PLACE_CONTENT,
-            items: this.props?.placeItems ?? Group.DEFAULT_PLACE_ITEMS,
-        });
+        return $(
+            getPlaceContent(
+                this.props.placeContent,
+                Group.DEFAULT_PLACE_CONTENT
+            ),
+            getPlaceItems(this.props.placeItems, Group.DEFAULT_PLACE_ITEMS)
+        );
     }
 
     private getStyleFromClassName(): void {
