@@ -11,6 +11,8 @@ module.exports = {
             fontFamily: require('./libs/theme/font-family').fontFamily,
             fontSize: require('./libs/theme/font-size').fontSize,
             boxShadow: require('./libs/theme/shadow').shadow,
+            animation: require('./libs/theme/animation').animation,
+            keyframes: require('./libs/theme/keyframes').keyframes,
         },
     },
     plugins: [],
