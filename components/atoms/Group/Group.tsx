@@ -1,10 +1,17 @@
-import { $, Component, PropsWithAll } from '@/libs/common';
+import {
+    $,
+    Component,
+    PropsWithAll,
+    PropsWithClassName,
+    PropsWithCommon,
+} from '@/libs/common';
 import {
     getBackgroundColor,
     getFlexDirection,
     getFlexDisplay,
     getGapSize,
     getGridDisplay,
+    getPlaceAlign,
     getPlaceContent,
     getPlaceItems,
     getPosition,
@@ -20,10 +27,44 @@ import type {
     PropsType,
 } from '@/libs/types';
 
-type Props = PropsWithAll<PropsType> & {
+type StyleProps = PropsWithClassName<PropsType> & {
     layout?: boolean;
     color?: ColorType;
 };
+
+type Props = PropsWithAll<StyleProps>;
+
+class GroupComponent extends Component<PropsWithAll<{}>> {
+    constructor(props: PropsWithCommon<{}>) {
+        super(props);
+    }
+
+    private RenderWithStyleProps(props: PropsWithAll<{}>) {
+        return (
+            <section
+                className={props.className}
+                style={props.style}>
+                {props.children}
+            </section>
+        );
+    }
+
+    private RenderWithoutStyleProps(props: PropsWithCommon<{}>) {
+        return <section className={props.className}>{props.children}</section>;
+    }
+
+    private hasStyleProps(): boolean {
+        return !!this.props?.style;
+    }
+
+    render() {
+        const RenderComponent = this.hasStyleProps()
+            ? this.RenderWithStyleProps
+            : this.RenderWithoutStyleProps;
+
+        return <RenderComponent {...this.props} />;
+    }
+}
 
 export class Group extends Component<Props> {
     private static DEFAULT_DISPLAY_TYPE: DisplayType = 'flex';
@@ -45,10 +86,23 @@ export class Group extends Component<Props> {
             : Group.DEFAULT_DISPLAY_TYPE;
     }
 
+    private getFlexDirectionClassName(): string {
+        return getFlexDirection(this.props.dir);
+    }
+
+    private isFlexNoWrap(): boolean {
+        return (this.props as any).nowrap;
+    }
+
+    private getFlexWrapClassName(): string {
+        return this.isFlexNoWrap() ? '' : 'flex-wrap';
+    }
+
     private getDisplayFlexClassName(): string {
-        return $(getFlexDirection(this.props.dir), {
-            'flex-wrap': !(this.props as any).nowrap,
-        });
+        return [
+            this.getFlexDirectionClassName(),
+            this.getFlexWrapClassName(),
+        ].join(' ');
     }
 
     private getDisplayGridClassName(): string {
@@ -69,13 +123,10 @@ export class Group extends Component<Props> {
     }
 
     private getPlaceAlignClassName(): string {
-        return $(
-            getPlaceContent(
-                this.props.placeContent,
-                Group.DEFAULT_PLACE_CONTENT
-            ),
-            getPlaceItems(this.props.placeItems, Group.DEFAULT_PLACE_ITEMS)
-        );
+        return getPlaceAlign({
+            content: this.props?.placeContent ?? Group.DEFAULT_PLACE_CONTENT,
+            items: this.props?.placeItems ?? Group.DEFAULT_PLACE_ITEMS,
+        });
     }
 
     private getStyleFromClassName(): void {
@@ -93,11 +144,11 @@ export class Group extends Component<Props> {
 
     public render() {
         return (
-            <section
+            <GroupComponent
                 className={this.$className}
                 style={this.props.style ?? {}}>
                 {this.props.children}
-            </section>
+            </GroupComponent>
         );
     }
 }
