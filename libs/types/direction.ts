@@ -1,30 +1,31 @@
 export namespace Direction {
-    export type RowKeys =
-        | 'row'
-        | 'rev-row'
-        | 'reverse-row'
-        | 'hor'
-        | 'rev-hor'
-        | 'reverse-hor'
-        | 'horizontal'
-        | 'rev-horizontal'
-        | 'reverse-horizontal';
+    export type RowWithoutReverseKeys = 'row' | 'hor' | 'horizontal';
 
-    export type ColumnKeys =
+    export type RowReverseKeys = `${
+        | 'rev'
+        | 'reverse'}-${RowWithoutReverseKeys}`;
+
+    export type RowKeys = RowWithoutReverseKeys | RowReverseKeys;
+
+    export type ColumnWithoutReverseKeys =
         | 'column'
-        | 'rev-column'
-        | 'reverse-column'
         | 'vertical'
-        | 'rev-vertical'
-        | 'reverse-vertical'
         | 'col'
-        | 'rev-col'
-        | 'reverse-col'
-        | 'vert'
-        | 'rev-vert'
-        | 'reverse-vert';
+        | 'vert';
+
+    export type ColumnReverseKeys = `${
+        | 'rev'
+        | 'reverse'}-${ColumnWithoutReverseKeys}`;
+
+    export type ColumnKeys = ColumnWithoutReverseKeys | ColumnReverseKeys;
 
     export type Keys = RowKeys | ColumnKeys;
+
+    export type KeysWithReverse = RowReverseKeys | ColumnReverseKeys;
+
+    export type KeysWithoutReverse =
+        | RowWithoutReverseKeys
+        | ColumnWithoutReverseKeys;
 
     export type LongColumnProps = { direction?: ColumnKeys };
 
