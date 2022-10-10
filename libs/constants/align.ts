@@ -1,46 +1,65 @@
-import type { PlaceContentType, PlaceItemsType } from '../types';
+import type { PlaceAlign } from '../types';
 
-type PlaceClassName<
+type CreateClassNameType<
     T extends 'items' | 'content',
-    C extends PlaceItemsType | PlaceContentType
-> = `place-${T}-${C}`;
+    K extends PlaceAlign.BothKeys
+> = `place-${T}-${K}`;
 
-type PlaceItemsClassName = PlaceClassName<'items', PlaceItemsType>;
-type PlaceContentClassName = PlaceClassName<'content', PlaceContentType>;
-type PlaceItemsRecord = Record<PlaceItemsType, PlaceItemsClassName>;
-type PlaceContentRecord = Record<PlaceContentType, PlaceContentClassName>;
-type PlaceAlignType = { content?: PlaceContentType; items?: PlaceItemsType };
+export namespace PlaceItems {
+    export type Keys = PlaceAlign.PlaceItems.Keys;
 
-export const PLACE_ITEMS: PlaceItemsRecord = {
-    center: 'place-items-center',
-    start: 'place-items-start',
-    end: 'place-items-end',
-    baseline: 'place-items-baseline',
-};
+    export type ClassName = CreateClassNameType<'items', Keys>;
 
-export const PLACE_CONTENT: PlaceContentRecord = {
-    center: 'place-content-center',
-    start: 'place-content-start',
-    end: 'place-content-end',
-    between: 'place-content-between',
-    around: 'place-content-around',
-    evenly: 'place-content-evenly',
-};
+    export type ConstantRecord = Record<Keys, ClassName>;
 
-export function getPlaceItems(
-    items?: PlaceItemsType,
-    defaultContent: PlaceItemsType = 'start'
-): PlaceItemsClassName {
-    return PLACE_ITEMS[items || defaultContent];
+    export const CLASSNAMES: ConstantRecord = {
+        center: 'place-items-center',
+        start: 'place-items-start',
+        end: 'place-items-end',
+        baseline: 'place-items-baseline',
+    };
+
+    export const DEFAULT_KEY: Keys = 'start';
+
+    export function getClassName(
+        key: Keys | undefined,
+        defaultKey: Keys = DEFAULT_KEY
+    ): ClassName {
+        return CLASSNAMES[key || defaultKey];
+    }
 }
 
-export function getPlaceContent(
-    content?: PlaceContentType,
-    defaultContent: PlaceContentType = 'start'
-): PlaceContentClassName {
-    return PLACE_CONTENT[content || defaultContent];
+export namespace PlaceContent {
+    export type Keys = PlaceAlign.PlaceContent.Keys;
+
+    export type ClassName = CreateClassNameType<'content', Keys>;
+
+    export type ConstantRecord = Record<Keys, ClassName>;
+
+    export const CLASSNAMES: ConstantRecord = {
+        center: 'place-content-center',
+        start: 'place-content-start',
+        end: 'place-content-end',
+        between: 'place-content-between',
+        around: 'place-content-around',
+        evenly: 'place-content-evenly',
+    };
+
+    export const DEFAULT_KEY: Keys = 'start';
+
+    export function getClassName(
+        key: Keys | undefined,
+        defaultKey: Keys = DEFAULT_KEY
+    ): ClassName {
+        return CLASSNAMES[key || defaultKey];
+    }
 }
 
-export function getPlaceAlign({ content, items }: PlaceAlignType): string {
-    return `${getPlaceContent(content)} ${getPlaceItems(items)}`;
+type PlaceAlignArgs = { content?: PlaceContent.Keys; items?: PlaceItems.Keys };
+
+export function getPlaceAlign({ content, items }: PlaceAlignArgs): string {
+    return [
+        PlaceContent.getClassName(content),
+        PlaceItems.getClassName(items),
+    ].join(' ');
 }
