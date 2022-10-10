@@ -1,19 +1,26 @@
-import type { PositionType } from '../types';
+import type { Position as PositionType } from '../types';
 
-type PositionKeys = PositionType | 'abs' | 'fix' | 'rel';
+export namespace Position {
+    export type Keys = PositionType.Keys;
 
-export const POSITION: Record<PositionKeys, PositionType> = {
-    absolute: 'absolute',
-    fixed: 'fixed',
-    relative: 'relative',
-    sticky: 'sticky',
-    abs: 'absolute',
-    fix: 'fixed',
-    rel: 'relative',
-};
+    export type ClassName = PositionType.LongKeys;
 
-export function getPosition(
-    pos: PositionKeys | undefined
-): PositionType | undefined {
-    return pos && POSITION[pos];
+    export type ConstantRecord = Record<Keys, ClassName>;
+
+    export const CLASSNAMES: ConstantRecord = {
+        absolute: 'absolute',
+        fixed: 'fixed',
+        relative: 'relative',
+        sticky: 'sticky',
+        abs: 'absolute',
+        fix: 'fixed',
+        rel: 'relative',
+        stk: 'sticky',
+    };
+
+    export function getClassName(
+        position: Keys | undefined
+    ): ClassName | undefined {
+        return position && CLASSNAMES[position];
+    }
 }

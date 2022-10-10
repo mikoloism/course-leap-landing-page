@@ -1,14 +1,24 @@
-import { ColorType } from '../types';
+import type { Color } from '../types';
 
-export const BACKGROUND_COLOR: Record<ColorType, `bg-${ColorType}`> = {
-    primary: 'bg-primary',
-    secondary: 'bg-secondary',
-    accent: 'bg-accent',
-    gray: 'bg-gray',
-    black: 'bg-black',
-    white: 'bg-white',
-} as const;
+export namespace BackgroundColor {
+    export type Keys = Color.Names;
 
-export function getBackgroundColor(color: ColorType): `bg-${ColorType}` {
-    return BACKGROUND_COLOR[color];
+    export type ClassName = `bg-${Keys}`;
+
+    export type ConstantRecord = Record<Keys, ClassName>;
+
+    export const CLASSNAMES: ConstantRecord = {
+        accent: 'bg-accent',
+        black: 'bg-black',
+        gray: 'bg-gray',
+        primary: 'bg-primary',
+        secondary: 'bg-secondary',
+        white: 'bg-white',
+    } as const;
+
+    export const DEFAULT_KEY: Keys = 'white';
+
+    export function getClassName(background: Keys = DEFAULT_KEY): ClassName {
+        return CLASSNAMES[background];
+    }
 }
