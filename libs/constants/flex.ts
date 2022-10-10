@@ -1,83 +1,151 @@
-// NOTE : this file used in as `tailwindcss` pre-built classNames
+import type { Direction, Display } from '../types';
 
-/** v.2
- * TODO : refactor
- * ```ts
- * export function getDirection(direction: FlexDirection | undefined): string {
- *  const rows = ['row', 'horizontal'];
- *  const colsReverse = ['col-reverse', 'column-reverse', 'vertical-reverse'];
- *  const rowsReverse = ['row-reverse', 'horizontal-reverse'];
- *
- *  if (!direction) return 'flex-col';
- *
- *  if (rows.includes(direction as string)) return 'flex-row';
- *  if (rowsReverse.includes(direction as string)) return 'flex-row-reverse';
- *  if (colsReverse.includes(direction as string)) return 'flex-col-reverse';
- *
- *  return 'flex-col';
- * }
- * ```
- */
+type CreateClassNameType<T extends 'col' | 'row'> =
+    | `flex-${T}`
+    | `flex-${T}-reverse`;
 
-import type { FlexType } from '../types/style';
+export namespace FlexDirection {
+    export namespace Row {
+        export type Keys = Direction.RowKeys;
 
-export type ExactFlexDisplay = 'flex' | 'inline-flex';
-const prefix = ['rev-', 'reverse-'];
-const row = ['row', 'hor', 'horizontal'];
-const column = ['col', 'vert', 'vertical', 'column'];
-const flexType = ['flex', 'inline-flex', 'in-flex'];
+        export type KeysWithReverse = Direction.RowReverseKeys;
 
-export function merge(prefix: string[], value: string[]): string[] {
-    return prefix.reduce(function (PrevPrefix: any[], currentPrefix: string) {
-        return PrevPrefix.concat(
-            value.reduce(function (prevValue: string[], currentValue: string) {
-                return prevValue.concat(
-                    (currentPrefix + currentValue) as string
-                );
-            }, [] as any[])
+        export type KeysWithoutReverse = Direction.RowWithoutReverseKeys;
+
+        export type ClassName = CreateClassNameType<'row'>;
+
+        export const KEYS: Array<KeysWithoutReverse> = [
+            'hor',
+            'horizontal',
+            'row',
+        ];
+
+        export const KEYS_REVERSE: Array<KeysWithReverse> = [
+            'rev-hor',
+            'reverse-hor',
+            'rev-horizontal',
+            'reverse-horizontal',
+            'rev-row',
+            'reverse-row',
+        ];
+
+        export function isRow(value: string): value is Keys {
+            return isReverse(value) || isNoReverse(value);
+        }
+
+        export function isReverse(value: string): value is KeysWithReverse {
+            return KEYS_REVERSE.indexOf(value as KeysWithReverse) >= 0;
+        }
+
+        export function isNoReverse(
+            value: string
+        ): value is KeysWithoutReverse {
+            return KEYS.indexOf(value as KeysWithoutReverse) >= 0;
+        }
+
+        export function getClassName(direction: Keys): ClassName {
+            return isNoReverse(direction)
+                ? 'flex-row'
+                : isReverse(direction)
+                ? 'flex-row-reverse'
+                : 'flex-row';
+        }
+    }
+
+    export namespace Column {
+        export type Keys = Direction.ColumnKeys;
+
+        export type KeysWithReverse = Direction.ColumnReverseKeys;
+
+        export type KeysWithoutReverse = Direction.ColumnWithoutReverseKeys;
+
+        export type ClassName = CreateClassNameType<'col'>;
+
+        export const KEYS: Array<KeysWithoutReverse> = [
+            'col',
+            'column',
+            'vert',
+            'vertical',
+        ];
+
+        export const KEYS_REVERSE: Array<KeysWithReverse> = [
+            'rev-col',
+            'reverse-col',
+            'rev-column',
+            'reverse-column',
+            'rev-vert',
+            'reverse-vert',
+            'rev-vertical',
+            'reverse-vertical',
+        ];
+
+        export function isColumn(value: string): value is Keys {
+            return isReverse(value) || isNoReverse(value);
+        }
+
+        export function isReverse(value: string): value is KeysWithReverse {
+            return KEYS_REVERSE.indexOf(value as KeysWithReverse) >= 0;
+        }
+
+        export function isNoReverse(
+            value: string
+        ): value is KeysWithoutReverse {
+            return KEYS.indexOf(value as KeysWithoutReverse) >= 0;
+        }
+
+        export function getClassName(direction: Keys): ClassName {
+            return isNoReverse(direction)
+                ? 'flex-col'
+                : isReverse(direction)
+                ? 'flex-col-reverse'
+                : 'flex-col';
+        }
+    }
+
+    export type Keys = Direction.Keys;
+
+    export type ClassName = Row.ClassName | Column.ClassName;
+
+    export const DEFAULT_KEY: Keys = 'col';
+
+    export const DEFAULT_CLASSNAME: ClassName = 'flex-row';
+
+    export function isDirection(value: string | undefined): value is Keys {
+        return (
+            Row.isRow(value as Row.Keys) ||
+            Column.isColumn(value as Column.Keys)
         );
-    }, [] as any[]);
+    }
+
+    export function getClassName(direction: Keys = DEFAULT_KEY): ClassName {
+        if (Row.isRow(direction)) return Row.getClassName(direction);
+        if (Column.isColumn(direction)) return Column.getClassName(direction);
+        return DEFAULT_CLASSNAME;
+    }
 }
 
-export function createFlex(keys: string[], value: string) {
-    return keys.reduce(
-        (prev, key) => Object.assign(prev, { [key]: value }),
-        {}
-    );
-}
+export namespace Flex {
+    export type Keys = Display.Flex.Keys;
 
-export const FLEX_DISPLAY: Record<FlexType, ExactFlexDisplay> = {
-    flex: 'flex',
-    'in-flex': 'inline-flex',
-    'inline-flex': 'inline-flex',
-};
+    export type ClassName = Omit<Keys, 'in-flex'>;
 
-export const FLEX_ROW = {
-    ...createFlex(row, 'flex-row'),
-    ...createFlex(merge(prefix, row), 'flex-row-reverse'),
-};
+    export type ConstantRecord = Record<Keys, ClassName>;
 
-export const FLEX_COLUMN = {
-    ...createFlex(column, 'flex-col'),
-    ...createFlex(merge(prefix, column), 'flex-col-reverse'),
-};
+    export const KEYS: Array<Keys> = ['flex', 'in-flex', 'inline-flex'];
 
-export const FLEX_DIRECTION = {
-    ...FLEX_ROW,
-    ...FLEX_COLUMN,
-};
+    export const CLASSNAMES: ConstantRecord = {
+        flex: 'flex',
+        'in-flex': 'inline-flex',
+        'inline-flex': 'inline-flex',
+    };
 
-export function isFlex(type: string): type is FlexType {
-    return flexType.includes(type);
-}
+    export const DEFAULT_KEY: Keys = 'flex';
 
-export function getFlexDisplay(type: FlexType): ExactFlexDisplay {
-    return FLEX_DISPLAY[type];
-}
+    export function isDisplayFlex(value: string | undefined): value is Keys {
+        return KEYS.indexOf(value as Keys) >= 0;
+    }
 
-export function getFlexDirection(
-    dir?: string,
-    defaultDir: string = 'col'
-): string {
-    return (FLEX_DIRECTION as Record<string, string>)[dir || defaultDir];
+    export function getClassName(display: Keys = DEFAULT_KEY): ClassName {
+        return CLASSNAMES[display];
+    }
 }

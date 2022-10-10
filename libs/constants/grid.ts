@@ -1,18 +1,25 @@
-import type { GridType } from '../types/style';
+import type { Display } from '../types';
 
-export type ExactGridDisplay = 'grid' | 'inline-grid';
-const gridType = ['flex', 'inline-flex', 'in-flex'];
+export namespace Grid {
+    export type Keys = Display.Grid.Keys;
 
-export const GRID_DISPLAY: Record<GridType, ExactGridDisplay> = {
-    grid: 'grid',
-    'in-grid': 'inline-grid',
-    'inline-grid': 'inline-grid',
-};
+    export type ClassName = Omit<Display.Grid.Keys, 'in-grid'>;
 
-export function isGrid(type: string): type is GridType {
-    return gridType.includes(type);
-}
+    export const KEYS: Array<Keys> = ['grid', 'in-grid', 'inline-grid'];
 
-export function getGridDisplay(type: GridType): ExactGridDisplay {
-    return GRID_DISPLAY[type];
+    export const CLASSNAMES: Record<Keys, ClassName> = {
+        grid: 'grid',
+        'in-grid': 'inline-grid',
+        'inline-grid': 'inline-grid',
+    } as const;
+
+    export function isKeyDisplayGrid(value: string | undefined): value is Keys {
+        return KEYS.indexOf(value as Keys) >= 0;
+    }
+
+    export function getClassName(
+        display: Keys | undefined
+    ): ClassName | undefined {
+        return display && CLASSNAMES[display];
+    }
 }
