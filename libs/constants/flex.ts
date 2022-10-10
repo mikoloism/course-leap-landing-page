@@ -125,6 +125,8 @@ export namespace FlexDirection {
 }
 
 export namespace Flex {
+    export const Direction = FlexDirection;
+
     export type Keys = Display.Flex.Keys;
 
     export type ClassName = Omit<Keys, 'in-flex'>;
