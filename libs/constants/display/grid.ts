@@ -29,7 +29,7 @@ export module Grid {
         'inline-grid': 'inline-grid',
     } as const;
 
-    export function isKeyDisplayGrid(value: string | undefined): value is Keys {
+    export function isDisplayGrid(value: string | undefined): value is Keys {
         return KEYS.indexOf(value as Keys) >= 0;
     }
 
