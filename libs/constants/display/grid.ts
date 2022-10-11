@@ -1,9 +1,25 @@
-import type { Display } from '../types';
+import { CommonProps } from '../common';
 
-export namespace Grid {
-    export type Keys = Display.Grid.Keys;
+export module Grid {
+    export type Keys = 'grid' | 'in-grid' | 'inline-grid';
 
-    export type ClassName = Omit<Display.Grid.Keys, 'in-grid'>;
+    export type Columns = string;
+
+    export type Rows = string;
+
+    export type ColumnsProps = { columns?: Columns };
+
+    export type RowsProps = { rows?: Rows };
+
+    export type TypeProps = { type?: Keys };
+
+    export type Props = TypeProps & RowsProps & ColumnsProps;
+
+    export type PropsWithCommon = CommonProps & Props;
+}
+
+export module Grid {
+    export type ClassName = Omit<Keys, 'in-grid'>;
 
     export const KEYS: Array<Keys> = ['grid', 'in-grid', 'inline-grid'];
 

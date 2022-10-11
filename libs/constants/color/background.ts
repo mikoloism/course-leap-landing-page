@@ -1,7 +1,7 @@
-import type { Color } from '../types';
+import { ColorNames } from './common';
 
-export namespace BackgroundColor {
-    export type Keys = Color.Names;
+export module BackgroundColor {
+    export type Keys = ColorNames;
 
     export type ClassName = `bg-${Keys}`;
 

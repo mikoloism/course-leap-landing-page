@@ -1,4 +1,4 @@
-export namespace Direction {
+export module Direction {
     export type RowWithoutReverseKeys = 'row' | 'hor' | 'horizontal';
 
     export type RowReverseKeys = `${

@@ -1,9 +1,21 @@
-import type { Position as PositionType } from '../types';
+export module Position {
+    export type LongKeys = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-export namespace Position {
-    export type Keys = PositionType.Keys;
+    export type ShortKeys = 'rel' | 'abs' | 'fix' | 'stk';
 
-    export type ClassName = PositionType.LongKeys;
+    export type Keys = ShortKeys | LongKeys;
+
+    export type Props = {
+        pos?: Keys;
+    };
+
+    export type LongProps = {
+        position?: Keys;
+    };
+}
+
+export module Position {
+    export type ClassName = LongKeys;
 
     export type ConstantRecord = Record<Keys, ClassName>;
 
