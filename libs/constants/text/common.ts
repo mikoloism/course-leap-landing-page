@@ -5,20 +5,18 @@ import { Font as _Font } from './font';
 import { TextSize } from './size';
 
 export module Text {
+    export import Color = TextColor;
+    export import Align = TextAlign;
+    export import Element = TextElement;
+    export import Font = _Font;
+    export import Size = TextSize;
+
     export type PropsWithSize = Size.Props & Element.Props;
 
     export type PropsWithAlign = PropsWithSize & Align.Props;
 
     export type Props = PropsWithAlign & Font.Props & Color.Props;
 
-    export import Color = TextColor;
-    export import Align = TextAlign;
-    export import Element = TextElement;
-    export import Font = _Font;
-    export import Size = TextSize;
-}
-
-export module Text {
     type GetSizeArg = Size.Props & { element: Element.Keys };
 
     export const DEFAULT_CLASSNAME = 'flex flex-wrap flex-col font-montserrat';
@@ -33,7 +31,7 @@ export module Text {
     export function getClassName(props: Props): string {
         const correctSize = props.size ?? props.as ?? Size.DEFAULT_KEY;
         const className = new ClassName();
-        const { Weight } = Font;
+        const { Weight } = _Font;
 
         if (correctSize) className.append(Size.getClassName(correctSize));
         if (props.align) className.append(Align.getClassName(props.align));
@@ -47,11 +45,11 @@ export module Text {
         private className: string = '';
 
         get(): string {
-            return this.className;
+            return this.className.trim();
         }
 
         append(className: string | undefined): this {
-            this.className += className ?? '';
+            this.className += ` ${className}` ?? '';
 
             return this;
         }
