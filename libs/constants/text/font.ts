@@ -1,4 +1,4 @@
-import { CreateFontClassName } from './common';
+import type { CreateFontClassName } from './common';
 
 export module Font {
     export type Props = Name.Props & Weight.Props;

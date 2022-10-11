@@ -26,8 +26,6 @@ export module Gap {
     export import Y = GapY;
 }
 
-export type CreateClassNameType<T extends 'x' | 'y'> = `gap-${T}-${GapSize}`;
-
 export type GapNumericSize =
     | 1
     | 2

@@ -1,4 +1,4 @@
-import { CreateTextClassName } from './common';
+import type { CreateTextClassName } from './common';
 import { TextElement as Element } from './element';
 
 export module TextSize {

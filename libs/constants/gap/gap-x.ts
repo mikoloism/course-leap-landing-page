@@ -1,4 +1,4 @@
-import { CreateClassNameType, GapSize } from './common';
+import type { GapSize } from './common';
 
 export module GapX {
     export type Size = GapSize;
@@ -7,7 +7,9 @@ export module GapX {
 }
 
 export module GapX {
-    export type ClassName = CreateClassNameType<'x'>;
+    type CreateClassNameType<T extends string | number> = `gap-x-${T}`;
+
+    export type ClassName = CreateClassNameType<Size>;
 
     export type ConstantRecord = Record<Size, ClassName>;
 

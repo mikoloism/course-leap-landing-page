@@ -1,4 +1,4 @@
-import { CommonKeys, CreateClassNameType } from './common';
+import type { CommonKeys } from './common';
 
 export module PlaceContent {
     export type KeysWithoutCommon = 'between' | 'around' | 'evenly';
@@ -11,7 +11,9 @@ export module PlaceContent {
 }
 
 export module PlaceContent {
-    export type ClassName = CreateClassNameType<'content', Keys>;
+    type CreateClassNameType<T extends string> = `place-content-${T}`;
+
+    export type ClassName = CreateClassNameType<Keys>;
 
     export type ConstantRecord = Record<Keys, ClassName>;
 

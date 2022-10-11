@@ -22,11 +22,6 @@ export module PlaceAlign {
     export import PlaceItems = _PlaceItems;
 }
 
-export type CreateClassNameType<
-    T extends 'items' | 'content',
-    K extends PlaceAlign.Keys
-> = `place-${T}-${K}`;
-
 export type CommonKeys = 'center' | 'start' | 'end';
 
 export const getPlaceAlign = PlaceAlign.getClassName;

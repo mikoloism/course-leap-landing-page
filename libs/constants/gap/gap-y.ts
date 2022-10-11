@@ -1,12 +1,15 @@
-import { CreateClassNameType, GapSize } from './common';
+import type { GapSize } from './common';
 
 export module GapY {
     export type Size = GapSize;
+
     export type Props = { gapy?: Size };
 }
 
 export module GapY {
-    export type ClassName = CreateClassNameType<'y'>;
+    type CreateClassNameType<T extends string | number> = `gap-y-${T}`;
+
+    export type ClassName = CreateClassNameType<Size>;
 
     export type ConstantRecord = Record<Size, ClassName>;
 

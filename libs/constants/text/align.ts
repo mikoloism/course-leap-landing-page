@@ -1,4 +1,4 @@
-import { CreateTextClassName } from './common';
+import type { CreateTextClassName } from './common';
 
 export module TextAlign {
     export type Keys = 'center' | 'right' | 'left' | 'justify';
