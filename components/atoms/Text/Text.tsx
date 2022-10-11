@@ -1,47 +1,25 @@
-import { $, PropsWithChildren, PropsWithClassName } from '@/libs/common';
-import {
-    getFontWeight,
-    getPlaceContent,
-    getPlaceItems,
-    getTextAlign,
-    getTextColor,
-    getTextSize,
-} from '@/libs/constants';
+import { $, PropsWithCommon } from '@/libs/common';
+import { PlaceAlign, Text as TextStyle } from '@/libs/constants';
 import { createElement } from '@/libs/hooks/createElement';
-import type { ColorProps, PlaceProps } from '@/libs/types';
-import type {
-    AsProps,
-    AsPropsType,
-    FontProps,
-    TextAlignProps,
-    TextSizeProps,
-} from './types';
 
-interface Props
-    extends AsProps,
-        TextSizeProps,
-        ColorProps,
-        FontProps,
-        TextAlignProps,
-        PlaceProps,
-        PropsWithChildren<{}>,
-        PropsWithClassName<{}> {}
+type Props = PropsWithCommon & TextStyle.Props & PlaceAlign.Props;
 
 export function Text(props: Props) {
+    const { placeContent, placeItems, children, className, ...textStyle } =
+        props;
+
     const $className = $(
-        'flex flex-wrap flex-col',
-        'font-montserrat',
-        getTextColor(props.color),
-        getTextAlign(props.align),
-        getFontWeight(props.weight),
-        getTextSize(props.size ?? props.as),
-        getPlaceContent(props.placeContent, 'start'),
-        getPlaceItems(props.placeItems, 'center'),
+        TextStyle.DEFAULT_CLASSNAME,
+        TextStyle.getClassName(textStyle),
+        PlaceAlign.getClassName({
+            content: placeContent ?? 'start',
+            items: placeItems ?? 'center',
+        }),
         props.className
     );
 
     return createElement(
-        props.as as AsPropsType,
+        props.as as TextStyle.Element.Keys,
         { className: $className },
         props.children
     );
