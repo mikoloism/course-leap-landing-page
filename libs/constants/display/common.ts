@@ -2,6 +2,9 @@ import { Flex as _Flex } from './flex';
 import { Grid as _Grid } from './grid';
 
 export module Display {
+    export import Flex = _Flex;
+    export import Grid = _Grid;
+
     export type Keys = Flex.Keys | Grid.Keys;
 
     export type OnlyTypeProps = {
@@ -9,9 +12,6 @@ export module Display {
     };
 
     export type Props = Flex.Props | Grid.Props;
-
-    export import Flex = _Flex;
-    export import Grid = _Grid;
 }
 
 export module Display {
@@ -40,9 +40,9 @@ export module Display {
         nowrap,
     }: GetByFlexArg): string {
         return [
-            Flex.getClassName(type),
-            Flex.getDirectionClassName(dir),
-            Flex.getNoWrapClassName(nowrap),
+            _Flex.getClassName(type),
+            _Flex.getDirectionClassName(dir),
+            _Flex.getNoWrapClassName(nowrap),
         ].join(' ');
     }
 

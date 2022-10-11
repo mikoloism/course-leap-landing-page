@@ -2,6 +2,9 @@ import { GapX } from './gap-x';
 import { GapY } from './gap-y';
 
 export module Gap {
+    export import X = GapX;
+    export import Y = GapY;
+
     export type NumericSize = GapNumericSize;
 
     export type XPropsType = X.Props;
@@ -21,9 +24,6 @@ export module Gap {
 
         return className;
     }
-
-    export import X = GapX;
-    export import Y = GapY;
 }
 
 export type GapNumericSize =
