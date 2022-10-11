@@ -38,3 +38,7 @@ export enum Color {
     Black = 'black',
     White = 'white',
 }
+
+
+// utility types
+export type Exact<T> = { [K in keyof T]: T[K] };
