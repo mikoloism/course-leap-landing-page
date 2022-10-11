@@ -53,7 +53,9 @@ export module TextSize {
         p: 'text-paragraph',
     } as const;
 
-    export function getClassName(size: Keys | undefined): ClassName {
+    export function getClassName(
+        size: Keys | Element.Keys | undefined
+    ): ClassName {
         return CLASSNAMES[size ?? DEFAULT_KEY];
     }
 }
