@@ -3,6 +3,10 @@ import { ColorNames } from './common';
 export module TextColor {
     export type Keys = ColorNames;
 
+    export type Props = { color?: Keys };
+}
+
+export module TextColor {
     export type ClassName = `text-${Keys}`;
 
     export type ConstantRecord = Record<Keys, ClassName>;
