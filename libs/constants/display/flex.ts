@@ -44,7 +44,22 @@ export module Flex {
         return CLASSNAMES[display];
     }
 
+    export const getDirectionClassName = Direction.getClassName;
+
+    export const getNoWrapClassName = FlexNoWrap.getClassName;
+
     export import Direction = FlexDirection;
+}
+
+module FlexNoWrap {
+    const FLEX_NO_WRAP = '' as const;
+    const FLEX_WRAP = 'flex-wrap' as const;
+
+    type GetNoWrapReturn = typeof FLEX_WRAP | typeof FLEX_NO_WRAP;
+
+    export function getClassName(nowrap: boolean = false): GetNoWrapReturn {
+        return !!nowrap ? FLEX_NO_WRAP : FLEX_WRAP;
+    }
 }
 
 export module FlexDirection {
