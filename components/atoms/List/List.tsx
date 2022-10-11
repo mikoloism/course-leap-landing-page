@@ -1,33 +1,39 @@
-import { $ } from '@/libs/common';
-import {
-    getFlexDirection,
-    getGapSize,
-    getPlaceContent,
-    getPlaceItems,
-} from '@/libs/constants';
-import type { FlexProps } from '@/libs/types';
+import { $, PropsWithClassName } from '@/libs/common';
+import { Display, PlaceAlign, Gap } from '@/libs/constants';
 import { getKeyProperty } from './hooks';
 import type { DataProps, DataType, KeyProps } from './types';
 
-interface Props<T> extends FlexProps, DataProps<T>, KeyProps<T> {
+type StyleProps = Gap.Props & PlaceAlign.Props & Display.Flex.Props;
+
+type Props<T> = PropsWithClassName<StyleProps & KeyProps<T> & DataProps<T>> & {
     Component?: any;
-    className?: string;
-}
+};
+
+const DEFAULT_PLACE_CONTENT = 'center';
+const DEFAULT_PLACE_ITEMS = 'center';
+const DEFAULT_DISPLAY_TYPE = 'flex';
+const LIST_NONE_CLASSNAME = 'list-none';
 
 export function List<T>({ data, $key, Component, ...props }: Props<T>) {
-    const $className = $(
-        'flex list-none',
-        // TODO : use `@/atoms/Group/` hooks to style or create common hooks
-        getFlexDirection(props.dir),
-        getPlaceItems(props.placeItems, 'center'),
-        getPlaceContent(props.placeContent, 'center'),
-        getGapSize({ gapx: props.gapx, gapy: props.gapy }),
-        { 'flex-wrap': !props.nowrap },
+    let className = $(
+        LIST_NONE_CLASSNAME,
+
+        Display.getClassNameByDisplayFlex({
+            type: DEFAULT_DISPLAY_TYPE,
+            dir: props.dir,
+            nowrap: props.nowrap,
+        }),
+        PlaceAlign.getClassName({
+            content: props.placeContent ?? DEFAULT_PLACE_CONTENT,
+            items: props.placeItems ?? DEFAULT_PLACE_ITEMS,
+        }),
+        Gap.getClassName({ gapx: props.gapx, gapy: props.gapy }),
+
         props.className
     );
 
     return (
-        <ul className={$className}>
+        <ul className={className}>
             {data.map((value: DataType<T>, index: number) => {
                 let validKey = getKeyProperty<T>({ key: $key, value, index });
 
