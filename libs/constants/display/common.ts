@@ -12,6 +12,10 @@ export module Display {
     };
 
     export type Props = Flex.Props | Grid.Props;
+
+    export type PropsWithCommon = Flex.PropsWithCommon | Grid.PropsWithCommon;
+
+    export type ClassName = Flex.ClassName | Grid.ClassName;
 }
 
 export module Display {
