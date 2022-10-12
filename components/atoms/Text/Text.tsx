@@ -1,4 +1,4 @@
-import { $, PropsWithCommon } from '@/libs/common';
+import { classnames, PropsWithCommon } from '@/libs/common';
 import { PlaceAlign, Text as TextStyle } from '@/libs/constants';
 import { createElement } from '@/libs/hooks/createElement';
 
@@ -8,7 +8,7 @@ export function Text(props: Props) {
     const { placeContent, placeItems, children, className, ...textStyle } =
         props;
 
-    const $className = $(
+    const $className = classnames(
         TextStyle.DEFAULT_CLASSNAME,
         TextStyle.getClassName(textStyle),
         PlaceAlign.getClassName({

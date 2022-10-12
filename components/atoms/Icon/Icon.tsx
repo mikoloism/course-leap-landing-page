@@ -1,4 +1,4 @@
-import { $, Component } from '@/libs/common';
+import { classnames, Component } from '@/libs/common';
 import { getIconComponent } from './hooks';
 import type { IconProps } from './types';
 
@@ -9,7 +9,7 @@ export class Icon extends Component<IconProps, any, any> {
 
     public render() {
         const { name: $name, scale, className, ...$props } = this.props;
-        const $className = $(
+        const $className = classnames(
             'inline-flex flex-wrap flex-row place-content-center place-items-center',
             className
         );

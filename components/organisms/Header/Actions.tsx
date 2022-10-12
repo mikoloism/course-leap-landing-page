@@ -1,15 +1,15 @@
 import { Group, Icon, Link, Text } from '@/atoms';
-import { $, PropsWithClassName } from '@/libs/common';
+import { classnames, PropsWithClassName } from '@/libs/common';
 import { useContent } from '@/libs/hooks';
 
 export function HeaderActionGroup({ className }: PropsWithClassName<{}>) {
     const { content } = useContent('landing-page', 'header_actions');
-    const $loginClassName = $(
+    const $loginClassName = classnames(
         'rounded-md w-[45%] h-20',
         'inline-flex flex-wrap flex-row place-items-center place-content-center'
     );
 
-    const $joinUsClassName = $(
+    const $joinUsClassName = classnames(
         $loginClassName,
         'bg-primary fill-white text-center'
     );

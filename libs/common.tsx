@@ -1,5 +1,5 @@
 // classnames
-export { default as $ } from 'classnames';
+export { default as classnames } from 'classnames';
 
 // react-types
 export { Component, memo } from 'react';
@@ -38,7 +38,6 @@ export enum Color {
     Black = 'black',
     White = 'white',
 }
-
 
 // utility types
 export type Exact<T> = { [K in keyof T]: T[K] };

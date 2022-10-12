@@ -1,4 +1,4 @@
-import { $, PropsWithClassName } from '@/libs/common';
+import { classnames, PropsWithClassName } from '@/libs/common';
 import { Display, PlaceAlign, Gap } from '@/libs/constants';
 import { getKeyProperty } from './hooks';
 import type { DataProps, DataType, KeyProps } from './types';
@@ -12,11 +12,11 @@ type Props<T> = PropsWithClassName<StyleProps & KeyProps<T> & DataProps<T>> & {
 const DEFAULT_PLACE_CONTENT = 'center';
 const DEFAULT_PLACE_ITEMS = 'center';
 const DEFAULT_DISPLAY_TYPE = 'flex';
-const LIST_NONE_CLASSNAME = 'list-none';
+const NONE_LIST_CLASSNAME = 'list-none';
 
 export function List<T>({ data, $key, Component, ...props }: Props<T>) {
-    let className = $(
-        LIST_NONE_CLASSNAME,
+    let className = classnames(
+        NONE_LIST_CLASSNAME,
 
         Display.getClassNameByDisplayFlex({
             type: DEFAULT_DISPLAY_TYPE,
