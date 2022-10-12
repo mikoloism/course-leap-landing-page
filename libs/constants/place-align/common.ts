@@ -1,3 +1,4 @@
+import { classnames } from '@/libs/common';
 import { PlaceContent as _PlaceContent } from './place-content';
 import { PlaceItems as _PlaceItems } from './place-items';
 
@@ -9,16 +10,25 @@ export module PlaceAlign {
 
     export type Props = PlaceContent.Props & PlaceItems.Props;
 
+    export type ClassName =
+        | `${PlaceContent.ClassName} ${PlaceItems.ClassName}`
+        | `${PlaceItems.ClassName} ${PlaceContent.ClassName}`
+        | PlaceContent.ClassName
+        | PlaceItems.ClassName;
+
     type PlaceAlignArgs = {
         content?: PlaceContent.Keys;
         items?: PlaceItems.Keys;
     };
 
-    export function getClassName({ content, items }: PlaceAlignArgs): string {
-        return [
+    export function getClassName({
+        content,
+        items,
+    }: PlaceAlignArgs): ClassName {
+        return classnames(
             PlaceContent.getClassName(content),
-            PlaceItems.getClassName(items),
-        ].join(' ');
+            PlaceItems.getClassName(items)
+        ) as ClassName;
     }
 }
 
