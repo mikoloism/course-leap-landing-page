@@ -1,10 +1,9 @@
-import { Component, PropsWithAll } from '@/libs/common';
+import { Component } from '@/libs/common';
 import { GroupRender } from './GroupRender';
-import { GroupStyle, StyleProps } from './GroupStyle';
+import { GroupStyle } from './GroupStyle';
+import type { GroupComponentProps as Props } from './type';
 
-type Props = PropsWithAll<StyleProps>;
-
-export class Group extends Component<Props> {
+export class GroupComponent extends Component<Props> {
     constructor(props: Props) {
         super(props);
     }
@@ -22,7 +21,7 @@ export class Group extends Component<Props> {
     }
 
     private getStyleFromClassName(): string {
-        const styleFromClassName = new GroupStyle<StyleProps>(this.props);
+        const styleFromClassName = new GroupStyle(this.props);
 
         return styleFromClassName.getClassName();
     }
