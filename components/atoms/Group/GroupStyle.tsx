@@ -1,20 +1,8 @@
-import { $, PropsWithClassName } from '@/libs/common';
-import {
-    Color,
-    CommonProps,
-    Display,
-    Gap,
-    PlaceAlign,
-    Position,
-} from '@/libs/constants';
+import { classnames } from '@/libs/common';
+import { Color, Display, Gap, PlaceAlign, Position } from '@/libs/constants';
+import { StyleComponentProps } from './type';
 
-export type StyleProps =
-    | Color.Props &
-          CommonProps &
-          Display.Props &
-          PropsWithClassName & { layout?: boolean };
-
-export class GroupStyle<T extends StyleProps> {
+export class GroupStyle<T extends StyleComponentProps = StyleComponentProps> {
     private LAYOUT_MODE_CLASSNAME = 'w-screen h-screen p-0' as const;
     private DEFAULT_DISPLAY_TYPE = Display.Flex.DEFAULT_KEY;
     private DEFAULT_PLACE_CONTENT = 'center' as const;
@@ -25,8 +13,8 @@ export class GroupStyle<T extends StyleProps> {
         this.setProps(props);
     }
 
-    public getClassName() {
-        return $(
+    public getClassName(): string {
+        return this.mergeClassNames(
             this.getBackgroundColorClassName(),
             this.getClassNameByDisplay(),
             this.getGapSizeClassName(),
@@ -37,13 +25,25 @@ export class GroupStyle<T extends StyleProps> {
         );
     }
 
-    private getBackgroundColorClassName(): string {
-        return this.props?.color
-            ? Color.Background.getClassName(this.props.color)
-            : '';
+    private mergeClassNames(
+        ...args: Array<string | object | undefined>
+    ): string {
+        return classnames(...args);
     }
 
-    private getClassNameByDisplay(): string {
+    private getBackgroundColorClassName(): string {
+        return this.hasColorProps() ? this.getBackgroundColor() : '';
+    }
+
+    private getBackgroundColor(): Color.Background.ClassName {
+        return Color.Background.getClassName(this.props.color);
+    }
+
+    private hasColorProps(): boolean {
+        return !!this.props?.color;
+    }
+
+    private getClassNameByDisplay(): Display.ClassName {
         if (this.isDisplayGrid()) {
             return this.getClassNameByDisplayGrid();
         }
@@ -55,11 +55,11 @@ export class GroupStyle<T extends StyleProps> {
         return '';
     }
 
-    private getDisplayType(): string {
+    private getDisplayType(): Display.Keys {
         return this.props?.type ?? this.DEFAULT_DISPLAY_TYPE;
     }
 
-    private isDisplayFlex() {
+    private isDisplayFlex(): boolean {
         const type = this.getDisplayType();
 
         return Display.Flex.isDisplayFlex(type);
@@ -71,7 +71,7 @@ export class GroupStyle<T extends StyleProps> {
         return Display.Grid.isDisplayGrid(type);
     }
 
-    private getClassNameByDisplayGrid() {
+    private getClassNameByDisplayGrid(): Display.Grid.ClassName {
         const props = this.parseType<Display.Grid.Props>();
 
         return Display.getClassNameByDisplayGrid({
@@ -81,7 +81,7 @@ export class GroupStyle<T extends StyleProps> {
         });
     }
 
-    private getClassNameByDisplayFlex() {
+    private getClassNameByDisplayFlex(): Display.Flex.ClassName {
         const props = this.parseType<Display.Flex.Props>();
 
         return Display.getClassNameByDisplayFlex({
@@ -89,10 +89,6 @@ export class GroupStyle<T extends StyleProps> {
             dir: props.dir,
             nowrap: props.nowrap,
         });
-    }
-
-    private parseType<P>(): P {
-        return this.props as unknown as P;
     }
 
     private getGapSizeClassName(): string {
@@ -103,20 +99,34 @@ export class GroupStyle<T extends StyleProps> {
     }
 
     private getLayoutModeClassName(): string {
-        return this.props?.layout ? this.LAYOUT_MODE_CLASSNAME : '';
+        return this.hasLayoutProps() ? this.getLayoutMode() : '';
     }
 
-    private getPlaceAlignClassName(): string {
+    private getLayoutMode(): string {
+        return this.LAYOUT_MODE_CLASSNAME;
+    }
+
+    private hasLayoutProps(): boolean {
+        return !!this.props?.layout;
+    }
+
+    private getPlaceAlignClassName(): PlaceAlign.ClassName {
         return PlaceAlign.getClassName({
-            content: this.props.placeContent ?? this.DEFAULT_PLACE_CONTENT,
-            items: this.props.placeItems ?? this.DEFAULT_PLACE_ITEMS,
+            content: this.getPlaceContent(),
+            items: this.getPlaceItems(),
         });
     }
 
-    private getPositionsClassName(): string {
-        return this.props.pos
-            ? (Position.getClassName(this.props.pos) as string)
-            : '';
+    private getPlaceContent(): PlaceAlign.PlaceContent.Keys {
+        return this.props?.placeContent ?? this.DEFAULT_PLACE_CONTENT;
+    }
+
+    private getPlaceItems(): PlaceAlign.PlaceItems.Keys {
+        return this.props.placeItems ?? this.DEFAULT_PLACE_ITEMS;
+    }
+
+    private getPositionsClassName(): Position.ClassName | '' {
+        return Position.getClassName(this.props?.pos) ?? '';
     }
 
     private getManualClassName(): string {
@@ -127,5 +137,9 @@ export class GroupStyle<T extends StyleProps> {
         if (props) {
             this.props = props;
         }
+    }
+
+    private parseType<P>(): P {
+        return this.props as unknown as P;
     }
 }
