@@ -1,5 +1,5 @@
 import type { PropsWithClassName } from '@/libs/common';
-import { $, Component, Image as NextImage } from '@/libs/common';
+import { classnames, Component, Image as NextImage } from '@/libs/common';
 
 interface ImageProps extends PropsWithClassName {
     src: string;
@@ -13,7 +13,7 @@ export class Image extends Component<ImageProps> {
     }
 
     render() {
-        const $className = $(
+        const $className = classnames(
             'grid',
             'relative m-0 p-0',
             'place-content-center',
