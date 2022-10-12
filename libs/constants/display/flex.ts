@@ -1,4 +1,4 @@
-import type { CommonProps } from '../common';
+import type { Common } from '../common';
 import type { Direction as _Direction } from '../direction';
 
 type CreateClassNameType<T extends 'col' | 'row'> =
@@ -141,9 +141,9 @@ export module Flex {
 
     export type LongProps = TypeProps & NowrapProps & _Direction.LongProps;
 
-    export type PropsWithCommon = CommonProps & Props;
+    export type PropsWithCommon = Common.Props & Props;
 
-    export type LongPropsWithCommon = CommonProps & LongProps;
+    export type LongPropsWithCommon = PropsWithCommon & LongProps;
 }
 
 export module Flex {

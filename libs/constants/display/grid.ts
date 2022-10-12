@@ -1,4 +1,4 @@
-import { CommonProps } from '../common';
+import { PropsWithAlign } from '../common';
 
 export module Grid {
     export type Keys = 'grid' | 'in-grid' | 'inline-grid';
@@ -15,7 +15,7 @@ export module Grid {
 
     export type Props = TypeProps & RowsProps & ColumnsProps;
 
-    export type PropsWithCommon = CommonProps & Props;
+    export type PropsWithCommon = PropsWithCommon & Props;
 }
 
 export module Grid {
