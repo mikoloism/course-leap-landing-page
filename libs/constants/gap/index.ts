@@ -1,3 +1,3 @@
-export * from './common';
-export * from './gap-x';
-export * from './gap-y';
+export * from './gap';
+export * as X from './gap-x';
+export * as Y from './gap-y';

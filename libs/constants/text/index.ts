@@ -1,5 +1,5 @@
-export * from './align';
-export * from './element';
-export * from './font';
-export * from './size';
-export * from './common';
+export * from './text';
+export * as Align from './align';
+export * as Element from './element';
+export * as Font from './font';
+export * as Size from './size';

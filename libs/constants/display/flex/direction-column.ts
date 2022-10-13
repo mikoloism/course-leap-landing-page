@@ -1,11 +1,11 @@
-import * as Direction from '../../direction';
-import { CreateClassNameType } from './common';
+import type { Column } from '../../direction';
+import type { CreateClassNameType } from './common';
 
-export type Keys = Direction.ColumnKeys;
+export type Keys = Column.Keys;
 
-export type KeysWithReverse = Direction.ColumnReverseKeys;
+type KeysWithReverse = Column.ReverseKeys;
 
-export type KeysWithoutReverse = Direction.ColumnWithoutReverseKeys;
+type KeysWithoutReverse = Column.ColumnKeys;
 
 export type ClassName = CreateClassNameType<'col'>;
 
@@ -28,21 +28,25 @@ export const KEYS_REVERSE: Array<KeysWithReverse> = [
 ];
 
 export function isValidKey(value: string): value is Keys {
-    return isReverse(value) || isNoReverse(value);
+    return isReverseKey(value) || isNoReverseKey(value);
 }
 
-export function isReverse(value: string): value is KeysWithReverse {
-    return KEYS_REVERSE.indexOf(value as KeysWithReverse) >= 0;
+export function isReverseKey(value: string): value is KeysWithReverse {
+    if (value == undefined) return false;
+
+    return KEYS_REVERSE.includes(value as KeysWithReverse);
 }
 
-export function isNoReverse(value: string): value is KeysWithoutReverse {
-    return KEYS.indexOf(value as KeysWithoutReverse) >= 0;
+export function isNoReverseKey(value: string): value is KeysWithoutReverse {
+    if (value == undefined) return false;
+
+    return KEYS.includes(value as KeysWithoutReverse);
 }
 
 export function createClassName(direction: Keys): ClassName {
-    return isNoReverse(direction)
+    return isNoReverseKey(direction)
         ? 'flex-col'
-        : isReverse(direction)
+        : isReverseKey(direction)
         ? 'flex-col-reverse'
         : 'flex-col';
 }

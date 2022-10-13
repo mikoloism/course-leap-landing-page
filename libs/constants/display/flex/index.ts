@@ -1,2 +1,2 @@
-export * as Direction from './direction';
+export * as Direction from './flex-direction';
 export * from './flex-display';

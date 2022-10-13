@@ -2,7 +2,7 @@ import { classnames } from '@/libs/common';
 import * as Flex from './flex';
 import * as Grid from './grid';
 
-export type Keys = Flex.Keys | Grid.Keys;
+export type Keys = Flex.FlexKey | Grid.GridKeys;
 
 export type Props = Flex.Props | Grid.Props;
 
@@ -18,26 +18,30 @@ type GetByFlexArg = Flex.Props;
 
 type GetByGridArg = Grid.Props;
 
-export function getClassNameByDisplay({
-    type,
-    ...props
-}: GetByDisplayArg): string {
-    if (Flex.isDisplayFlex(type)) {
-        return createClassNameByDisplayFlex({ type, ...props });
+export function getClassNameByDisplay(props: GetByDisplayArg): string {
+    if (Flex.isDisplayFlex(props.type ?? '')) {
+        let flexProps = props as Required<GetByFlexArg>;
+        return createClassNameByDisplayFlex(flexProps);
     }
 
-    if (Grid.isDisplayGrid(type)) {
-        return createClassNameByDisplayGrid({ type, ...props });
+    if (Grid.isDisplayGrid(props.type ?? '')) {
+        // TODO : display-grid is coming
+        return createClassNameByDisplayGrid({
+            type: 'grid',
+            rows: '',
+            columns: '',
+        });
     }
 
-    return createClassNameByDisplayFlex({ type: 'flex', ...props });
+    let flexProps = props as Required<GetByFlexArg>;
+    return createClassNameByDisplayFlex({ ...flexProps, type: 'flex' });
 }
 
-export function createClassNameByDisplayFlex({
-    type,
-    dir,
-    nowrap,
-}: GetByFlexArg): string {
+export function createClassNameByDisplayFlex(
+    props: Required<GetByFlexArg>
+): string {
+    const { type, dir, nowrap } = props;
+
     return classnames(
         Flex.createClassName(type),
         Flex.createFlexDirectionClassName(dir),
@@ -45,40 +49,31 @@ export function createClassNameByDisplayFlex({
     );
 }
 
-export function createClassNameByDisplayGrid({
-    type,
-    columns,
-    rows,
-}: GetByGridArg): string {
+export function createClassNameByDisplayGrid(props: GetByGridArg): string {
+    const { type, columns, rows } = props;
+
     return Grid.getClassName(type) as string;
 }
 
 export class StyleFactory {
-    protected DEFAULT_DISPLAY_TYPE = Flex.DEFAULT_KEY;
-    protected DEFAULT_FLEX_DIRECTION = Flex.Direction.DEFAULT_KEY;
-    private type: Keys | undefined;
     private props: Props = {};
+    private flexProps: Flex.Props = {};
+    private gridProps: Grid.Props = {};
 
-    public constructor(type: Keys | undefined) {
-        this.type = type ?? this.DEFAULT_DISPLAY_TYPE;
+    public constructor() {}
+
+    public setFlexTypeProps(props: GetByFlexArg): void {
+        const { type, dir, nowrap } = props;
+
+        this.props.type = type;
+        this.flexProps = { type, dir, nowrap };
     }
 
-    public setFlexTypeProps(
-        direction: Flex.Direction.Keys | undefined,
-        nowrap: boolean | undefined
-    ): void {
-        this.props = {
-            type: this.type,
-            dir: direction ?? this.DEFAULT_FLEX_DIRECTION,
-            nowrap: nowrap,
-        } as Flex.Props;
-    }
+    public setGridTypeProps(props: GetByGridArg): void {
+        const { type, columns, rows } = props;
 
-    public setGridTypeProps(
-        columns: string | undefined,
-        rows: string | undefined
-    ): void {
-        this.props = { type: this.type, columns, rows } as Grid.Props;
+        this.props.type = type;
+        this.gridProps = { type, columns, rows };
     }
 
     public createClassName(): ClassName {
@@ -86,7 +81,20 @@ export class StyleFactory {
     }
 
     private getClassNameByDisplay(): ClassName {
-        return getClassNameByDisplay({ type: this.type, ...this.props });
+        if (this.isDisplayFlex()) {
+            return createClassNameByDisplayFlex(
+                this.flexProps as Required<Flex.Props>
+            );
+        }
+
+        if (this.isDisplayGrid()) {
+            return createClassNameByDisplayGrid(this.gridProps);
+        }
+
+        return createClassNameByDisplayFlex({
+            ...this.flexProps,
+            type: 'flex',
+        } as Required<Flex.Props>);
     }
 
     //* DEPRECATED */
@@ -94,16 +102,14 @@ export class StyleFactory {
         const props = this.props as Flex.Props;
 
         return createClassNameByDisplayFlex({
-            type: this.getDisplayType() as Flex.Keys,
+            type: this.flexProps.type,
             dir: props.dir,
             nowrap: props.nowrap,
-        });
+        } as Required<Flex.Props>);
     }
 
     private isDisplayFlex(): boolean {
-        const type = this.getDisplayType();
-
-        return Flex.isDisplayFlex(type);
+        return Flex.isDisplayFlex(this.props.type ?? this.flexProps.type ?? '');
     }
 
     private getClassNameByDisplayGrid(): Grid.ClassName {
@@ -117,13 +123,7 @@ export class StyleFactory {
     }
 
     private isDisplayGrid(): boolean {
-        const type = this.getDisplayType();
-
-        return Grid.isDisplayGrid(type);
+        return Grid.isDisplayGrid(this.props.type ?? this.gridProps.type ?? '');
     }
     //* */
-
-    private getDisplayType(): Keys {
-        return this?.type ?? this.DEFAULT_DISPLAY_TYPE;
-    }
 }

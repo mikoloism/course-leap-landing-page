@@ -1,3 +1,3 @@
-export * from './common';
-export * from './place-content';
-export * from './place-items';
+export * from './place-align';
+export * as PlaceContent from './place-content';
+export * as PlaceItems from './place-items';

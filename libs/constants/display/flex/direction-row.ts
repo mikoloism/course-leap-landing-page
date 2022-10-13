@@ -1,4 +1,4 @@
-import * as Direction from '../../direction';
+import * as Direction from '../../direction/direction';
 import { CreateClassNameType } from './common';
 
 export type Keys = Direction.RowKeys;
