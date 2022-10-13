@@ -2,21 +2,17 @@ import { classnames } from '@/libs/common';
 import { Color, Display, Gap, PlaceAlign, Position } from '@/libs/constants';
 import { StyleComponentProps } from './type';
 
-export class GroupStyle<T extends StyleComponentProps = StyleComponentProps> {
-    private LAYOUT_MODE_CLASSNAME = 'w-screen h-screen p-0' as const;
-    private DEFAULT_DISPLAY_TYPE = Display.Flex.DEFAULT_KEY;
-    private DEFAULT_PLACE_CONTENT = 'center' as const;
-    private DEFAULT_PLACE_ITEMS = 'center' as const;
+export class GroupStyleFactory<T extends StyleComponentProps> {
     private props: T = {} as T;
 
     constructor(props: T) {
-        this.setProps(props);
+        this.props = props;
     }
 
     public getClassName(): string {
-        return this.mergeClassNames(
+        return classnames(
             this.getBackgroundColorClassName(),
-            this.getClassNameByDisplay(),
+            this.getDisplayClassName(),
             this.getGapSizeClassName(),
             this.getLayoutModeClassName(),
             this.getPlaceAlignClassName(),
@@ -32,63 +28,22 @@ export class GroupStyle<T extends StyleComponentProps = StyleComponentProps> {
     }
 
     private getBackgroundColorClassName(): string {
-        return this.hasColorProps() ? this.getBackgroundColor() : '';
+        return new Color.BackgroundStyleFactory(
+            this.props.color
+        ).createClassName();
     }
 
-    private getBackgroundColor(): Color.Background.ClassName {
-        return Color.Background.getClassName(this.props.color);
-    }
+    private getDisplayClassName(): string {
+        let props: any = this.props;
+        const display = new DisplayStyleFactory(this.props.type);
 
-    private hasColorProps(): boolean {
-        return !!this.props?.color;
-    }
+        props = props as Display.Flex.Props;
+        display.setFlexTypeProps(props.dir, props.nowrap);
 
-    private getClassNameByDisplay(): Display.ClassName {
-        if (this.isDisplayGrid()) {
-            return this.getClassNameByDisplayGrid();
-        }
+        props = props as Display.Grid.Props;
+        display.setGridTypeProps(props.columns, props.rows);
 
-        if (this.isDisplayFlex()) {
-            return this.getClassNameByDisplayFlex();
-        }
-
-        return '';
-    }
-
-    private getDisplayType(): Display.Keys {
-        return this.props?.type ?? this.DEFAULT_DISPLAY_TYPE;
-    }
-
-    private isDisplayFlex(): boolean {
-        const type = this.getDisplayType();
-
-        return Display.Flex.isDisplayFlex(type);
-    }
-
-    private isDisplayGrid(): boolean {
-        const type = this.getDisplayType();
-
-        return Display.Grid.isDisplayGrid(type);
-    }
-
-    private getClassNameByDisplayGrid(): Display.Grid.ClassName {
-        const props = this.parseType<Display.Grid.Props>();
-
-        return Display.getClassNameByDisplayGrid({
-            type: props.type,
-            columns: props.columns,
-            rows: props.rows,
-        });
-    }
-
-    private getClassNameByDisplayFlex(): Display.Flex.ClassName {
-        const props = this.parseType<Display.Flex.Props>();
-
-        return Display.getClassNameByDisplayFlex({
-            type: props.type,
-            dir: props.dir,
-            nowrap: props.nowrap,
-        });
+        return display.createClassName() as string;
     }
 
     private getGapSizeClassName(): string {
@@ -99,30 +54,14 @@ export class GroupStyle<T extends StyleComponentProps = StyleComponentProps> {
     }
 
     private getLayoutModeClassName(): string {
-        return this.hasLayoutProps() ? this.getLayoutMode() : '';
-    }
-
-    private getLayoutMode(): string {
-        return this.LAYOUT_MODE_CLASSNAME;
-    }
-
-    private hasLayoutProps(): boolean {
-        return !!this.props?.layout;
+        return new LayoutModeStyle(this.props.layout).createClassName();
     }
 
     private getPlaceAlignClassName(): PlaceAlign.ClassName {
-        return PlaceAlign.getClassName({
-            content: this.getPlaceContent(),
-            items: this.getPlaceItems(),
-        });
-    }
-
-    private getPlaceContent(): PlaceAlign.PlaceContent.Keys {
-        return this.props?.placeContent ?? this.DEFAULT_PLACE_CONTENT;
-    }
-
-    private getPlaceItems(): PlaceAlign.PlaceItems.Keys {
-        return this.props.placeItems ?? this.DEFAULT_PLACE_ITEMS;
+        return new PlaceAlignStyleFactory(
+            this.props.placeContent,
+            this.props.placeItems
+        ).createClassName();
     }
 
     private getPositionsClassName(): Position.ClassName | '' {
@@ -132,14 +71,32 @@ export class GroupStyle<T extends StyleComponentProps = StyleComponentProps> {
     private getManualClassName(): string {
         return this.props?.className ?? '';
     }
+}
 
-    public setProps(props?: T): void {
-        if (props) {
-            this.props = props;
-        }
+class LayoutModeStyle {
+    protected LAYOUT_MODE_CLASSNAME = 'w-screen h-screen p-0' as const;
+
+    public constructor(private isLayoutMode: boolean | undefined = false) {}
+
+    public createClassName(): string | '' {
+        return this.isLayoutModeActive() ? this.getLayoutModeClassName() : '';
     }
 
-    private parseType<P>(): P {
-        return this.props as unknown as P;
+    private getLayoutModeClassName(): string {
+        return this.LAYOUT_MODE_CLASSNAME;
     }
+
+    private isLayoutModeActive(): boolean {
+        return !!this?.isLayoutMode;
+    }
+}
+
+class PlaceAlignStyleFactory extends PlaceAlign.StyleFactory {
+    protected DEFAULT_PLACE_CONTENT: PlaceAlign.PlaceContent.Keys = 'center';
+    protected DEFAULT_PLACE_ITEMS: PlaceAlign.PlaceItems.Keys = 'center';
+}
+
+class DisplayStyleFactory extends Display.StyleFactory {
+    protected DEFAULT_DISPLAY_TYPE: Display.Flex.Keys = 'flex';
+    protected DEFAULT_FLEX_DIRECTION: Display.Flex.Direction.Keys = 'row';
 }
