@@ -12,16 +12,23 @@ type Props<T> = PropsWithClassName<StyleProps & KeyProps<T> & DataProps<T>> & {
 const DEFAULT_PLACE_CONTENT = 'center';
 const DEFAULT_PLACE_ITEMS = 'center';
 const DEFAULT_DISPLAY_TYPE = 'flex';
+const DEFAULT_FLEX_DIRECTION = 'row';
 const NONE_LIST_CLASSNAME = 'list-none';
+
+const defaultProps = {
+    dir: 'row',
+    nowrap: false,
+    type: 'flex',
+};
 
 export function List<T>({ data, $key, Component, ...props }: Props<T>) {
     let className = classnames(
         NONE_LIST_CLASSNAME,
 
-        Display.getClassNameByDisplayFlex({
+        Display.createClassNameByDisplayFlex({
             type: DEFAULT_DISPLAY_TYPE,
-            dir: props.dir,
-            nowrap: props.nowrap,
+            dir: props.dir ?? DEFAULT_FLEX_DIRECTION,
+            nowrap: props.nowrap ?? false,
         }),
         PlaceAlign.getClassName({
             content: props.placeContent ?? DEFAULT_PLACE_CONTENT,
