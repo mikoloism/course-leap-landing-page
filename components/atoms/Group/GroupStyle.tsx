@@ -5,12 +5,12 @@ import { StyleComponentProps } from './type';
 export class GroupStyleFactory<T extends StyleComponentProps> {
     private props: T = {} as T;
 
-    constructor(props: T) {
+    public constructor(props: T) {
         this.props = props;
     }
 
     public getClassName(): string {
-        return classnames(
+        return this.mergeClassNames(
             this.getBackgroundColorClassName(),
             this.getDisplayClassName(),
             this.getGapSizeClassName(),
@@ -34,14 +34,13 @@ export class GroupStyleFactory<T extends StyleComponentProps> {
     }
 
     private getDisplayClassName(): string {
-        let props: any = this.props;
-        const display = new DisplayStyleFactory(this.props.type);
+        const display = new Display.StyleFactory();
 
-        props = props as Display.Flex.Props;
-        display.setFlexTypeProps(props.dir, props.nowrap);
+        let flexProps = this.props as Display.Flex.Props;
+        display.setFlexTypeProps(flexProps);
 
-        props = props as Display.Grid.Props;
-        display.setGridTypeProps(props.columns, props.rows);
+        let gridProps = this.props as Display.Grid.Props;
+        display.setGridTypeProps(gridProps);
 
         return display.createClassName() as string;
     }
@@ -73,6 +72,11 @@ export class GroupStyleFactory<T extends StyleComponentProps> {
     }
 }
 
+class PlaceAlignStyleFactory extends PlaceAlign.StyleFactory {
+    protected DEFAULT_PLACE_CONTENT: PlaceAlign.PlaceContent.Keys = 'center';
+    protected DEFAULT_PLACE_ITEMS: PlaceAlign.PlaceItems.Keys = 'center';
+}
+
 class LayoutModeStyle {
     protected LAYOUT_MODE_CLASSNAME = 'w-screen h-screen p-0' as const;
 
@@ -89,14 +93,4 @@ class LayoutModeStyle {
     private isLayoutModeActive(): boolean {
         return !!this?.isLayoutMode;
     }
-}
-
-class PlaceAlignStyleFactory extends PlaceAlign.StyleFactory {
-    protected DEFAULT_PLACE_CONTENT: PlaceAlign.PlaceContent.Keys = 'center';
-    protected DEFAULT_PLACE_ITEMS: PlaceAlign.PlaceItems.Keys = 'center';
-}
-
-class DisplayStyleFactory extends Display.StyleFactory {
-    protected DEFAULT_DISPLAY_TYPE: Display.Flex.Keys = 'flex';
-    protected DEFAULT_FLEX_DIRECTION: Display.Flex.Direction.Keys = 'row';
 }
