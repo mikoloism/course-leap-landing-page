@@ -1,3 +1,3 @@
 export * from './common';
-export * from './flex';
-export * from './grid';
+export * as Flex from './flex';
+export * as Grid from './grid';

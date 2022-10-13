@@ -1,7 +1,7 @@
 export * from './color';
 export * from './common';
-export * from './direction';
-export * from './display';
+export * as Direction from './direction';
+export * as Display from './display';
 export * from './gap';
 export * from './place-align';
 export * from './position';
