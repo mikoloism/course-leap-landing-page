@@ -1,6 +1,6 @@
 import { Component } from '@/libs/common';
 import { GroupRender } from './GroupRender';
-import { GroupStyle } from './GroupStyle';
+import { GroupStyleFactory } from './GroupStyle';
 import type { GroupComponentProps as Props } from './type';
 
 export class GroupComponent extends Component<Props> {
@@ -21,7 +21,7 @@ export class GroupComponent extends Component<Props> {
     }
 
     private getStyleFromClassName(): string {
-        const styleFromClassName = new GroupStyle(this.props);
+        const styleFromClassName = new GroupStyleFactory(this.props);
 
         return styleFromClassName.getClassName();
     }
