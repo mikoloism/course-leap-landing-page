@@ -2,4 +2,6 @@
   position: sticky;
   top: 0;
   z-index: 9999;
+  backdrop-filter: blur(8px);
+  --tw-bg-opacity: 80%;
 }
