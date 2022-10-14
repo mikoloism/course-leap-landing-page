@@ -4,11 +4,11 @@ import * as Element from './element';
 import * as Font from './font';
 import * as Size from './size';
 
-export type PropsWithSize = Size.Props & Element.Props;
+export type SizeProps = Size.Props & Element.Props;
 
-export type PropsWithAlign = PropsWithSize & Align.Props;
+export type AlignProps = SizeProps & Align.Props;
 
-export type Props = PropsWithAlign & Font.Props & Color.Props;
+export type Props = AlignProps & Font.Props & Color.Props;
 
 type GetSizeArg = Size.Props & { element: Element.Keys };
 
