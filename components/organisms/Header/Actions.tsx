@@ -4,44 +4,68 @@ import { useContent } from '@/libs/hooks';
 
 export function HeaderActionGroup({ className }: PropsWithClassName<{}>) {
     const { content } = useContent('landing-page', 'header_actions');
-    const $loginClassName = classnames(
-        'rounded-md w-[45%] h-20',
-        'inline-flex flex-wrap flex-row place-items-center place-content-center'
-    );
-
-    const $joinUsClassName = classnames(
-        $loginClassName,
-        'bg-primary fill-white text-center'
-    );
 
     return (
         <Group
             dir="row"
             type="inline-flex"
             className={`w-full h-full ${className}`}>
-            <Link
-                href="#login"
-                className={$loginClassName}>
-                <Text
-                    size="link"
-                    color="white">
-                    {content('login')}
-                </Text>
-            </Link>
-            <Link
-                href="#login"
-                className={$joinUsClassName}>
-                <Text
-                    size="link"
-                    color="white"
-                    className="w-1/2 h-1/2">
-                    {content('join_us')}
-                </Text>
-                <Icon
-                    name="arrow-right"
-                    className="w-1/4 h-1/4 overflow-hidden"
-                />
-            </Link>
+            <ActionLink
+                Component={LoginLink}
+                text={content('login')}
+            />
+            <ActionLink
+                Component={JoinUsLink}
+                text={content('join_us')}
+            />
         </Group>
     );
+}
+
+function LoginLink({ text }: { text: string }) {
+    const className = createClassName();
+
+    return (
+        <Link
+            href="#login"
+            className={className}>
+            <Text
+                size="link"
+                color="white">
+                {text}
+            </Text>
+        </Link>
+    );
+}
+
+function JoinUsLink({ text }: { text: string }) {
+    const className = classnames(
+        createClassName(),
+        'bg-primary fill-white text-center'
+    );
+
+    return (
+        <Link
+            href="#join-us"
+            className={className}>
+            <Text
+                size="link"
+                color="white"
+                className="w-1/2 h-1/2">
+                {text}
+            </Text>
+            <Icon
+                name="arrow-right"
+                className="w-1/4 h-1/4 overflow-hidden"
+            />
+        </Link>
+    );
+}
+
+function ActionLink({ Component, text }: any) {
+    return <Component text={text} />;
+}
+
+function createClassName() {
+    return 'rounded-md w-[45%] h-20 inline-flex flex-wrap flex-row place-items-center place-content-center';
 }
