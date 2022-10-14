@@ -29,6 +29,23 @@ body,
   @apply text-black;
 }
 
+html,
+body {
+  overflow: hidden;
+}
+
+#root,
+#__next {
+  flex-direction: row;
+  max-height: 100vh;
+  place-content: flex-start;
+  scroll-behavior: smooth;
+}
+
+#__next {
+  background: theme('colors.secondary');
+}
+
 /* fix the `next/image` component styling */
 .next-image > span {
   position: initial !important;
