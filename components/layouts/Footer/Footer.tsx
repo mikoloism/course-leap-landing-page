@@ -4,7 +4,7 @@ import { Features, Information, Resources, Socials } from '@/organisms/Footer';
 
 function FooterContainer({ children }: any) {
     return (
-        <footer className="flex flex-wrap flex-col place-content-center place-items-center w-screen">
+        <footer className="flex flex-wrap flex-col place-content-center place-items-center w-screen bg-white">
             <Group
                 gapx="6"
                 dir="reverse-row"

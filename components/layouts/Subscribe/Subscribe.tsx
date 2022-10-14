@@ -10,7 +10,9 @@ const $content = {
 
 export default function Subscribe() {
     return (
-        <Group className="h-[75vh] w-screen">
+        <Group
+            color="white"
+            className="h-[75vh] w-screen">
             <Header
                 level="h2"
                 title={$content.title}

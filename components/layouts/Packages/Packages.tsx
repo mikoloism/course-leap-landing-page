@@ -7,6 +7,7 @@ export default function Packages() {
             layout
             dir="row"
             gapy="16"
+            color="white"
             className="h-[125vh]">
             <PackagesHeader />
             <PackagesContainer />
