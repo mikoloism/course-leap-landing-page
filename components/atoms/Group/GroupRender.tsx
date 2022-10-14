@@ -1,18 +1,18 @@
 import type { PropsWithAll, PropsWithCommon } from '@/libs/common';
 import { Component } from '@/libs/common';
 
-type Props = PropsWithAll<{}>;
+type Props = PropsWithAll;
 
-type PropsWithStyleAttribute = PropsWithAll;
+type RenderWithStyleAttribute = PropsWithAll;
 
-type PropsWithoutStyleAttribute = PropsWithCommon;
+type RenderWithoutStyleAttribute = PropsWithCommon;
 
 export class GroupRender extends Component<Props> {
     public constructor(props: Props) {
         super(props);
     }
 
-    private renderWithStyleAttribute(props: PropsWithStyleAttribute) {
+    private renderWithStyleAttribute(props: RenderWithStyleAttribute) {
         return (
             <section
                 className={props.className}
@@ -22,7 +22,7 @@ export class GroupRender extends Component<Props> {
         );
     }
 
-    private renderWithoutStyleAttribute(props: PropsWithoutStyleAttribute) {
+    private renderWithoutStyleAttribute(props: RenderWithoutStyleAttribute) {
         return <section className={props.className}>{props.children}</section>;
     }
 
