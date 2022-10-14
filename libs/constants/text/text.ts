@@ -12,7 +12,9 @@ export type Props = AlignProps & Font.Props & Color.Props;
 
 type GetSizeArg = Size.Props & { element: Element.Keys };
 
-export const DEFAULT_CLASSNAME = 'flex flex-wrap flex-col font-montserrat';
+export const DEFAULT_CLASSNAME = 'flex flex-wrap flex-col';
+
+export const DEFAULT_FONT_FAMILY = 'font-montserrat';
 
 export function getSizeClassName({
     size,
@@ -31,13 +33,39 @@ export function getClassName(props: Props): string {
     if (props.color) className.append(Color.Text.getClassName(props.color));
     if (props.weight) className.append(Weight.getClassName(props.weight));
 
-    return className.get();
+    className.append(DEFAULT_FONT_FAMILY);
+
+    return className.retrieve();
+}
+
+export class StyleFactory {
+    protected DEFAULT_ELEMENT_NAME: Element.Keys = Element.DEFAULT_ELEMENT;
+    protected DEFAULT_ELEMENT_SIZE: Size.Keys = Size.DEFAULT_KEY;
+    protected DEFAULT_FONT_FAMILY: string = DEFAULT_FONT_FAMILY;
+    protected DEFAULT_CLASSNAME: string = DEFAULT_CLASSNAME;
+
+    public static parseProps(props: any): Props {
+        return {
+            as: props.as,
+            size: props.size,
+            color: props.color,
+            align: props.align,
+            font: props.font,
+            weight: props.weight,
+        };
+    }
+
+    public constructor(private props: Props) {}
+
+    public createClassName(): string {
+        return getClassName(this.props);
+    }
 }
 
 class ClassName {
     private className: string = '';
 
-    get(): string {
+    retrieve(): string {
         return this.className.trim();
     }
 
