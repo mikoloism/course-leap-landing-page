@@ -1,26 +1,37 @@
-import { classnames, PropsWithCommon } from '@/libs/common';
+import { classnames, Component, PropsWithCommon } from '@/libs/common';
 import { PlaceAlign, Text as TextStyle } from '@/libs/constants';
 import { createElement } from '@/libs/hooks/createElement';
 
 type Props = PropsWithCommon & TextStyle.Props & PlaceAlign.Props;
 
-export function Text(props: Props) {
-    const { placeContent, placeItems, children, className, ...textStyle } =
-        props;
+export class Text extends Component<Props> {
+    constructor(props: Props) {
+        super(props);
+    }
 
-    const $className = classnames(
-        TextStyle.DEFAULT_CLASSNAME,
-        TextStyle.getClassName(textStyle),
-        PlaceAlign.getClassName({
-            content: placeContent ?? 'start',
-            items: placeItems ?? 'center',
-        }),
-        props.className
-    );
+    render() {
+        const { children, ...textStyle } = this.props;
 
-    return createElement(
-        props.as as TextStyle.Element.Keys,
-        { className: $className },
-        props.children
-    );
+        return createElement<TextStyle.Element.Keys>(this.props.as ?? 'span', {
+            className: this.getClassName(textStyle),
+            children,
+        });
+    }
+
+    private getClassName({
+        className,
+        placeContent,
+        placeItems,
+        ...textStyle
+    }: any) {
+        return classnames(
+            TextStyle.DEFAULT_CLASSNAME,
+            TextStyle.getClassName(textStyle),
+            PlaceAlign.getClassName({
+                content: placeContent ?? 'start',
+                items: placeItems ?? 'center',
+            }),
+            className
+        );
+    }
 }
