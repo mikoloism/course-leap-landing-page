@@ -45,14 +45,62 @@ export class HeaderNavigation extends Component<Props> {
     private renderItem() {
         return Item<RenderItemProps>(({ text }: RenderItemProps) => {
             const href = text ?? '';
-
             return (
                 <Link
-                    className="group"
+                    className="group h-1/2"
                     href={`#${href}`}>
-                    {text}
+                    {this.withCharacterAnimation(
+                        ({ children }: any) => (
+                            <>{children}</>
+                        ),
+                        text
+                    )}
                 </Link>
             );
         }, 'w-1/4 h-full list-none flex flex-col flex-wrap place-justify-center place-content-center font-montserrat text-link');
+    }
+
+    private withCharacterAnimation(Component: any, text: string) {
+        return (
+            <Component>
+                {this.convertTextToCharacters(text).map(
+                    (character: string, index: number) => (
+                        <this.CharacterComponent
+                            key={`${character} - ${index}`}
+                            character={character}
+                            delay={index}
+                        />
+                    )
+                )}
+            </Component>
+        );
+    }
+
+    private convertTextToCharacters(text: string): Array<string> {
+        const characters: Array<string> = [];
+
+        for (let index = 0; index < text.length; index++) {
+            characters.push(text[index]);
+        }
+
+        return characters;
+    }
+
+    private CharacterComponent(props: { character: string; delay: number }) {
+        const delayPerMilSecond = `1${props.delay}0ms`;
+        return (
+            <span className="inline-flex place-content-start place-items-center flex-col h-full overflow-hidden border-b border-transparent group-hover:border-b-primary transition">
+                <span
+                    className="group-hover:-translate-y-full transform transition"
+                    style={{ transitionDelay: delayPerMilSecond }}>
+                    {props.character}
+                </span>
+                <span
+                    className="group-hover:-translate-y-full transform transition text-primary"
+                    style={{ transitionDelay: delayPerMilSecond }}>
+                    {props.character}
+                </span>
+            </span>
+        );
     }
 }
