@@ -13,6 +13,7 @@ module.exports = {
             boxShadow: require('./libs/theme/shadow').shadow,
             animation: require('./libs/theme/animation').animation,
             keyframes: require('./libs/theme/keyframes').keyframes,
+            variant: require('./libs/theme/variants').variants,
         },
     },
     plugins: [],
