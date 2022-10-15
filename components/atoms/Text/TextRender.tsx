@@ -5,8 +5,11 @@ import type { TextRenderProps, ValidElementName } from './types';
 type Props = TextRenderProps;
 
 export class TextRender extends Component<Props> {
-    protected DEFAULT_ELEMENT_NAME: ValidElementName = 'span';
-    protected DEFAULT_ELEMENT_PROPS = { className: '', children: '' };
+    static defaultProps: Props = {
+        as: 'span',
+        className: '',
+        children: '',
+    };
 
     public constructor(props: Props) {
         super(props);
@@ -24,8 +27,8 @@ export class TextRender extends Component<Props> {
         const TextComponent = this.renderTextComponent as any;
         const { as: elementName, ...elementProps } = this.props;
         const propsOfRender = {
-            elementName: elementName ?? this.DEFAULT_ELEMENT_NAME,
-            elementProps: elementProps ?? this.DEFAULT_ELEMENT_PROPS,
+            elementName,
+            elementProps,
         };
 
         return <TextComponent {...propsOfRender} />;
