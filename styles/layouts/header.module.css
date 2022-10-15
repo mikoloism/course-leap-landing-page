@@ -1,7 +1,9 @@
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  backdrop-filter: blur(8px);
   --tw-bg-opacity: 80%;
+
+  position: sticky;
+  top: 0px;
+  box-shadow: theme('boxShadow.blurred');
+  backdrop-filter: blur(8px);
+  z-index: 9999;
 }
