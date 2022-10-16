@@ -1,23 +1,29 @@
-import { Group, Icon, Text } from '@/atoms';
+import { Group, Icon, Separator, Text } from '@/atoms';
 
-export function AchieveFloat({ icon, title, description, grid, color }: any) {
+type Props = {
+    title: string;
+    description: string;
+    color: string;
+    grid: string;
+    icon: 'tag' | 'check-underline' | 'credit-card';
+};
+
+export function AchieveFloat({ icon, title, description, grid, color }: Props) {
     return (
         <Group
             gapy="4"
             placeItems="start"
-            className={`py-5 px-8 shadow-accented text-left w-full h-full rounded-xl ${grid}`}>
+            className={`py-5 px-8 shadow-accented text-left w-full h-full rounded-xl content-start ${grid}`}>
             <Text
                 as="h5"
                 color="secondary"
                 className="order-2">
                 {title}
             </Text>
-            <span
-                id="block"
-                className="order-3 w-3/12 h-1 bg-accent rounded-full"></span>
+            <Separator className="order-3" />
             <Text
                 as="p"
-                className="order-4">
+                className="order-4 w-8/12">
                 {description}
             </Text>
             <Icon

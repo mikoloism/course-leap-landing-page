@@ -1,6 +1,7 @@
 exports.fontSize = {
     h1: [
-        '72px',
+        // 72px
+        '4.5rem',
         {
             fontWeight: 'bold',
             lineHeight: '110px',
@@ -8,7 +9,8 @@ exports.fontSize = {
         },
     ],
     h2: [
-        '52px',
+        // 52px
+        '3.25rem',
         {
             fontWeight: 'bold',
             lineHeight: '72px',
@@ -16,7 +18,8 @@ exports.fontSize = {
         },
     ],
     h3: [
-        '34px',
+        // 34px
+        '2.25rem',
         {
             fontWeight: 'bold',
             lineHeight: '72px',
@@ -24,7 +27,8 @@ exports.fontSize = {
         },
     ],
     h4: [
-        '30px',
+        // 30px
+        '1.875rem',
         {
             fontWeight: 'bold',
             lineHeight: '68px',
@@ -32,7 +36,8 @@ exports.fontSize = {
         },
     ],
     h5: [
-        '26px',
+        // 26px
+        '1.625rem',
         {
             fontWeight: 'bold',
             lineHeight: '56px',
@@ -40,7 +45,8 @@ exports.fontSize = {
         },
     ],
     h6: [
-        '24px',
+        // 24px
+        '1.5rem',
         {
             fontWeight: 'bold',
             lineHeight: '56px',
@@ -48,7 +54,8 @@ exports.fontSize = {
         },
     ],
     link: [
-        '20px',
+        // 20px
+        '1.25rem',
         {
             fontWeight: 'bold',
             lineHeight: '45px',
@@ -56,7 +63,8 @@ exports.fontSize = {
         },
     ],
     btn: [
-        '20px',
+        // 20px
+        '1.25rem',
         {
             fontWeight: 'bold',
             lineHeight: '45px',
@@ -64,7 +72,8 @@ exports.fontSize = {
         },
     ],
     input: [
-        '16px',
+        // 16px
+        '1rem',
         {
             fontWeight: 'regular',
             lineHeight: '45px',
@@ -72,7 +81,8 @@ exports.fontSize = {
         },
     ],
     subtitle: [
-        '30px',
+        // 30px
+        '1.875rem',
         {
             fontWeight: 'regular',
             lineHeight: '70px',
@@ -80,7 +90,8 @@ exports.fontSize = {
         },
     ],
     paragraph: [
-        '19px',
+        // 19px
+        '1.1875',
         {
             fontWeight: 'regular',
             lineHeight: '45px',
@@ -88,7 +99,8 @@ exports.fontSize = {
         },
     ],
     standard: [
-        '16px',
+        // 16px
+        '1rem',
         {
             fontWeight: 'regular',
             lineHeight: '45px',

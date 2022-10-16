@@ -1,10 +1,10 @@
-import { Component, memo, Image as NextImage, $ } from '@/libs/common';
+import type { PropsWithClassName } from '@/libs/common';
+import { classnames, Component, Image as NextImage } from '@/libs/common';
 
-interface ImageProps {
+interface ImageProps extends PropsWithClassName {
     src: string;
     alt: string;
-    style?: object;
-    className?: string;
+    imageClassName?: string;
 }
 
 export class Image extends Component<ImageProps> {
@@ -13,7 +13,8 @@ export class Image extends Component<ImageProps> {
     }
 
     render() {
-        const $className = $(
+        const $className = classnames(
+            'grid',
             'relative m-0 p-0',
             'place-content-center',
             'place-items-center',
@@ -24,7 +25,6 @@ export class Image extends Component<ImageProps> {
             <figure
                 className={$className}
                 style={{
-                    display: 'grid',
                     gridTemplateColumns: 'repeat(12, 1fr)',
                     gridTemplateRows: 'repeat(12, 1fr)',
                 }}>
@@ -35,7 +35,7 @@ export class Image extends Component<ImageProps> {
                     height="100%"
                     layout="responsive"
                     objectFit="cover"
-                    style={this.props.style ?? {}}
+                    className={this.props.imageClassName ?? ''}
                     priority
                 />
             </figure>

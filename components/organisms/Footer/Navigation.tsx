@@ -10,7 +10,7 @@ export function FooterNavigationItem({
     return (
         <Link
             href={href ?? '#'}
-            className="w-full h-full inline-flex flex-wrap flex-col place-content-start place-items-center">
+            className="w-full h-full inline-flex flex-wrap flex-col place-content-start place-items-center hover:text-primary hover:font-bold hover:translate-x-3 hover:scale-110 transform transition">
             {text}
         </Link>
     );

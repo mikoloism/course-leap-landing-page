@@ -1,8 +1,22 @@
-import type { PositionType } from '../types';
+export type LongKeys = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-type PositionKeys = PositionType | 'abs' | 'fix' | 'rel';
+export type ShortKeys = 'rel' | 'abs' | 'fix' | 'stk';
 
-export const POSITION: Record<PositionKeys, PositionType> = {
+export type Keys = ShortKeys | LongKeys;
+
+export type Props = {
+    pos?: Keys;
+};
+
+export type LongProps = {
+    position?: Keys;
+};
+
+export type ClassName = LongKeys;
+
+export type ConstantRecord = Record<Keys, ClassName>;
+
+export const CLASSNAMES: ConstantRecord = {
     absolute: 'absolute',
     fixed: 'fixed',
     relative: 'relative',
@@ -10,10 +24,11 @@ export const POSITION: Record<PositionKeys, PositionType> = {
     abs: 'absolute',
     fix: 'fixed',
     rel: 'relative',
+    stk: 'sticky',
 };
 
-export function getPosition(
-    pos: PositionKeys | undefined
-): PositionType | undefined {
-    return pos && POSITION[pos];
+export function getClassName(
+    position: Keys | undefined
+): ClassName | undefined {
+    return position && CLASSNAMES[position];
 }

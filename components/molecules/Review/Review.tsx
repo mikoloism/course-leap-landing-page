@@ -4,7 +4,8 @@ export function Review({ children }: any): JSX.Element {
     return (
         <Group
             gapy="12"
-            className="bg-white w-[30%] h-full py-6 rounded-md">
+            color="white"
+            className="w-[30%] h-full py-6 rounded-md hover:scale-105 transition">
             {children}
         </Group>
     );

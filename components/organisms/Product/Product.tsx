@@ -1,8 +1,9 @@
 import { Group, Icon, Image, Link, Text } from '@/atoms';
-import { useContent } from '@/libs/hooks/useContent';
+import { MoreButton } from '@/molecules/MoreButton';
+import style from '@/styles/products.module.css';
 import { ActionBar } from '../ActionBar';
 
-export function ProductBadge({ children }: React.PropsWithChildren<{}>) {
+export function ProductBadge({ children }: React.PropsWithChildren) {
     return (
         <span className="absolute -top-24 group-hover:top-5 left-5 inline-flex place-content-center place-items-center bg-accent text-white text-standard w-16 h-10 rounded-md z-10 transition-all opacity-0 group-hover:opacity-100">
             {children}
@@ -41,9 +42,8 @@ export function ProductPrice({ price, old }: { price: any; old?: any }) {
             )}
             <Text
                 as="strong"
-                size="paragraph"
-                className="text-accent-green">
-                {price}
+                size="paragraph">
+                <span className="text-accent-green">{price}</span>
             </Text>
         </Group>
     );
@@ -127,35 +127,9 @@ export function ProductDetails({ sale, price, lessons, duration, tag }: any) {
                 dir="row"
                 placeContent="start"
                 className="w-full">
-                <MoreButton
-                    href="#"
-                    text={useContent('landing-page', 'common').content(
-                        'call_to_action'
-                    )}
-                />
+                <MoreButton outline />
             </Group>
         </Group>
-    );
-}
-
-export function MoreButton({ href, text }: any) {
-    return (
-        <Link
-            href={href}
-            className="rounded-full h-16 w-52 bg-transparent text-link inline-flex flex-wrap flex-row place-items-center place-content-center fill-primary text-primary border border-primary">
-            <Text
-                size="link"
-                color="primary"
-                placeContent="center"
-                className="w-fit h-full inline-flex">
-                {text}
-            </Text>
-            <Icon
-                name="chevron-right"
-                className="w-[15%] h-full overflow-hidden"
-                scale="0.8"
-            />
-        </Link>
     );
 }
 
@@ -211,11 +185,7 @@ export function ProductCover({ cover }: any) {
                 className="next-image w-full h-full group-hover:blur-sm"
                 alt="image-cover-1"
                 src={cover}
-                style={{
-                    gridColumn: '1/13',
-                    gridRow: '1/13',
-                    borderRadius: '0.4rem',
-                }}
+                imageClassName={style.productCoverImage}
             />
             <ActionBar productId={cover} />
         </Group>
@@ -226,7 +196,7 @@ export function ProductItem({ item }: { item: any }) {
     return (
         <Group
             pos="relative"
-            className="w-[30%] group">
+            className="w-[30%] group overflow-hidden">
             <Link
                 overlay
                 href="#product-1"

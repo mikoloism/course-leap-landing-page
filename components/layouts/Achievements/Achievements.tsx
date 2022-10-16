@@ -4,7 +4,9 @@ import { AchievementHeader } from '@/organisms/AchievementHeader';
 
 export default function Achievements() {
     return (
-        <Group className="w-screen h-[135vh] py-48 bg-white">
+        <Group
+            layout
+            color="white">
             <AchievementHeader />
             <AchievementFloats />
         </Group>

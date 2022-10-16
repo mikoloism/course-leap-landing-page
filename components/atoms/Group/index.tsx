@@ -1,1 +1,1 @@
-export * from './Group';
+export { GroupComponent as Group } from './GroupComponent';

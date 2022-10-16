@@ -1,4 +1,5 @@
 import { AchieveFloat } from '@/molecules/AchieveFloat';
+import style from '@/styles/achievements.module.css';
 
 function useFakeFetch() {
     const SINGLE_FEATURES_ITEM = {
@@ -7,53 +8,41 @@ function useFakeFetch() {
 
     return {
         data: [
-            {
-                id: 0,
-                title: 'Certified Teacher',
-                icon: 'check-underline',
-                color: 'bg-box-bg-blue fill-primary',
-                grid: 'col-start-2 col-end-6  row-start-3 row-end-7',
-                ...SINGLE_FEATURES_ITEM,
-            },
-            {
-                id: 1,
-                title: 'Market Analysis',
-                icon: 'credit-card',
-                color: 'bg-box-bg-red fill-accent',
-                grid: 'col-start-7 col-end-11 row-start-5 row-end-[10]',
-                ...SINGLE_FEATURES_ITEM,
-            },
-            {
-                id: 2,
-                title: 'Sales Planning',
-                icon: 'tag',
-                color: 'bg-box-bg-green fill-accent-green',
-                grid: 'col-start-2 col-end-6  row-start-[8] row-end-[12]',
-                ...SINGLE_FEATURES_ITEM,
-            },
+            { title: 'Certified Teacher', ...SINGLE_FEATURES_ITEM },
+            { title: 'Market Analysis', ...SINGLE_FEATURES_ITEM },
+            { title: 'Sales Planning', ...SINGLE_FEATURES_ITEM },
         ],
         error: undefined,
     };
 }
 
 export function AchievementFloats() {
-    const { data } = useFakeFetch();
+    const [teachers, analytic, planning] = useFakeFetch().data;
+
     return (
         <section
-            className="w-1/2 h-full grid grid-cols-12 place-items-center justify-around"
-            style={{ gridTemplateRows: 'repeat(12,1fr)' }}>
-            {data.slice(0, 3).map((item) => {
-                return (
-                    <AchieveFloat
-                        key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        icon={item.icon}
-                        color={item.color}
-                        grid={item.grid}
-                    />
-                );
-            })}
+            className={`w-1/2 h-full place-items-center justify-around ${style.achievementFloats}`}>
+            <AchieveFloat
+                title={teachers.title}
+                description={teachers.description}
+                icon="check-underline"
+                color="bg-box-bg-blue fill-primary"
+                grid={style.achievementItemTop}
+            />
+            <AchieveFloat
+                title={analytic.title}
+                description={analytic.description}
+                icon="credit-card"
+                color="bg-box-bg-red fill-accent"
+                grid={style.achievementItemMiddle}
+            />
+            <AchieveFloat
+                title={planning.title}
+                description={planning.description}
+                icon="tag"
+                color="bg-box-bg-green fill-accent-green"
+                grid={style.achievementItemBottom}
+            />
         </section>
     );
 }

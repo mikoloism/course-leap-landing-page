@@ -6,7 +6,8 @@ export default function Feedbacks() {
     return (
         <Group
             gapy="16"
-            className="bg-secondary h-[115vh] w-full">
+            color="secondary"
+            className="h-[115vh] w-full">
             <FeedbacksHeader />
             <Reviews />
         </Group>

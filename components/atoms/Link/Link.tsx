@@ -1,4 +1,4 @@
-import { $ } from '@/libs/common';
+import { classnames } from '@/libs/common';
 import { Component, Link as NextLink } from '@/libs/common';
 
 interface LinkProps extends React.PropsWithChildren<{}> {
@@ -13,15 +13,17 @@ export class Link extends Component<LinkProps> {
     }
 
     render() {
-        const $className = $(
-            this.props.overlay &&
+        const { children, className, href, overlay } = this.props;
+
+        const $className = classnames(
+            overlay &&
                 'absolute top-0 bottom-0 left-0 right-0 w-full h-full opacity-0 block z-50',
-            this.props.className
+            className
         );
 
         return (
-            <NextLink href={this.props.href}>
-                <a className={$className}>{this.props.children}</a>
+            <NextLink href={href}>
+                <a className={$className}>{children}</a>
             </NextLink>
         );
     }

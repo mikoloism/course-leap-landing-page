@@ -29,6 +29,23 @@ body,
   @apply text-black;
 }
 
+html,
+body {
+  overflow: hidden;
+}
+
+#root,
+#__next {
+  flex-direction: row;
+  max-height: 100vh;
+  place-content: flex-start;
+  scroll-behavior: smooth;
+}
+
+#__next {
+  background: theme('colors.secondary');
+}
+
 /* fix the `next/image` component styling */
 .next-image > span {
   position: initial !important;
@@ -44,16 +61,8 @@ body,
   width: 160px;
   height: 190px;
   top: 40px;
-  right: 135px;
+  right: 150px;
   z-index: 2;
-}
-
-.next-image.cover--1::before {
-  background-color: theme(colors.img.square-1);
-}
-
-.next-image.cover--2::before {
-  background-color: theme(colors.img.square-2);
 }
 
 .next-image.cover::after {
@@ -62,9 +71,9 @@ body,
   position: absolute;
   width: 90px;
   height: 90px;
-  bottom: 130px;
-  left: 220px;
+  bottom: 50px;
+  left: 250px;
   z-index: 3;
   border-radius: 90rem;
-  background-color: theme(colors.img.circle);
+  background-color: theme('colors.img.circle');
 }

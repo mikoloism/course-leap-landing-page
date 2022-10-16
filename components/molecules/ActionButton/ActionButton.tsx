@@ -1,6 +1,6 @@
 import type { IconType } from '@/atoms';
 import { Icon } from '@/atoms';
-import { PropsWithClassName } from '@/libs/common';
+import type { PropsWithClassName } from '@/libs/common';
 
 type Props = PropsWithClassName<{
     icon: IconType;
