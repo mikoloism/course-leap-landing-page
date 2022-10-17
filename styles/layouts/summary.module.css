@@ -1,9 +1,0 @@
-.summaryCoverWrapper::before {
-  background-color: theme('colors.img.square-2');
-}
-
-.summaryCoverImage {
-  grid-column: 4 / 11;
-  grid-row: 2 / 11;
-  border-radius: 5rem;
-}
