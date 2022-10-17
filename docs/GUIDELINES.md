@@ -4,6 +4,7 @@
 .
 ├── docs/
 │	├── CHANGELOG.md
+│	├── CREDITS.md
 │	├── GUIDELINES.md
 │	└── CONTRIBUTING.md
 │
@@ -11,6 +12,7 @@
 │	├── atoms/
 │	├── molecules/
 │	├── organisms/
+│	├── layouts/
 │	└── templates/
 │
 ├── pages/
@@ -21,18 +23,20 @@
 │	└── index.tsx
 │
 ├── libs/
-│	├── [global-hook-name]
-│	│	├── [global-hook-name].ts
-│	│	├── [global-hook-name].test.ts
-│	│	└── index.ts
+│	├── hooks
+│	│	└── [global-hook-name]
+│	│		├── [global-hook-name].ts
+│	│		├── [global-hook-name].test.ts
+│	│		└── index.ts
 │	│
-│	├── types		 # global types and utils
-│	│	├── [global-type].ts
-│	│	└── index.ts # export types and utils
-│	│
-│	├── interfaces	 # global interfaces and utils
-│	│	├── [global-interface].ts
-│	│	└── index.ts # export interfaces and utils
+│	├── theme		 # tailwind configs and modules
+│	│	├── configs
+│	│	│	└── [property name / config name].js
+│	│	│
+│	│	├── [tailwind module styles]
+│	│	│	└── index.ts # re-export module
+│	│	│
+│	│	└── index.ts # re-export as named modules (no configs)
 │	│
 │	└── index.ts	# export types, and interfaces
 │
@@ -52,28 +56,28 @@
 ### Single Component
 
 ```yaml
-{ atoms, molecules, organisms, templates }/
+{ atoms, molecules, organisms, layouts, templates }/
 └── [ComponentName]/
 	├── types.ts					# interfaces, types, enums, etc...
-	├── hooks.ts					# if was
-	├── hooks.test.ts				# if was
-	├── [ComponentName].story.tsx	# if was use storybook (also, `[Component].stories.tsx` accepted)
-	├── [ComponentName].styled.tsx	# if was based styled-components or css objects
-	├── [ComponentName].module.scss # if was based sass/scss module style
-	├── [ComponentName].scss		# if was based sass/scss import style (not as module, only import)
-	├── [SubComponentName].tsx		# if was use sub single component
+	├── hooks.ts					# if needed internal hooks
+	├── hooks.test.ts				# if have hooks.ts
+	├── [ComponentName].story.tsx	# if have to use storybook/ladle (also, `[Component].stories.tsx` accepted)
+	├── [ComponentName].styled.tsx	# if have to based on styled-components or css objects
+	├── [ComponentName].module.scss # if have to based on sass/scss module style as internal
+	├── [ComponentName].scss		# if have to based on sass/scss import style (not as module, only import)
+	├── [SubComponentName].tsx		# if have to use sub single component isn't any top
 	├── [ComponentName].tsx
 	└── index.tsx
 ```
 
-- Component in `components/` directory should be one of the following types: `atoms/`, `molecules/`, `organisms/` or `templates/`
-- No Single file as Component accepted
+- Component in `components/` directory should be one of the following types: `atoms/`, `molecules/`, `organisms/`, `layouts/` or `templates/`
+- No Single file as Component accepted, All component should be in Directory
 - Component should have a folder with following files : `index.tsx`, `[ComponentName].tsx`
-- If Component use any types or interfaces (if not globally), should have `types.ts` file and export from `index.ts`
+- If Component use any types or interfaces (if not globally), should have `types.ts` file
 - If Component have isolated hooks, should have `hooks.ts` file to export the functions, hooks and helpers
 - If Component have `hooks.ts` file, should have `hooks.test.ts` file to testing the functions on the `hooks.ts` file
-- If hooks or function is not just for this component and can be use in any other component, move it to `libs/` directory
-- Stories and Storybook component, should be named to `[ComponentName].story.tsx` or `[ComponentName].stories.tsx`. (stories not work in next.js)
+- If hooks or function is not just for this component and can be use in any other component, move it to `libs/hooks/` directory
+- Stories and Storybook/Ladle component, should be named to `[ComponentName].story.tsx` or `[ComponentName].stories.tsx`. (stories not work in next.js)
 - Style Base is just one of this conventions :
   - styled-components
   - css literal string
@@ -105,9 +109,9 @@
 - Each Page is a instance of the Template Component, Created at `components/templates/`. No Any Pages accepted without template
 - Page Styles file should serve in `styles/pages/` directory
 - No any prefix or suffix like `-page`, `page-` allowed
-- Page content should be `$content` object or if is long, use from :
-  - `locales/[lang]/[page-name].[lang].[ts | json | yaml]`
-  - `contents/[lang]/[page-name].[lang].[ts | json | yaml]`
+- Page content should be use from : (`yaml` is WIP)
+  - `locales/[lang]/[page-name].[json | yaml]`
+  - `contents/[lang]/[page-name].[json | yaml]`
 
 ### Styles
 
@@ -132,10 +136,13 @@
 	└── globals.scss			 # also, `_globals.scss` accepted
 ```
 
+This file tree only accepted when style based on `scss/sass/less`
+
 ### Atomic Pattern
 
 - `atoms/` is just single selfed component can use commonly and be reusable components (didn't use of any other component)
 - `molecules/` is components which use `atoms/` component or combined them as one eco-system component
 - `organisms/` is components which use `molecules/` component or combined them as one eco-system component
-- `templates/` the page templates and their eco-system and use each `atoms/`, `molecules/` or `organisms` on their self
+- `layouts/` is components which use `organisms/` component or combined them as one eco-system component
+- `templates/` the page templates and their eco-system and use each `atoms/`, `molecules/`, `organisms` or `Layouts/` their self
 - `pages/`, should instance the `templates/` component and for the have isolated states (and globals states)
