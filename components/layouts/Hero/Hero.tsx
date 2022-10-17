@@ -37,7 +37,7 @@ function HeroCover({ className }: PropsWithClassName<{}>) {
     return (
         <Image
             className={`next-image cover w-full h-full ${style.heroCoverWrapper} ${className}`}
-            src="/course-leap-landing-page/assets/images/image-1.png"
+            src="/image-1.png"
             alt="landing-page-cover"
             imageClassName={style.heroCoverImage}
         />
