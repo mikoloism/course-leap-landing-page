@@ -27,17 +27,17 @@ function useFakeFetch(): any {
         data: [
             {
                 id: 0,
-                cover: '/assets/images/image-3.jpeg',
+                cover: '/course-leap-landing-page/assets/images/image-3.jpeg',
                 ...SINGLE_PRODUCT_ITEM,
             },
             {
                 id: 1,
-                cover: '/assets/images/image-5.jpg',
+                cover: '/course-leap-landing-page/assets/images/image-5.jpg',
                 ...SINGLE_PRODUCT_ITEM,
             },
             {
                 id: 2,
-                cover: '/assets/images/image-4.jpg',
+                cover: '/course-leap-landing-page/assets/images/image-4.jpg',
                 ...SINGLE_PRODUCT_ITEM,
             },
         ],
