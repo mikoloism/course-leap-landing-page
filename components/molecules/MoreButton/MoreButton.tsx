@@ -15,7 +15,9 @@ export function MoreButton({ href, text, outline }: Props) {
     hover:scale-105 transform transition
     group-hover:bg-primary group-hover:fill-white
     rounded-full h-20 w-56 bg-transparent inline-flex flex-wrap flex-row place-items-center place-content-center fill-primary
-    ${outline ? 'border border-primary' : 'justify-start'}`.trim();
+    ${outline ? 'border border-primary' : 'justify-start'}`
+        .trim()
+        .replace(/\n/, ' ');
 
     return (
         <Link
