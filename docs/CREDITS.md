@@ -2,12 +2,12 @@
 
 ### Designed By
 
-[![figma-user-interface][ui-link]][figmaland-link]
+[![figma-user-interface][ui-image]][figmaland-link]
 
 [Figmaland][figmaland-link] on Figma Community
 
 [figmaland-link]: https://figmaland.com
-[ui-link]: https://www.figma.com/file/P9akOsFU4EPp6pblEO42kO/Course-Leap---simple-website%C2%A0template-download-html-with%C2%A0css-for-course-(Community)?node-id=0%3A3
+[ui-image]: https://www.figma.com/file/P9akOsFU4EPp6pblEO42kO/Course-Leap---simple-website%C2%A0template-download-html-with%C2%A0css-for-course-(Community)?node-id=0%3A3
 
 ### Technologies
 
