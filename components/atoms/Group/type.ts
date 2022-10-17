@@ -1,5 +1,5 @@
 import { PropsWithAll, PropsWithClassName } from '@/libs/common';
-import { Common, Display } from '@/libs/constants';
+import { Common, Display } from '@/libs/theme';
 
 export type GroupComponentProps = FlexComponentProps | GridComponentProps;
 

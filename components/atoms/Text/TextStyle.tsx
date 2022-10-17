@@ -1,5 +1,5 @@
 import { classnames } from '@/libs/common';
-import { PlaceAlign, Text } from '@/libs/constants';
+import { PlaceAlign, Text } from '@/libs/theme';
 import { TextStyleProps } from './types';
 
 type Props = TextStyleProps;

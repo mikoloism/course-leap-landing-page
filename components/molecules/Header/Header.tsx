@@ -1,5 +1,5 @@
 import type { HeadingElementType } from '@/atoms/Text/types';
-import type { Color } from '@/libs/constants';
+import type { Color } from '@/libs/theme';
 import { Text } from '@/components/atoms';
 import React from 'react';
 

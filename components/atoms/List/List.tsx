@@ -1,5 +1,5 @@
 import { classnames, PropsWithClassName } from '@/libs/common';
-import { Display, PlaceAlign, Gap } from '@/libs/constants';
+import { Display, PlaceAlign, Gap } from '@/libs/theme';
 import { getKeyProperty } from './hooks';
 import type { DataProps, DataType, KeyProps } from './types';
 

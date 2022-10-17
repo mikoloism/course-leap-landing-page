@@ -1,5 +1,5 @@
 import { classnames } from '@/libs/common';
-import { Color, Display, Gap, PlaceAlign, Position } from '@/libs/constants';
+import { Color, Display, Gap, PlaceAlign, Position } from '@/libs/theme';
 import { StyleComponentProps } from './type';
 
 export class GroupStyleFactory<T extends StyleComponentProps> {

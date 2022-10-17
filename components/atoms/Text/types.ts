@@ -3,7 +3,7 @@ import {
     PropsWithClassName,
     PropsWithCommon,
 } from '@/libs/common';
-import { PlaceAlign, Text } from '@/libs/constants';
+import { PlaceAlign, Text } from '@/libs/theme';
 
 export type TextComponentProps = PropsWithCommon<TextStyleProps>;
 
