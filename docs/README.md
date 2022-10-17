@@ -2,16 +2,16 @@
 
 Tree Course landing page is a ready to use Landing page template based on "next.js", "typescript" and "tailwind"
 
-| Preview |
-| - |
+| Preview (demo)                     |
+| ---------------------------------- |
 | 🚧 [Codepen][codepen-preview-link] |
 | 🚧 [Github Page][github-page-link] |
 | 🚧 [Vercel Page][vercel-page-link] |
 
-| # | Dates |
-| - | - |
+| #          | Dates         |
+| ---------- | ------------- |
 | Start Date | `Sep 10 2022` |
-| End Date | `Oct 17 2022` |
+| End Date   | `Oct 17 2022` |
 
 ---
 
