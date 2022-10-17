@@ -19,6 +19,7 @@
 | 4   | [Normalize.css][normalize-link] | 8.0.1   |
 | 5   | [ClassNames][classnames-link]   | 2.3.1   |
 | 6   | [Tailwind][tailwind-link]       | 3.1.8   |
+| 6   | [Material Symbol and Icon][md-icon-link]       | Oct 17 2022   |
 
 [next-js-link]: https://nextjs.org
 [typescript-link]: https://www.typescriptlang.org
@@ -26,3 +27,4 @@
 [normalize-link]: https://necolas.github.io/normalize.css
 [classnames-link]: https://www.npmjs.com/package/classnames
 [tailwind-link]: https://tailwindcss.com
+[md-icon-link]: https://fonts.google.com/icons
