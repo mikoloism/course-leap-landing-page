@@ -10,6 +10,9 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     basePath: '/course-leap-landing-page',
+    images: {
+        loader: 'custom',
+    },
 };
 
 /**

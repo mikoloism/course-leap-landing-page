@@ -1,4 +1,5 @@
 import type { PropsWithClassName } from '@/libs/common';
+import { loadImage } from './image-loader';
 import { classnames, Component, Image as NextImage } from '@/libs/common';
 
 interface ImageProps extends PropsWithClassName {
@@ -36,6 +37,7 @@ export class Image extends Component<ImageProps> {
                     layout="responsive"
                     objectFit="cover"
                     className={this.props.imageClassName ?? ''}
+                    loader={loadImage}
                     priority
                 />
             </figure>
