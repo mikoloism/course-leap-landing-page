@@ -10,11 +10,11 @@
 
 ### Hooks
 
-#### `createElement`\*
+#### `createElement` (\*)
 
 parameters :
 
-| #   | parameter    | type\*\*       | required | default | description                               |
+| #   | parameter    | type (\*\*)    | required | default | description                               |
 | --- | ------------ | -------------- | -------- | ------- | ----------------------------------------- |
 | 1   | elementName  | `ElementType`  | `true`   | `span`  | the element name to create as jsx element |
 | 2   | elementProps | `ElementProps` | `true`   | `{}`    | element attributes and children           |
@@ -28,10 +28,10 @@ generic parameters :
 
 return type : `JSX.Element`
 
-\* : `createElement` is generic function
-\*\* : type of the parameters refer to generic types (typeof of elementProps is interface of default react props)
+(\*) : `createElement` is generic function
+(\*\*) : type of the parameters refer to generic types (typeof of elementProps is interface of default react props)
 
-#### `useContent`\*
+#### `useContent` (\*)
 
 parameters (ordered) :
 
@@ -41,17 +41,17 @@ parameters (ordered) :
 | 2   | section   | `string`         | `true`   | `'common'`  | layout name on the page                       |
 | 3   | language  | `'en'` or `'pr'` | `false`  | `'en'`      | the language name on `locales/` directory     |
 
-parameters (objected)\*\* :
+parameters (objected) (\*\*) :
 
 | #   | parameter | type     | required | default | description                      |
 | --- | --------- | -------- | -------- | ------- | -------------------------------- |
 | 1   | options   | `object` | `true`   | `{}`    | options object of the parameters |
 
-return type : `IReturnType`\*\*\*
+return type : `IReturnType` (\*\*\*)
 
-\* : `useContent` is overridden function to `ordered parameters` or `objected parameters`
-\*\* : properties of `objected parameter` is same of `ordered parameters`
-\*\*\* : `IReturnType` is interface :
+(\*) : `useContent` is overridden function to `ordered parameters` or `objected parameters`
+(\*\*) : properties of `objected parameter` is same of `ordered parameters`
+(\*\*\*) : `IReturnType` is interface :
 
 ```typescript
 interface IReturnType {
@@ -67,33 +67,26 @@ interface IReturnType {
 
 #### `libs/common.ts`
 
-- `classnames` :
+- `classnames` :\
+  re-exported `classNames` library as named module
 
-re-exported `classNames` library as named module
+- `Link` and `Image` :\
+  re-exported `Next.js` `Image` and `Link` modules
 
-- `Link` and `Image` :
+- `PropsWithClassName` :\
+  generic type to contain props with `{ className?: string }`
 
-re-exported `Next.js` `Image` and `Link` modules
+- `PropsWithChildren` :\
+  re-exported generic type of `React.PropsWithChildren`
 
-- `PropsWithClassName` :
+- `PropsWithStyle` :\
+  generic type to contain props with `{ style?: object }`
 
-generic type to contain props with `{ className?: string }`
+- `PropsWithCommon` :\
+  generic type to combine `PropsWithChildren` and `PropsWithClassName` with props
 
-- `PropsWithChildren` :
-
-re-exported generic type of `React.PropsWithChildren`
-
-- `PropsWithStyle` :
-
-generic type to contain props with `{ style?: object }`
-
-- `PropsWithCommon` :
-
-generic type to combine `PropsWithChildren` and `PropsWithClassName` with props
-
-- `PropsWithAll` :
-
-generic type to combine `PropsWithCommon` and `PropsWithStyle` with props
+- `PropsWithAll` :\
+  generic type to combine `PropsWithCommon` and `PropsWithStyle` with props
 
 ### Themes
 
@@ -110,7 +103,7 @@ Javascript files to contain properties of `tailwind.config.js` as default value
 - [x] Can i use TailwindCSS classnames as statically dynamically
 - [x] Can i keep S.O.L.I.D Principles in project (main target)
 - [x] Can i keep the codebase clean
-- [] Can i create re-usable component
+- [ ] Can i create re-usable component
 
 ## License
 
