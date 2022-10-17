@@ -7,10 +7,11 @@ import Hero from '@/layouts/Hero';
 import Packages from '@/layouts/Packages';
 import Subscribe from '@/layouts/Subscribe';
 import Summary from '@/layouts/Summary';
-import type { LandingPageProps } from './types';
 
-export default class LandingPageTemplate extends Component<LandingPageProps> {
-    constructor(props: LandingPageProps) {
+type Props = {};
+
+export default class LandingPageTemplate extends Component<Props> {
+    constructor(props: Props) {
         super(props);
     }
 
