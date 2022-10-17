@@ -36,7 +36,6 @@ export class Image extends Component<ImageProps> {
                     layout="responsive"
                     objectFit="cover"
                     className={this.props.imageClassName ?? ''}
-                    unoptimized={true}
                     priority
                 />
             </figure>
