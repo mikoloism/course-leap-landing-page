@@ -1,11 +1,11 @@
-import * as Direction from '../../direction/direction';
-import { CreateClassNameType } from './common';
+import type { Row } from '../../direction';
+import type { CreateClassNameType } from './common';
 
-export type Keys = Direction.RowKeys;
+export type Keys = Row.Keys;
 
-export type KeysWithReverse = Direction.RowReverseKeys;
+export type KeysWithReverse = Row.ReverseKeys;
 
-export type KeysWithoutReverse = Direction.RowWithoutReverseKeys;
+export type KeysWithoutReverse = Row.RowKeys;
 
 export type ClassName = CreateClassNameType<'row'>;
 
