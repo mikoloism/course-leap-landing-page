@@ -9,7 +9,7 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    basePath: 'https://github.com/mikoloism/course-leap-landing-page',
+    basePath: '/course-leap-landing-page',
 };
 
 /**
