@@ -1,23 +1,21 @@
-import type { HeadingElementType } from '@/atoms/Text/types';
-import type { Color } from '@/libs/theme';
 import { Text } from '@/components/atoms';
-import React from 'react';
+import type { PropsWithCommon } from '@/libs/common';
+import type { Color } from '@/libs/theme';
+import type { HeadingKeys as HeadingElements } from '@/libs/theme/text/element';
 
 type HeaderColorType =
     | Color.Names
     | { title?: Color.Names; description?: Color.Names };
 
-interface Props
-    extends React.PropsWithChildren<{
-        className?: string;
-        level: HeadingElementType;
-        title: string;
-        description?: string;
-        Before?: any;
-        After?: any;
-        color?: HeaderColorType;
-        width?: number | string;
-    }> {}
+type Props = PropsWithCommon<{
+    level: HeadingElements;
+    title: string;
+    description?: string;
+    Before?: any;
+    After?: any;
+    color?: HeaderColorType;
+    width?: number | string;
+}>;
 
 function getColor(
     color: HeaderColorType | undefined,
