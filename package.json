@@ -5,7 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build && next export",
-        "deploy:gh-pages": "next build && touch ./out/.nojekyll && echo 'evandro.sasse.it' > ./out/CNAME && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages",
+        "deploy:gh-pages": "next build && touch ./out/.nojekyll && echo 'evandro.sasse.it' > ./out/CNAME && git add ./out/ && git commit -m \"build(deploy) : deploy by next.js methodology for gh-pages\" && git subtree push --prefix out origin gh-pages",
+        "publish:gh-pages": "gh-pages -d out -t true",
         "start": "next start",
         "lint": "next lint",
         "test": "jest",
