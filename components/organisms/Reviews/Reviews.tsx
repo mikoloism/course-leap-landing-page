@@ -18,7 +18,7 @@ function useFakeFetch() {
                 link: '@username_in_twitter_or_github',
                 role: 'Designer',
                 review: 'Slate helps you see how many more days you need to work to reach your financial goal for the month and year.',
-                avatar: '/course-leap-landing-page/assets/images/image-1.png', /// 'https://api.lorem.space/image/face?w=150&h=150',
+                avatar: '/course-leap-landing-page/assets/images/image-1.png',
                 stars: 4,
             },
             {
@@ -26,7 +26,7 @@ function useFakeFetch() {
                 link: '@username_in_twitter_or_github',
                 role: 'Designer',
                 review: 'Slate helps you see how many more days you need to work to reach your financial goal for the month and year.',
-                avatar: '/course-leap-landing-page/assets/images/image-1.png', /// 'https://api.lorem.space/image/face?w=150&h=150',
+                avatar: '/course-leap-landing-page/assets/images/image-1.png',
                 stars: 5,
             },
             {
@@ -34,7 +34,7 @@ function useFakeFetch() {
                 link: '@username_in_twitter_or_github',
                 role: 'Designer',
                 review: 'Slate helps you see how many more days you need to work to reach your financial goal for the month and year.',
-                avatar: '/course-leap-landing-page/assets/images/image-1.png', /// 'https://api.lorem.space/image/face?w=150&h=150',
+                avatar: '/course-leap-landing-page/assets/images/image-1.png',
                 stars: 3,
             },
         ],
