@@ -6,6 +6,8 @@
 - 🚧 [Github Page][github-page-link]
 - 🚧 [Vercel Page][vercel-page-link]
 
+---
+
 ## Docs
 
 ### Hooks
@@ -30,6 +32,8 @@ return type : `JSX.Element`
 
 (\*) : `createElement` is generic function\
 (\*\*) : type of the parameters refer to generic types (typeof of elementProps is interface of default react props)
+
+---
 
 #### `useContent` (\*)
 
@@ -63,6 +67,8 @@ interface IReturnType {
 }
 ```
 
+---
+
 ### Types
 
 #### `libs/common.ts`
@@ -88,13 +94,19 @@ interface IReturnType {
 - `PropsWithAll` :\
   generic type to combine `PropsWithCommon` and `PropsWithStyle` with props
 
+---
+
 ### Themes
 
 Any helpful constants, function, classes and types to work with tailwind classname. Exactly the utils to return tailwind classnames from properties
 
+---
+
 ### Themes/Configs
 
 Javascript files to contain properties of `tailwind.config.js` as default value
+
+---
 
 ## Targets
 
@@ -104,6 +116,8 @@ Javascript files to contain properties of `tailwind.config.js` as default value
 - [x] Can i keep S.O.L.I.D Principles in project (main target)
 - [x] Can i keep the codebase clean
 - [ ] Can i create re-usable component
+
+---
 
 ## License
 
