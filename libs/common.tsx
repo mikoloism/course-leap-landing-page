@@ -16,28 +16,5 @@ export type PropsWithStyle<T = {}> = { style?: Record<any, any> } & T;
 export type PropsWithCommon<T = {}> = PropsWithClassName & PropsWithChildren & T;
 export type PropsWithAll<T = {}> = PropsWithCommon<T> & PropsWithStyle;
 
-// base-variant
-export enum Variant {
-    Fill = 'fill',
-    Outline = 'outline',
-    Text = 'text',
-}
-
-export type VariantType = Variant | `${Variant}`;
-
-export interface BaseVariantProps {
-    variant?: VariantType;
-}
-
-// base-color
-export enum Color {
-    Primary = 'primary',
-    Secondary = 'secondary',
-    Accent = 'accent',
-    Gray = 'gray',
-    Black = 'black',
-    White = 'white',
-}
-
 // utility types
 export type Exact<T> = { [K in keyof T]: T[K] };
