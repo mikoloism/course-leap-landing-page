@@ -25,7 +25,8 @@
         "public": true,
         ".next": true,
         ".ladle": true,
-        "docs": true
+        "docs": true,
+        "out": true
     },
     "explorerExclude.backup": {},
     "conventionalCommits.scopes": [
