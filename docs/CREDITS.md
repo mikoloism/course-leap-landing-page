@@ -2,12 +2,10 @@
 
 ### Designed By
 
-[![figma-user-interface][ui-image]][figmaland-link]
 
-[Figmaland][figmaland-link] on Figma Community
+[![Course Leap landing page Screenshot][ui-screenshot]][figma-link]
 
-[figmaland-link]: https://figmaland.com
-[ui-image]: https://www.figma.com/file/P9akOsFU4EPp6pblEO42kO/Course-Leap---simple-website%C2%A0template-download-html-with%C2%A0css-for-course-(Community)?node-id=0%3A3
+[Figmaland][figmaland-link] on [Figma Community][figma-link]
 
 ### Technologies
 
@@ -28,3 +26,6 @@
 [classnames-link]: https://www.npmjs.com/package/classnames
 [tailwind-link]: https://tailwindcss.com
 [md-icon-link]: https://fonts.google.com/icons
+[figmaland-link]: https://figmaland.com
+[figma-link]: https://www.figma.com/file/P9akOsFU4EPp6pblEO42kO/Course-Leap-Landing-Page-(cloned)?node-id=0%3A3
+[ui-screenshot]:https://user-images.githubusercontent.com/64307152/196224005-86b0cd38-c1e4-4ee0-aaa9-1c1a7141e21a.png
