@@ -28,7 +28,7 @@ generic parameters :
 
 return type : `JSX.Element`
 
-(\*) : `createElement` is generic function
+(\*) : `createElement` is generic function\
 (\*\*) : type of the parameters refer to generic types (typeof of elementProps is interface of default react props)
 
 #### `useContent` (\*)
@@ -49,8 +49,8 @@ parameters (objected) (\*\*) :
 
 return type : `IReturnType` (\*\*\*)
 
-(\*) : `useContent` is overridden function to `ordered parameters` or `objected parameters`
-(\*\*) : properties of `objected parameter` is same of `ordered parameters`
+(\*) : `useContent` is overridden function to `ordered parameters` or `objected parameters`\
+(\*\*) : properties of `objected parameter` is same of `ordered parameters`\
 (\*\*\*) : `IReturnType` is interface :
 
 ```typescript
