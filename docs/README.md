@@ -1,6 +1,6 @@
-# Next Landing Page
+# Course Leap
 
-Tree Course landing page is a ready to use Landing page template based on "next.js", "typescript" and "tailwind"
+Course Leap landing page is a ready to use Landing page template based on "next.js", "typescript" and "tailwind"
 
 | Preview (demo)                     |
 | ---------------------------------- |
