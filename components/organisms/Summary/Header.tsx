@@ -14,7 +14,7 @@ export function SummaryHeader() {
                 level="h2"
                 title={content('title')}
                 description={content('description')}
-                className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12"
+                className="w-1/2 h-1/2 place-items-start place-content-center gap-y-12"
                 Before={() => <Separator heavy />}
             />
 

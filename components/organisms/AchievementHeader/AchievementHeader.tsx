@@ -15,7 +15,7 @@ export function AchievementHeader() {
                 title={content('title')}
                 description={content('description')}
                 Before={() => <Separator heavy />}
-                className="w-1/2 h-1/2 flex flex-wrap flex-col place-items-start place-content-center gap-y-12"
+                className="w-1/2 h-1/2 place-items-start place-content-center gap-y-12"
             />
 
             <MoreButton />

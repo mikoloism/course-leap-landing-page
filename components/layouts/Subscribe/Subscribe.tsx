@@ -18,7 +18,7 @@ export default function Subscribe() {
                 title={$content.title}
                 description={$content.description}
                 width="12"
-                className="w-4/12 h-64 flex flex-wrap flex-col place-content-center place-items-start gap-y-2 text-left"
+                className="w-4/12 h-64 place-content-center place-items-start gap-y-2 text-left"
             />
 
             <SubscriptionForm />

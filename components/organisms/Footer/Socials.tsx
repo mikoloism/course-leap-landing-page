@@ -40,7 +40,7 @@ export function Socials() {
                 title={content('title')}
                 width="9"
                 description={content('description')}
-                className="flex flex-wrap flex-col place-content-start place-items-start w-full"
+                className="place-content-start place-items-start w-full"
             />
 
             <List

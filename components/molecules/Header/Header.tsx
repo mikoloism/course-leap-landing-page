@@ -1,5 +1,5 @@
 import { Text } from '@/components/atoms';
-import type { PropsWithCommon } from '@/libs/common';
+import { classnames, PropsWithCommon } from '@/libs/common';
 import type { Color } from '@/libs/theme';
 import type { HeadingKeys as HeadingElements } from '@/libs/theme/text/element';
 
@@ -66,7 +66,8 @@ export function Header(props: Props) {
     const BeforeComponent = props.Before;
     const AfterComponent = props.After;
     return (
-        <header className={props.className ?? ''}>
+        <header
+            className={classnames(props.className, 'flex flex-wrap flex-col')}>
             {BeforeComponent && <BeforeComponent />}
             <Text
                 as={props.level}

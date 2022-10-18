@@ -15,7 +15,7 @@ export function NavigationContainer({ navigation, title }: Props) {
             <Header
                 level="h3"
                 title={title}
-                className="flex flex-wrap flex-col place-content-start place-items-start w-full"
+                className="place-content-start place-items-start w-full"
             />
             <FooterNavigation items={navigation} />
         </Group>

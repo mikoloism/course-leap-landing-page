@@ -14,7 +14,7 @@ export function PackagesHeader() {
                 title={content('title')}
                 description={content('description')}
                 width="10"
-                className="flex flex-wrap flex-col place-content-center place-items-center items-start w-6/12"
+                className="place-content-center place-items-center items-start w-6/12"
             />
         </Group>
     );
