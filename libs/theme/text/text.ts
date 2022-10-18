@@ -12,7 +12,7 @@ export type Props = AlignProps & Font.Props & Color.Props;
 
 type GetSizeArg = Size.Props & { element: Element.Keys };
 
-export const DEFAULT_CLASSNAME = 'flex flex-wrap flex-col';
+export const DEFAULT_CLASSNAME = 'inline-flex flex-wrap flex-col';
 
 export const DEFAULT_FONT_FAMILY = 'font-montserrat';
 
@@ -58,7 +58,9 @@ export class StyleFactory {
     public constructor(private props: Props) {}
 
     public createClassName(): string {
-        return getClassName(this.props);
+        return [getClassName(this.props), this.DEFAULT_CLASSNAME]
+            .join(' ')
+            .trim();
     }
 }
 
