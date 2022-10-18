@@ -54,3 +54,7 @@ export default function Error404() {
         </Group>
     );
 }
+
+export async function getStaticProps() {
+    return { props: {} };
+}
