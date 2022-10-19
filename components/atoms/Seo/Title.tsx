@@ -1,3 +1,6 @@
+export const DOCUMENT_TITLE =
+    'Course Leap - Landing page template by (Next, Typescript & Tailwind) | MIKOLOISM';
+
 export function TitleComponent() {
     return (
         <>
@@ -11,16 +14,14 @@ export function TitleComponent() {
 function StandardComponent() {
     return (
         <>
-            <title>
-                MIKOLOISM | Course Leap (Next & Typescript & Tailwind)
-            </title>
             <meta
                 name="title"
-                content="MIKOLOISM | Course Leap (Next & Typescript & Tailwind)"
+                content={DOCUMENT_TITLE}
             />
             <meta
                 name="description"
                 content="Course Leap landing page is a ready to use template based on 'next', 'typescript' & 'tailwind'. developed by 'mikoloism' and designed by figmaland.com"
+                key="desc"
             />
             <meta
                 name="author"
@@ -43,7 +44,7 @@ function OpenGraphComponent() {
             />
             <meta
                 name="og:title"
-                content="MIKOLOISM | Course Leap (Next & Typescript & Tailwind)"
+                content={DOCUMENT_TITLE}
             />
             <meta
                 name="og:description"
@@ -70,7 +71,7 @@ function TwitterComponent() {
             />
             <meta
                 property="twitter:title"
-                content="MIKOLOISM | Course Leap (Next & Typescript & Tailwind)"
+                content={DOCUMENT_TITLE}
             />
             <meta
                 property="twitter:description"
