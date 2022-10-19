@@ -61,8 +61,14 @@ export class Link extends Component<Props> {
     }
 
     private normalizeLink(link: string): object {
-        if (this.isLinkInPage(link)) return { rel: 'noopener' };
-        if (this.isLinkExternal(link)) return { target: '_blank' };
-        return { 'data-alternative': 'internal-link' };
+        if (this.isLinkInPage(link)) {
+            return { rel: 'noopener nofollow' };
+        }
+
+        if (this.isLinkExternal(link)) {
+            return { target: '_blank', rel: 'nofollow' };
+        }
+
+        return { rel: 'nofollow' };
     }
 }
