@@ -1,0 +1,19 @@
+{
+    "name": "MIKOLOISM | Course Leap Landing Page",
+    "short_name": "mikoloism.github.io",
+    "icons": [
+        {
+            "src": "/course-leap-landing-page/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/course-leap-landing-page/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
