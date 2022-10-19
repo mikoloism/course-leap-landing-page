@@ -1,3 +1,5 @@
+// NOTE : recommended `name` attribute instead `property` attribute in meta tag
+
 export const DOCUMENT_TITLE =
     // NOTE : title length must be less than 50 character (current = 80)
     // NOTE : pattern to write title should be `primary title - secondary title | brand`
@@ -11,14 +13,14 @@ export const DOCUMENT_DESCRIPTION =
 export function TitleComponent() {
     return (
         <>
-            <StandardComponent />
+            <PrimaryComponent />
             <OpenGraphComponent />
             <TwitterComponent />
         </>
     );
 }
 
-function StandardComponent() {
+function PrimaryComponent() {
     return (
         <>
             <meta
@@ -46,8 +48,16 @@ function OpenGraphComponent() {
     return (
         <>
             <meta
+                property="og:type"
+                content="website"
+            />
+            <meta
                 name="og:site_name"
                 content="mikoloism.github.io"
+            />
+            <meta
+                property="og:url"
+                content="https://mikoloism.github.io/course-leap-landing-page/"
             />
             <meta
                 name="og:title"
@@ -63,7 +73,7 @@ function OpenGraphComponent() {
             />
             <meta
                 name="og:image"
-                content="/course-leap-landing-page/cover.png"
+                content="https://mikoloism.github.io/course-leap-landing-page/cover.png"
             />
         </>
     );
@@ -73,8 +83,12 @@ function TwitterComponent() {
     return (
         <>
             <meta
+                property="twitter:card"
+                content="summary_large_image"
+            />
+            <meta
                 property="twitter:url"
-                content="https://mikoloism.github.io/course-leap-landing-page"
+                content="https://mikoloism.github.io/course-leap-landing-page/"
             />
             <meta
                 property="twitter:title"
@@ -86,12 +100,25 @@ function TwitterComponent() {
             />
             <meta
                 property="twitter:image"
-                content="/course-leap-landing-page/cover.png"
-            />
-            <meta
-                property="twitter:card"
-                content="summary_large_image"
+                content="https://mikoloism.github.io/course-leap-landing-page/cover.png"
             />
         </>
     );
 }
+
+/**
+function SchemaComComponent() {
+    return (
+        <>
+            <meta
+                property="schema:name"
+                content={DOCUMENT_TITLE}
+            />
+            <meta
+                property="schema:description"
+                content={DOCUMENT_DESCRIPTION}
+            />
+        </>
+    );
+}
+*/
