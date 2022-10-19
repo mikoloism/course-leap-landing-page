@@ -1,5 +1,12 @@
 export const DOCUMENT_TITLE =
-    'Course Leap - Landing page template by (Next, Typescript & Tailwind) | MIKOLOISM';
+    // NOTE : title length must be less than 50 character (current = 80)
+    // NOTE : pattern to write title should be `primary title - secondary title | brand`
+    // HINT : to reduce the title length can remove the `secondary title`
+    'Course Leap Landing page - Template by (Next, Typescript & Tailwind) | MIKOLOISM';
+
+export const DOCUMENT_DESCRIPTION =
+    // NOTE : description length must be less than 150 character (current = 150)
+    "Course Leap landing page is a ready to use template based on 'next', 'typescript' & 'tailwind'. developed by 'mikoloism' and designed by figmaland.com";
 
 export function TitleComponent() {
     return (
@@ -20,7 +27,7 @@ function StandardComponent() {
             />
             <meta
                 name="description"
-                content="Course Leap landing page is a ready to use template based on 'next', 'typescript' & 'tailwind'. developed by 'mikoloism' and designed by figmaland.com"
+                content={DOCUMENT_DESCRIPTION}
                 key="desc"
             />
             <meta
@@ -48,7 +55,7 @@ function OpenGraphComponent() {
             />
             <meta
                 name="og:description"
-                content="Course Leap landing page is a ready to use template based on 'next', 'typescript' & 'tailwind'. developed by 'mikoloism' and designed by figmaland.com"
+                content={DOCUMENT_DESCRIPTION}
             />
             <meta
                 name="og:email"
@@ -75,7 +82,7 @@ function TwitterComponent() {
             />
             <meta
                 property="twitter:description"
-                content="Course Leap landing page is a ready to use template based on 'next', 'typescript' & 'tailwind'. developed by 'mikoloism' and designed by figmaland.com"
+                content={DOCUMENT_DESCRIPTION}
             />
             <meta
                 property="twitter:image"
