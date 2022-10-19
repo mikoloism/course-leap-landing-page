@@ -14,7 +14,7 @@ export class Image extends Component<ImageProps> {
     }
 
     render() {
-        const $className = classnames(
+        const className = classnames(
             'grid',
             'relative m-0 p-0',
             'place-content-center',
@@ -22,9 +22,10 @@ export class Image extends Component<ImageProps> {
             this.props.className
         );
 
+        // TODO : add `full-grid` to `styles/layouts/` and import as `css module` instead `inline style`
         return (
             <figure
-                className={$className}
+                className={className}
                 style={{
                     gridTemplateColumns: 'repeat(12, 1fr)',
                     gridTemplateRows: 'repeat(12, 1fr)',

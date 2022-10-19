@@ -11,11 +11,9 @@ export const withSvg = (SvgPath: any) => {
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
                 height="48"
-                style={{
-                    transform: `scale(${
-                        scale ?? DEFAULT_SVG_ICON_PROPS.scale
-                    })`,
-                }}>
+                className={`transform scale-[${
+                    scale ?? scale ?? DEFAULT_SVG_ICON_PROPS.scale
+                }]`}>
                 <SvgPath />
             </svg>
         );
