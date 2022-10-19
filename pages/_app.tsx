@@ -1,20 +1,15 @@
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
+import { SearchEngineOptimization } from '@/components/atoms/Seo';
 import '@/libs/normalize.css';
 import '@/styles/globals.css';
+import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function AppRenderer({ Component: PageComponent, pageProps }: AppProps) {
     return (
         <>
-            <Head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-            </Head>
-            <Component {...pageProps} />
+            <SearchEngineOptimization />
+            <PageComponent {...pageProps} />
         </>
     );
 }
 
-export default MyApp;
+export default AppRenderer;
