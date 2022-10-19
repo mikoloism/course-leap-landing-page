@@ -1,11 +1,19 @@
 import { Group } from '@/atoms';
 import type { PropsWithChildren } from '@/libs/common';
+import type { ItemType } from '../Product';
 import { ProductItem } from '../Product';
 
-function useFakeFetch(): any {
+type DataType = Array<ItemType>;
+type ErrorType = undefined | void;
+type ReturnType = {
+    data: DataType;
+    error: ErrorType;
+};
+
+function useFakeFetch(): ReturnType {
     const SINGLE_PRODUCT_ITEM = {
         department: 'English Department',
-        name: 'Graphic Design',
+        title: 'Graphic Design',
         description:
             "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
         stars: '4.9',
@@ -15,7 +23,7 @@ function useFakeFetch(): any {
         },
         price: {
             old: '$16.48',
-            new: '$6.48',
+            price: '$6.48',
         },
         duration: '22hr 30min',
         lessons: '64 Lessons',
@@ -63,7 +71,7 @@ export function PackagesContainer() {
 
     return (
         <ProductsContainer>
-            {data.map((item: any) => {
+            {data.map((item: ItemType) => {
                 return (
                     <ProductItem
                         key={item.id}
