@@ -1,4 +1,4 @@
-import { Group, Icon, Text } from '@/atoms';
+import { Group, Icon, Link, Text } from '@/atoms';
 import { useContent } from '@/libs/hooks';
 
 export function Copyright() {
@@ -15,7 +15,10 @@ export function Copyright() {
                     name="heart-fill"
                     scale="0.4"
                 />
-                <Text color="secondary">{content('company')}</Text>
+                <Text color="secondary">{content('company')} and</Text>
+                <Link href="https://codepen.io/mikoloism">
+                    <Text color="primary"> Mikoloism.com </Text>
+                </Link>
                 <Text color="secondary">{content('reserved')}</Text>
             </Group>
         </Group>
