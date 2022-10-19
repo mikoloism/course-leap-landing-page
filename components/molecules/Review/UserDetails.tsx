@@ -48,8 +48,8 @@ export function UserDetails({ children }: any) {
             className="w-8/12 h-20 order-3">
             <Link
                 overlay
-                href="/user/#">
-                see review
+                href="https://github.com/mikoloism">
+                see review author profile
             </Link>
             {children}
         </Group>
