@@ -48,7 +48,11 @@ export class HeaderNavigation extends Component<Props> {
             return (
                 <Link
                     className="group h-1/2"
-                    href={`#${href}`}>
+                    href={`#page-${href.toLowerCase()}`}>
+                    <span
+                        id={`page-${href.toLowerCase()}`}
+                        className="hidden"
+                        aria-hidden></span>
                     {this.withCharacterAnimation(
                         ({ children }: any) => (
                             <>{children}</>

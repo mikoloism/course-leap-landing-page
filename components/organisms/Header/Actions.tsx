@@ -27,8 +27,12 @@ function LoginLink({ text }: { text: string }) {
 
     return (
         <Link
-            href="#login"
+            href="#cta-login"
             className={className}>
+            <span
+                id="cta-login"
+                className="hidden"
+                aria-hidden></span>
             <Text
                 size="link"
                 color="white">
@@ -46,8 +50,12 @@ function JoinUsLink({ text }: { text: string }) {
 
     return (
         <Link
-            href="#join-us"
+            href="#cta-join-us"
             className={className}>
+            <span
+                id="cta-join-us"
+                className="hidden"
+                aria-hidden></span>
             <Text
                 size="link"
                 color="white"

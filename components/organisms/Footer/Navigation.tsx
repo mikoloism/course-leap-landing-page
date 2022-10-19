@@ -5,12 +5,16 @@ export function FooterNavigationItem({
     href,
 }: {
     text: any;
-    href?: string;
+    href: string;
 }) {
     return (
         <Link
-            href={href ?? '#'}
+            href={`#footer-${href.replace('#', '')}`}
             className="w-full h-full inline-flex flex-wrap flex-col place-content-start place-items-center hover:text-primary hover:font-bold hover:translate-x-3 hover:scale-110 transform transition">
+            <span
+                id={`footer-${href.replace('#', '')}`}
+                className="hidden"
+                aria-hidden></span>
             {text}
         </Link>
     );

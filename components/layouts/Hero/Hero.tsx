@@ -55,13 +55,25 @@ function HeroAction({ className }: PropsWithClassName<{}>) {
             placeItems="center"
             placeContent="center"
             className={`h-full w-full ${className}`}>
+            <span
+                id="cta-more-button"
+                className="hidden"
+                aria-hidden></span>
+            <span
+                id="hero-cta-primary"
+                className="hidden"
+                aria-hidden></span>
+            <span
+                id="hero-cta-secondary"
+                className="hidden"
+                aria-hidden></span>
             <Link
-                href="#/cta/primary"
+                href="#hero-cta-primary"
                 className="text-btn rounded-lg py-4 px-8 h-20 border-2 border-solid border-primary bg-primary text-white text-center w-[45%]">
                 {content('primary')}
             </Link>
             <Link
-                href="#/cta/secondary"
+                href="#hero-cta-secondary"
                 className="text-btn rounded-lg py-4 px-8 h-20 border-2 border-solid border-primary text-primary bg-transparent text-center w-[45%]">
                 {content('secondary')}
             </Link>

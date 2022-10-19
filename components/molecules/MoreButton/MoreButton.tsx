@@ -2,14 +2,13 @@ import { Icon, Link, Text } from '@/atoms';
 import { useContent } from '@/libs/hooks';
 
 type Props = {
-    href?: string;
     text?: string;
     outline?: boolean;
 };
 
-export function MoreButton({ href, text, outline }: Props) {
+export function MoreButton({ text, outline }: Props) {
     const { content } = useContent('landing-page', 'common');
-    href ??= '#';
+    const href = '#cta-more-button';
     text ??= content('call_to_action');
     const className = `
     hover:scale-105 transform transition
@@ -21,7 +20,7 @@ export function MoreButton({ href, text, outline }: Props) {
 
     return (
         <Link
-            href={href ?? '#'}
+            href={href}
             className={className}>
             <Text
                 size="link"
