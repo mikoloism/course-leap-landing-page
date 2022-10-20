@@ -1,6 +1,7 @@
 import { Item, Link, List } from '@/atoms';
-import { Component, PropsWithClassName } from '@/libs/common';
+import { classnames, Component, PropsWithClassName } from '@/libs/common';
 import { useContent as retrieveContent } from '@/libs/hooks';
+import style from '@/styles/header.module.css';
 
 type Props = PropsWithClassName;
 
@@ -45,25 +46,36 @@ export class HeaderNavigation extends Component<Props> {
     private renderItem() {
         return Item<RenderItemProps>(({ text }: RenderItemProps) => {
             const href = text ?? '';
+
             return (
                 <Link
-                    className="group h-1/2"
+                    className={`h-1/2 group overflow-hidden`}
                     href={`#page-${href.toLowerCase()}`}>
                     <span
                         id={`page-${href.toLowerCase()}`}
                         className="hidden"
                         aria-hidden></span>
-                    {this.withCharacterAnimation(
-                        ({ children }: any) => (
-                            <>{children}</>
-                        ),
-                        text
-                    )}
+                    <span
+                        className={classnames(
+                            style['navigation-text-wrapper'],
+                            'animate-push-in-down',
+                            'group-hover:animate-push-out-up'
+                        )}>
+                        <span className={style['navigation-text-top']}>
+                            {text}
+                        </span>
+                        <span className={style['navigation-text-bottom']}>
+                            {text}
+                        </span>
+                    </span>
                 </Link>
             );
         }, 'w-1/4 h-full list-none flex flex-col flex-wrap place-justify-center place-content-center font-montserrat text-link');
     }
+}
 
+//* DEPRECATED *//
+class NavigationAnimation {
     private withCharacterAnimation(Component: any, text: string) {
         return (
             <Component>
@@ -91,20 +103,21 @@ export class HeaderNavigation extends Component<Props> {
     }
 
     private CharacterComponent(props: { character: string; delay: number }) {
-        const delayPerMilSecond = `1${props.delay}0ms`;
+        const delayPerMilSecond = `1${props.delay}0`;
+        const groupClassName =
+            'inline-flex place-content-start place-items-center flex-col h-full overflow-hidden border-b border-transparent group-hover:border-b-primary transition';
+        const className = classnames(
+            `delay-[${delayPerMilSecond}ms group-hover:-translate-y-full transform transition`
+        );
+
         return (
-            <span className="inline-flex place-content-start place-items-center flex-col h-full overflow-hidden border-b border-transparent group-hover:border-b-primary transition">
-                <span
-                    className="group-hover:-translate-y-full transform transition"
-                    style={{ transitionDelay: delayPerMilSecond }}>
-                    {props.character}
-                </span>
-                <span
-                    className="group-hover:-translate-y-full transform transition text-primary"
-                    style={{ transitionDelay: delayPerMilSecond }}>
+            <span className={groupClassName}>
+                <span className={className}>{props.character}</span>
+                <span className={`text-primary ${className}`}>
                     {props.character}
                 </span>
             </span>
         );
     }
 }
+//* *//

@@ -7,3 +7,25 @@
   backdrop-filter: blur(8px);
   z-index: 9999;
 }
+
+.navigation-text-wrapper,
+.navigation-text-top,
+.navigation-text-bottom {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  place-content: center;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.navigation-text-wrapper {
+  height: 200%;
+  flex-wrap: nowrap;
+}
+
+.navigation-text-bottom {
+  color: theme('colors.primary');
+}
