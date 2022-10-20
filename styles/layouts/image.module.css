@@ -1,0 +1,10 @@
+.image-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  place-content: center;
+  place-items: center;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}

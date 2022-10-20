@@ -1,6 +1,7 @@
 import type { PropsWithClassName } from '@/libs/common';
-import { loadImage } from './image-loader';
 import { classnames, Component, Image as NextImage } from '@/libs/common';
+import style from '@/styles/image.module.css';
+import { loadImage } from './image-loader';
 
 interface ImageProps extends PropsWithClassName {
     src: string;
@@ -15,21 +16,12 @@ export class Image extends Component<ImageProps> {
 
     render() {
         const className = classnames(
-            'grid',
-            'relative m-0 p-0',
-            'place-content-center',
-            'place-items-center',
+            style['image-wrapper'],
             this.props.className
         );
 
-        // TODO : add `full-grid` to `styles/layouts/` and import as `css module` instead `inline style`
         return (
-            <figure
-                className={className}
-                style={{
-                    gridTemplateColumns: 'repeat(12, 1fr)',
-                    gridTemplateRows: 'repeat(12, 1fr)',
-                }}>
+            <figure className={className}>
                 <NextImage
                     src={this.props.src}
                     alt={this.props.alt}
@@ -46,4 +38,4 @@ export class Image extends Component<ImageProps> {
     }
 }
 
-// export default memo(Image);
+// HINT : for more performance uncomment `export default memo(Image);`
