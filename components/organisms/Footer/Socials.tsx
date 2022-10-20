@@ -16,7 +16,7 @@ export function SocialItem({ name }: { name: any }) {
             className="w-full h-full inline-flex flex-wrap flex-col place-content-center place-items-center">
             <Icon
                 name={name}
-                scale="1.3"
+                scale="scale-[1.3]"
             />
         </Link>
     );

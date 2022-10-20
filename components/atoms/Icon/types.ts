@@ -26,6 +26,6 @@ export enum IconName {
 export type IconType = IconName | `${IconName}`;
 
 export interface IconProps extends PropsWithClassName {
-    name   : IconType;
-    scale? : string | number;
+    name  : IconType;
+    scale : string;
 }

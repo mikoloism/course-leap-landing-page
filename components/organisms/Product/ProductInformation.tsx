@@ -14,7 +14,7 @@ export function ProductInformation({ duration, lessons, tag }: Props) {
                 className="fill-primary w-1/3">
                 <Icon
                     name="alarm"
-                    scale="0.5"
+                    scale="scale-[0.5]"
                     className="w-[24%]"
                 />
                 <Text
@@ -31,7 +31,7 @@ export function ProductInformation({ duration, lessons, tag }: Props) {
                 className="fill-accent-gold w-1/3">
                 <Icon
                     name="book-open"
-                    scale="0.5"
+                    scale="scale-[0.5]"
                     className="w-[24%]"
                 />
                 <Text placeContent="center">{lessons}</Text>
@@ -44,7 +44,7 @@ export function ProductInformation({ duration, lessons, tag }: Props) {
                 className="fill-accent-green w-1/3">
                 <Icon
                     name="bookmark"
-                    scale="0.5"
+                    scale="scale-[0.5]"
                     className="w-[24%]"
                 />
                 <Text placeContent="center">{tag}</Text>

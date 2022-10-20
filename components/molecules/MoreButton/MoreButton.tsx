@@ -32,7 +32,7 @@ export function MoreButton({ text, outline }: Props) {
             <Icon
                 name="chevron-right"
                 className="w-[20%] h-full overflow-hidden transition"
-                scale="0.8"
+                scale="scale-[0.8]"
             />
         </Link>
     );

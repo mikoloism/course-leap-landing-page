@@ -27,7 +27,7 @@ export function AchieveFloat({ icon, title, description, grid, color }: Props) {
                 {description}
             </Text>
             <Icon
-                scale="0.8"
+                scale="scale-[0.8]"
                 className={`order-1 w-24 h-24 rounded-2xl ${color}`}
                 name={icon as any}
             />

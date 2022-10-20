@@ -15,7 +15,7 @@ export function ActionButton({ icon, className }: Props) {
             }`}>
             <Icon
                 name={icon}
-                scale="0.5"
+                scale="scale-[0.5]"
             />
         </button>
     );

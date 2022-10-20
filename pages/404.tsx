@@ -48,7 +48,7 @@ export default function Error404() {
             </Group>
             <Icon
                 name="heart-fill"
-                scale="25"
+                scale="scale-[25]"
                 className="fixed t-half l-half opacity-5 z-0 animate-heart-beat"
             />
         </Group>

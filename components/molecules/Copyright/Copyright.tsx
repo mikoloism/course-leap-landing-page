@@ -12,8 +12,8 @@ export function Copyright() {
                 <Text color="secondary">{content('created')}</Text>
                 <Icon
                     className="fill-accent"
+                    scale="scale-[0.4]"
                     name="heart-fill"
-                    scale="0.4"
                 />
                 <Text color="secondary">{content('company')} and</Text>
                 <Link href="https://codepen.io/mikoloism">

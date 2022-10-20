@@ -39,7 +39,7 @@ export function ProductContent({
                     <Icon
                         className="w-1/2 h-full"
                         name="star-fill"
-                        scale="0.5"
+                        scale="scale-[0.5]"
                     />
                     <Text
                         color="white"
