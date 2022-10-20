@@ -1,6 +1,6 @@
 import { Group } from '@/components/atoms';
 import { Header } from '@/components/molecules/Header';
-import { FooterNavigation } from './Navigation';
+import { FooterNavigation } from './FooterNavigation';
 
 type Props = {
     title: string;
