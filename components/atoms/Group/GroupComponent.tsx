@@ -1,7 +1,7 @@
 import { Component } from '@/libs/common';
 import { GroupRender } from './GroupRender';
 import { GroupStyleFactory } from './GroupStyle';
-import { GroupComponentProps as Props } from './type';
+import type { GroupComponentProps as Props } from './type';
 
 export class GroupComponent extends Component<Props> {
     static defaultProps: Props = {
@@ -20,9 +20,7 @@ export class GroupComponent extends Component<Props> {
         const className = this.getStyleFromClassName();
 
         return (
-            <GroupRender
-                className={className}
-                style={this.props.style ?? {}}>
+            <GroupRender className={className}>
                 {this.props.children}
             </GroupRender>
         );

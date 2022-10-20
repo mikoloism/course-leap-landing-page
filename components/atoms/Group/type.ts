@@ -1,12 +1,12 @@
-import { PropsWithAll, PropsWithClassName } from '@/libs/common';
+import type { PropsWithClassName, PropsWithCommon } from '@/libs/common';
 import { Common, Display } from '@/libs/theme';
 
 export type GroupComponentProps = FlexComponentProps | GridComponentProps;
 
-export type FlexComponentProps = PropsWithAll<FlexStyleProps>;
+export type FlexComponentProps = PropsWithCommon<FlexStyleProps>;
 export type FlexStyleProps = Display.Flex.Props & StyleProps;
 
-export type GridComponentProps = PropsWithAll<GridStyleProps>;
+export type GridComponentProps = PropsWithCommon<GridStyleProps>;
 export type GridStyleProps = Display.Grid.Props & StyleProps;
 
 export type StyleComponentProps =
