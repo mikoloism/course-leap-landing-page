@@ -1,5 +1,9 @@
-.reviewUserAvatarImage {
+.review-user-avatar-image {
   grid-column: 1/13;
   grid-row: 1/13;
   border-radius: 9999rem;
+}
+
+.review-user-info {
+  width: calc(100% - 5.5rem);
 }

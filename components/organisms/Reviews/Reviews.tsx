@@ -9,6 +9,7 @@ import {
     Username,
     UserRole,
 } from '@/molecules/Review';
+import style from '@/styles/reviews.module.css';
 
 function useFakeFetch() {
     return {
@@ -47,8 +48,7 @@ export function Reviews() {
     return (
         <Group
             gapx="6"
-            className="w-10/12"
-            style={{ height: 'calc(100% - 45rem)' }}>
+            className={`w-10/12 ${style['reviews-item']}`}>
             {data.map((item, index) => {
                 return (
                     <Review key={`${item.username}-${index}`}>

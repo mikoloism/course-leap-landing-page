@@ -7,7 +7,7 @@ export function UserAvatar({ avatar }: any) {
             className="next-image w-20 h-20"
             src={avatar}
             alt="avatar-1"
-            imageClassName={style.reviewUserAvatarImage}
+            imageClassName={style['review-user-avatar-image']}
         />
     );
 }
@@ -32,8 +32,7 @@ export function UserInfo({ children }: any) {
     return (
         <Group
             placeContent="start"
-            className="h-full"
-            style={{ width: 'calc(100% - 5.5rem)' }}>
+            className={`h-full ${style['review-user-info']}`}>
             {children}
         </Group>
     );
